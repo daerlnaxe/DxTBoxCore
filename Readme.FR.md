@@ -9,6 +9,33 @@
 	- On lancera toujours le code à partir de l'event Loaded de la fenêtre.
 	- Pour ne pas rencontrer de soucis sur les collections un locker a été installé
  * L'évolution naturelle va être de dissocier les modèles des box pour faire un système beaucoup plus modulaire.
+ 
+# Fonctionnalités:
+ * Boites de progression (simple et double):
+  - Base sur un système avec modele à part.
+  - Systeme d'interfaces et classes abstraites afin de permettre d'autres modeles.
+   * Le système d'interface I_ASBase permet de posséder un token pour clore la tâche et un booléen pour la mettre en pause si vous l'intégrez à votre algorithme. Ce booléen est activé lorsque l'utilisateur clique pour fermer afin de permettre la mise en pause de l'algorithme.
+  - Fonctionnement avec tâche en fond
+  - Fenêtre se termine seule
+  - Fenêtre se ferme si l'utilisateur appuie sur le bouton de fermeture (demande avant)
+  - 
+
+# Exemple (With a button to launch):
+	DxAsCollecProgress db2;
+	private void test(object sender, System.Windows.RoutedEventArgs e)
+	{
+		db2 = new DxAsCollecProgress(DxTBLang.File)
+		{
+			TaskToRun = new TestProgressCollec()
+			{                  
+				// --- TaskToRun Properties
+			},
+		};
+
+		db2.ShowDialog();        
+        }
+
+	// TaskToRun must implement I_ASBase interface from my library
 
 # Todo:
  - [ ] Modifier les box pour rendre plus modulaire, quand c'est possible.
