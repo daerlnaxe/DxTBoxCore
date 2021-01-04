@@ -12,13 +12,13 @@
  
 # Fonctionnalités:
  * Boites de progression (simple et double):
-  - Base sur un système avec modele à part.
-  - Systeme d'interfaces et classes abstraites afin de permettre d'autres modeles.
-   * Le système d'interface I_ASBase permet de posséder un token pour clore la tâche et un booléen pour la mettre en pause si vous l'intégrez à votre algorithme. Ce booléen est activé lorsque l'utilisateur clique pour fermer afin de permettre la mise en pause de l'algorithme.
-  - Fonctionnement avec tâche en fond
-  - Fenêtre se termine seule
-  - Fenêtre se ferme si l'utilisateur appuie sur le bouton de fermeture (demande avant)
-  - 
+	- Basé sur un système avec modele à part.
+ 	- Systeme d'interfaces et classes abstraites afin de permettre d'autres modeles.
+  		* Le système d'interface I_ASBase permet de posséder un token pour clore la tâche et un booléen pour la mettre en pause si vous l'intégrez à votre algorithme. Ce booléen est activé lorsque l'utilisateur clique pour fermer afin de permettre la mise en pause de l'algorithme.
+ 	- Fonctionnement avec tâche en fond
+ 	- Fenêtre se termine seule
+ 	- Fenêtre se ferme si l'utilisateur appuie sur le bouton de fermeture (demande avant)
+  
 
 # Exemple (With a button to launch):
 	DxAsCollecProgress db2;
