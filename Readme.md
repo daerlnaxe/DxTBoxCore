@@ -15,6 +15,7 @@
  - [ ] Nettoyer un peu le code des progress
  - [ ] Faire quelques screenshots
  - [ ] Simplifier les box en utilisant soir le StringFormat, soit le multibinding converter
+ - [ ] Réfléchir à la dépendance d'un tracer afin d'unifier avec les applications ou faire à la place un système de messages à coupler
 
 # Notes: 
  * Dans la mesure du possible un nouveau système d'algorithmes dénués d'interfaces va être créé pour manager les transferts, il devrait probablement être écrit en .net Standart.
