@@ -18,6 +18,7 @@
  	- Fonctionnement avec tâche en fond
  	- Fenêtre se termine seule
  	- Fenêtre se ferme si l'utilisateur appuie sur le bouton de fermeture (demande avant)
+	- La methode de lancement de la tâche incluse dans la classe abstraite incorpore un délais de 50ms avant de lancer la tâche et ajoute la fermeture de la fenêtre à la fin de la tâche.
   
 
 # Exemple (With a button to launch):
