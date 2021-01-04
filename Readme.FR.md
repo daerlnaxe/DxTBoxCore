@@ -1,3 +1,6 @@
+# Version 2.0.0.1 (Coming Soon)
+ * Box progress: Ajout d'une classe dérivée d'I_ASBase en charge d'encapsuler n'importe quelle méthode passée afin de rendre compatible avec le système.
+
 # Version 2.0.0.0 (04/01/2021):
  * Portage de DxTBoxWpf de .Net Framework vers .Net Core
  * Création d'un système de box progress qui gère seul en fond une tâche qu'on lui passe:
@@ -21,7 +24,9 @@
 	- La methode de lancement de la tâche incluse dans la classe abstraite incorpore un délais de 50ms avant de lancer la tâche et ajoute la fermeture de la fenêtre à la fin de la tâche.
   
 
-# Exemple (With a button to launch):
+# Exemples:
+ - With a button to launch
+	```
 	DxAsCollecProgress db2;
 	private void test(object sender, System.Windows.RoutedEventArgs e)
 	{
@@ -37,6 +42,7 @@
         }
 
 	// TaskToRun must implement I_ASBase interface from my library
+	``` 
 
 # Todo:
  - [ ] Modifier les box pour rendre plus modulaire, quand c'est possible.
