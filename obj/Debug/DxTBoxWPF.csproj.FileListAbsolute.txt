@@ -1,0 +1,41 @@
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\bin\Debug\DxTBoxWPF.dll.config
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\bin\Debug\DxTBoxWPF.dll
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\bin\Debug\DxTBoxWPF.pdb
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\bin\Debug\fr-FR\DxTBoxWPF.resources.dll
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\DxTBoxWPF.csprojAssemblyReference.cache
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\BoxChoose\ChooseFolder.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\BoxChoose\ChooseFile.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Images\BigPic.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Images\PicsManager.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Images\Duplicate_W.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box MBox\DxMBox.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Collec\DxMCollec.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Progress\DxCollecProgress.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Progress\DxProgressB1.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Window1.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\DxTBoxWPF_MarkupCompile.cache
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\DxTBoxWPF_MarkupCompile.lref
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\BoxChoose\ChooseFolder.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\BoxChoose\ChooseFile.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Images\BigPic.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Images\PicsManager.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Images\Duplicate_W.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box MBox\DxMBox.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Collec\DxMCollec.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Progress\DxCollecProgress.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Progress\DxProgressB1.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Window1.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\DxTBoxWPF.g.resources
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\DxTBoxWPF.Properties.Resources.resources
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\DxTBoxWPF.Languages.DxTBLang.resources
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\DxTBoxWPF.Languages.DxTBLang.fr-FR.resources
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\DxTBoxWPF.csproj.GenerateResource.cache
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\DxTBoxWPF.csproj.CoreCompileInputs.cache
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\fr-FR\DxTBoxWPF.resources.dll
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\DxTBoxWPF.dll
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\DxTBoxWPF.pdb
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Progress\DxAsProgress.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Progress\DxAsProgress.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Progress\DxAsCollecProgress.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\Box Progress\DxAsCollecProgress.baml

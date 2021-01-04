@@ -1,0 +1,112 @@
+﻿<Window x:Class="DxTBoxCore.Box_Progress.DxAsCollecProgress"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DxTBoxCore.Box_Progress"
+        xmlns:t="clr-namespace:DxTBoxCore.Languages"
+        xmlns:conv="clr-namespace:DxTBoxCore.Converters"
+        mc:Ignorable="d"
+        Title="DxAsCollecProgress" Height="450" Width="800"
+        Closing="OnClosing" Loaded="Window_Loaded"
+        
+        >
+    <Window.Resources>
+        <conv:IntToString x:Key="intConv"/>
+        <conv:FormatAB x:Key="FormatTxt"/>
+
+        <!-- Grids for the progress bars -->
+        <Style x:Key="StProgress" TargetType="Grid">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="43"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FF448DD6" Offset="1"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                        <GradientStop Color="#FFB2D0EE" Offset="0"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--
+        <Style x:Key="BordersP" TargetType="Border">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="DarkGray"/>
+        </Style>
+            -->
+        <Style TargetType="Label">
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="ContentStringFormat" Value="{}{0}:"/>
+
+        </Style>
+        <Style TargetType="ProgressBar">
+            <Setter Property="Grid.Column" Value="1"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="15,0,15,0">
+        <Grid.RowDefinitions>
+            <!-- Titre -->
+            <RowDefinition Height="Auto"/>
+            <!-- Collection -->
+            <RowDefinition/>
+            <!-- Progress -->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <!-- Bouton -->
+        </Grid.RowDefinitions>
+        <!-- Titre -->
+        <TextBlock Margin="5">
+            <TextBlock.Text>
+                <MultiBinding Converter="{StaticResource FormatTxt}">
+                    <Binding Path="TaskName" RelativeSource="{RelativeSource AncestorType=Window}" />
+                    <Binding Source=": "/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <!-- Collection -->
+        <ScrollViewer Grid.Row="1" Margin="5">
+            <ItemsControl 
+                ItemsSource="{Binding Collec}"       >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+        </ScrollViewer>
+
+        <!-- En cours -->
+
+        <Grid Grid.Row="2" Style="{StaticResource StProgress}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="{x:Static t:DxTBLang.Current}"/>
+            <ProgressBar Grid.Column="1" Value="{Binding CurrentProgress, Mode=OneWay}"/>
+        </Grid>
+
+        <!-- Total -->
+        <Grid Grid.Row="3" Style="{StaticResource StProgress}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="{x:Static t:DxTBLang.Total}" />
+            <ProgressBar Grid.Row="1" Value="{Binding CurrentTotal}"/>
+        </Grid>
+    </Grid>
+
+</Window>

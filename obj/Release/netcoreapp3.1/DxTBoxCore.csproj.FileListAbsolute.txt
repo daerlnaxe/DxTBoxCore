@@ -1,0 +1,46 @@
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\bin\Release\netcoreapp3.1\Resources\Bureaux40.png
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\bin\Release\netcoreapp3.1\Resources\Documentsx40.png
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\bin\Release\netcoreapp3.1\Resources\Mediax40.png
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\bin\Release\netcoreapp3.1\Resources\MesVideosx40.png
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\bin\Release\netcoreapp3.1\DxTBoxCore.dll.config
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\bin\Release\netcoreapp3.1\DxTBoxCore.deps.json
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\bin\Release\netcoreapp3.1\DxTBoxCore.dll
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\bin\Release\netcoreapp3.1\DxTBoxCore.pdb
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\bin\Release\netcoreapp3.1\fr-FR\DxTBoxCore.resources.dll
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore.csprojAssemblyReference.cache
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Collec\DxMCollec.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Images\BigPic.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Images\Duplicate_W.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Images\PicsManager.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box MBox\DxMBox.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Progress\DxAsCollecProgress.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Progress\DxAsProgress.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\BoxChoose\ChooseFile.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\BoxChoose\ChooseFolder.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Controls\ItemChecked.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Window1.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore_MarkupCompile.cache
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore_MarkupCompile.lref
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Collec\DxMCollec.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Images\BigPic.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Images\Duplicate_W.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Images\PicsManager.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box MBox\DxMBox.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Progress\DxAsCollecProgress.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Box Progress\DxAsProgress.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\BoxChoose\ChooseFile.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\BoxChoose\ChooseFolder.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Controls\ItemChecked.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\Window1.baml
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore.g.resources
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore.Languages.DxTBLang.resources
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore.Properties.Resources.resources
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore.Languages.DxTBLang.fr-FR.resources
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore.csproj.GenerateResource.cache
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore.AssemblyInfoInputs.cache
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore.AssemblyInfo.cs
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore.csproj.CoreCompileInputs.cache
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\fr-FR\DxTBoxCore.resources.dll
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore.dll
+E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Release\netcoreapp3.1\DxTBoxCore.pdb

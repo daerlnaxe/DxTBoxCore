@@ -1,0 +1,24 @@
+﻿<Window x:Class="DxTBoxCore.Collec.DxMCollec"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DxTBoxCore.Collec"
+        mc:Ignorable="d"
+        Title="DxMCollec" Height="322" Width="559" WindowStartupLocation="CenterScreen">
+    <Grid>
+
+        <WrapPanel FlowDirection="RightToLeft" Height="21" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="240" HorizontalAlignment="Right">
+            <Button x:Name="btValid" Content="OK" Width="75" HorizontalAlignment="Left" IsDefault="True" Click="btValid_Click"/>
+            <Button x:Name="btAnnul" Content="Cancel" Width="75" HorizontalAlignment="Left" IsCancel="True" Click="btAnnul_Click"/>
+        </WrapPanel>
+        <TextBlock x:Name="MessagePart" Text="{Binding Path=Message}" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="531" Height="36"/>
+        <ListBox x:Name="lboxElements" ItemsSource="{Binding Elements}" Height="189" Margin="10,51,10,0" VerticalAlignment="Top" >          
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Remove" x:Name="miRemove" Click="miRemove_Click"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+    </Grid>
+</Window>

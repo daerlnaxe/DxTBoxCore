@@ -1,0 +1,23 @@
+﻿<Window x:Class="DxTBoxCore.Images.BigPic"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DxTBoxCore"
+        mc:Ignorable="d"
+        WindowStartupLocation="Manual"
+        Top="0"
+        Left="0"
+        Title="BigPic" SizeToContent="WidthAndHeight" Cursor="Arrow" >
+
+    <ScrollViewer
+                   MaxWidth="{Binding Source={x:Static SystemParameters.FullPrimaryScreenWidth}}"
+                   MaxHeight="{Binding Source={x:Static SystemParameters.FullPrimaryScreenHeight}}"
+                   HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Image x:Name="imageBox" x:FieldModifier="internal"  Stretch="Uniform" 
+               MinHeight="{Binding Source.PixelHeight, RelativeSource={RelativeSource Self}}"
+               MinWidth="{Binding Source.PixelWidth, RelativeSource={RelativeSource Self}}"
+               Source="/DxTBoxCore;component/Resources/question.png"  />
+    </ScrollViewer >
+
+</Window>
