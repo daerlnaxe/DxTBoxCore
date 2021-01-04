@@ -1,5 +1,6 @@
 # Version 2.0.0.1 (Coming Soon)
- * Box progress: Ajout d'une classe dérivée d'I_ASBase en charge d'encapsuler n'importe quelle méthode passée afin de rendre compatible avec le système.
+ * Box progress: Ajout d'une classe générique dérivée d'I_ASBase en charge d'encapsuler n'importe quelle méthode passée afin de rendre compatible avec le système.
+ * Box progress: Correction sur la box de collec d'un bug relatif à la fermeture
 
 # Version 2.0.0.0 (04/01/2021):
  * Portage de DxTBoxWpf de .Net Framework vers .Net Core
@@ -50,6 +51,7 @@
  - [ ] Faire quelques screenshots
  - [ ] Simplifier les box en utilisant soir le StringFormat, soit le multibinding converter
  - [ ] Réfléchir à la dépendance d'un tracer afin d'unifier avec les applications ou faire à la place un système de messages à coupler
+ 
 
 # Notes: 
  * Dans la mesure du possible un nouveau système d'algorithmes dénués d'interfaces va être créé pour manager les transferts, il devrait probablement être écrit en .net Standart.
