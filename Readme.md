@@ -1,4 +1,4 @@
-Version 2.0.0.0:
+# Version 2.0.0.0:
 	- Portage de DxTBoxWpf de .Net Framework vers .Net Core
 	- Création d'un système de box progress qui gère seul en fond une tâche qu'on lui passe:
 		- Le système est créé pour totalement dissocier le modèle de la fenêtre
@@ -12,9 +12,9 @@ Version 2.0.0.0:
 		- Pour ne pas rencontrer de soucis sur les collections un locker a été installé
 	- L'évolution naturelle va être de dissocier les modèles des box pour faire un système beaucoup plus modulaire.
 
-Todo:
-	- Modifier les box pour rendre plus modulaire, quand c'est possible.
+# Todo:
+[] Modifier les box pour rendre plus modulaire, quand c'est possible.
 	
-Notes: 
+# Notes: 
 	- Dans la mesure du possible un nouveau système d'algorithmes dénués d'interfaces va être créé pour manager les transferts
 	Il devrait probablement être écrit en .net Standart.
