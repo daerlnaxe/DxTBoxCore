@@ -1,4 +1,4 @@
-# Version 2.0.0.0:
+# Version 2.0.0.0 (04/01/2021):
  * Portage de DxTBoxWpf de .Net Framework vers .Net Core
  * Création d'un système de box progress qui gère seul en fond une tâche qu'on lui passe:
 	 - Le système est créé pour totalement dissocier le modèle de la fenêtre
