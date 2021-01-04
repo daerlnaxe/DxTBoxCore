@@ -12,6 +12,7 @@
 
 # Todo:
  - [ ] Modifier les box pour rendre plus modulaire, quand c'est possible.
-	
+ - [ ] Nettoyer un peu le code des progress
+
 # Notes: 
  * Dans la mesure du possible un nouveau système d'algorithmes dénués d'interfaces va être créé pour manager les transferts, il devrait probablement être écrit en .net Standart.
