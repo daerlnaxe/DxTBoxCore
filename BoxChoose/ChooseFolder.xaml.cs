@@ -24,6 +24,26 @@ namespace DxTBoxCore.BoxChoose
     public partial class ChooseFolder : Window
     {
         /// <summary>
+        /// Datacontext model
+        /// </summary>
+        public ModelChoose Model { get; set; } = new ModelChoose();
+
+        /*
+        /// <summary>
+        /// Folder used to initialize
+        /// </summary>
+        public string StartingFolder 
+        { 
+            get => Model.StartingFolder;
+            set => Model.StartingFolder = value;            
+        }
+        */
+
+
+
+
+
+        /// <summary>
         /// 
         /// </summary>
         private object dummyNode = null;
@@ -33,10 +53,7 @@ namespace DxTBoxCore.BoxChoose
         /// </summary>
         public List<string> Extensions { get; set; } = new List<string>();
 
-        /// <summary>
-        /// Start from this directory
-        /// </summary>
-        public string StartingFolder { get; set; }
+
 
         /// <summary>
         ///
@@ -46,41 +63,21 @@ namespace DxTBoxCore.BoxChoose
         /// <summary>
         /// Name of Save Button
         /// </summary>
-        public string SaveButtonName { get; set; }
+        public string SaveButtonName { get; set; } = "Save";
 
         /// <summary>
         /// Name of Cancel Button
         /// </summary>
-        public string CancelButtonName { get; set; }
-
-        /// <summary>
-        /// Changer le nom du bouton de droite (sauvegarde)
-        /// </summary>
-        /// <param name="nom"></param>
-        [Obsolete]
-        public void SetSaveButton(string nom)
-        {
-            SaveButtonName = nom;
-        }
-
-        /// <summary>
-        /// Changer le nom du bouton de gauche (annuler)
-        /// </summary>
-        [Obsolete]
-        public void SetCancelButton(string nom)
-        {
-            CancelButtonName = nom;
-        }
+        public string CancelButtonName { get; set; } = "Cancel";
 
         public ChooseFolder()
         {
-            SaveButtonName = "Save";
-            CancelButtonName = "Cancel";
             InitializeComponent();
-            DataContext = this;
+            DataContext = Model;
 
         }
 
+        /*
         private void FileTree_Loaded(object sender, RoutedEventArgs e)
         {
             Fill_TreeView();
@@ -89,7 +86,7 @@ namespace DxTBoxCore.BoxChoose
                 tbStartingFolder.Text = StartingFolder;
                 Recherche(StartingFolder);
             }
-        }
+        }*/
 
         /// <summary>
         /// Construit la racine de l'arbre
@@ -180,9 +177,9 @@ namespace DxTBoxCore.BoxChoose
         private void Make_Folder(ItemCollection itemCollec, string headVal, string tagVal)
         {
             TreeViewItem itm = new TreeViewItem()
-            { 
+            {
                 Header = headVal,
-                Tag = tagVal 
+                Tag = tagVal
             };
 
             // If folder has content, add dummy node to give possibilité to expand it later

@@ -20,6 +20,7 @@ namespace DxTBoxCore
     /// </summary>
     public partial class Window1 : Window
     {
+
         /// <summary>
         /// Lanceur
         /// </summary>
@@ -31,14 +32,16 @@ namespace DxTBoxCore
 
 
 
-            public Window1()
+        public Window1()
         {
             InitializeComponent();
         }
 
         private void Open_ChooseFolder(object sender, RoutedEventArgs e)
         {
-            ChooseFolder cf = new ChooseFolder();
+            ChooseFolder cf = new ChooseFolder()
+            {
+            };
             cf.ShowDialog();
         }
     }

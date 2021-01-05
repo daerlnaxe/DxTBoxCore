@@ -23,8 +23,20 @@ namespace DxTBoxCore.BoxChoose
     /// </summary>
     public partial class ChooseFile : Window
     {
+        /// <summary>
+        /// Datacontext model
+        /// </summary>
+        public ModelChoose Model { get; set; }
+
+
+
+
+
+
+
+
         private object dummyNode = null;
-        public string StartingFolder { get; set; }
+        
         public List<string> Extensions { get; set; } = new List<string>();
 
         public string LinkResult { get; private set; }
@@ -53,6 +65,7 @@ namespace DxTBoxCore.BoxChoose
 
         }
 
+        /*
         private void FileTree_Loaded(object sender, RoutedEventArgs e)
         {
             Fill_TreeView();
@@ -61,7 +74,7 @@ namespace DxTBoxCore.BoxChoose
                 tbStartingFolder.Text = StartingFolder;
                 Recherche(StartingFolder);
             }
-        }
+        }*/
 
         private void Fill_TreeView()
         {

@@ -97,6 +97,15 @@ namespace DxTBoxCore.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Enter a link or move in the tree structure.
+        /// </summary>
+        public static string Inf_LinkOrChoose {
+            get {
+                return ResourceManager.GetString("Inf_LinkOrChoose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Information.
         /// </summary>
         public static string Information {

@@ -132,6 +132,9 @@
   <data name="Information" xml:space="preserve">
     <value>Information</value>
   </data>
+  <data name="Inf_LinkOrChoose" xml:space="preserve">
+    <value>Entrez un lien ou déplacez vous dans l'arborescence</value>
+  </data>
   <data name="Left_Pic" xml:space="preserve">
     <value>Image de gauche</value>
   </data>

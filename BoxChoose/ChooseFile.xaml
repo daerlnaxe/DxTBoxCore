@@ -11,8 +11,12 @@
         <local:Img2HeaderConverter x:Key="img" />
     </Window.Resources>
     <Grid>
+        <!-- Starting Folder -->
         <TextBox x:Name="tbStartingFolder" HorizontalAlignment="Left" Height="25" Margin="70,40,0,0" TextWrapping="Wrap" Text="Entrez un lien ou déplacez vous dans l'arborescence" VerticalAlignment="Top" Width="990" TextChanged="TextBox_TextChanged"/>
-        <TreeView x:Name="FileTree" HorizontalAlignment="Left" Height="470" Margin="70,74,0,0" VerticalAlignment="Top" Width="990" Loaded="FileTree_Loaded">
+        
+                  <!--Loaded="FileTree_Loaded"-->
+        <TreeView x:Name="FileTree" HorizontalAlignment="Left" Height="470" Margin="70,74,0,0" VerticalAlignment="Top" Width="990" 
+                  >
             <TreeView.Resources>
                 <Style TargetType="TreeViewItem">
                     <Setter Property="HeaderTemplate">
