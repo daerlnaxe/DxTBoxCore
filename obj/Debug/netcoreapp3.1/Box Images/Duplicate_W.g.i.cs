@@ -188,7 +188,7 @@ namespace DxTBoxCore.Images {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.0;component/box%20images/duplicate_w.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.1;component/box%20images/duplicate_w.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Box Images\Duplicate_W.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

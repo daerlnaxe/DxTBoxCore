@@ -93,7 +93,7 @@ namespace DxTBoxCore.Collec {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.0;component/box%20collec/dxmcollec.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.1;component/box%20collec/dxmcollec.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Box Collec\DxMCollec.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

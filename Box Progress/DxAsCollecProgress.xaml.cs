@@ -34,6 +34,11 @@ namespace DxTBoxCore.Box_Progress
             get => Model.TaskToRun;
             set => Model.SetTaskToRun(value);
         }
+        public Action<I_ASBase> TaskToRun2 
+        {
+            get => Model.TaskToRun2;
+            set => Model.TaskToRun2 = value;
+        }
 
         public DxAsCollecProgress(string name)
         {
@@ -51,7 +56,7 @@ namespace DxTBoxCore.Box_Progress
 
         private async void Execute_Code()
         {
-            //this.Show();
+  
             Model.Launch_Task(this.AsyncClose);            
         }
 
@@ -73,7 +78,7 @@ namespace DxTBoxCore.Box_Progress
         {
             // Fermeture normale
             if (Model.TaskRunning.Status == TaskStatus.Canceled
-                || Model.TaskRunning.Status == TaskStatus.WaitingToRun
+                || Model.TaskRunning.Status == TaskStatus.RanToCompletion
                 || Model.TaskToRun.TokenSource.IsCancellationRequested)
                 return;
                         

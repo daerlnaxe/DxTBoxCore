@@ -37,6 +37,8 @@ namespace DxTBoxCore.Box_Progress
             }
         }
 
+
+
         public ModelProgressC()
         {
             // Important to make a thread-safe update of the collection

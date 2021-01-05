@@ -93,7 +93,7 @@ namespace DxTBoxCore.BoxChoose {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.0;component/boxchoose/choosefile.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.1;component/boxchoose/choosefile.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\BoxChoose\ChooseFile.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -25,8 +25,8 @@
 	- La methode de lancement de la tâche incluse dans la classe abstraite incorpore un délais de 50ms avant de lancer la tâche et ajoute la fermeture de la fenêtre à la fin de la tâche.
   
 
-# Exemples:
- - With a button to launch
+# Exemples (With a button to launch):
+ - Avec une classe héritant d'I_ASBase
 	```
 	DxAsCollecProgress db2;
 	private void test(object sender, System.Windows.RoutedEventArgs e)

@@ -45,6 +45,7 @@ namespace DxTBoxCore.Box_Progress
         { get; set; }
         */
         public I_ASBase TaskToRun { get; protected set; }
+        public Action<I_ASBase> TaskToRun2 { get; internal set; }
 
         public virtual void SetTaskToRun<T>(T taskToRun) where T : I_ASBase
         {
@@ -139,28 +140,21 @@ namespace DxTBoxCore.Box_Progress
         /// </summary>
         public async virtual void Launch_Task(Func<object> Ending, int delay = 50)
         {
-            //Task.Factory(TaskToRun.Run());
 
             //base.TaskRunning = Task.Run(() => base.TaskToRun(base.CancelToken, test), base.TaskToRun.CancelToken);
-            //await Task.Delay(250);         // Permet un délais à l'affichage de la fenêtre
+
             TaskRunning = Task.Run(
                 async
-                () =>/*
+                () =>
                 {
                     await Task.Delay(delay);
-                }*/
-                    TaskToRun.Run()
-                , TaskToRun.CancelToken);
+                    TaskToRun.Run();
+                }
+                            , TaskToRun.CancelToken);
             var kwa = TaskRunning.ContinueWith((ant) => Ending());
+
             //await TaskRunning;
 
-            /* TaskRunning = Task.Run(() => 
-                 {
-                     Thread.Sleep(1000);
-                     TaskToRun.Run();
-                 }
-                 , TaskToRun.CancelToken
-                 );*/
             //TaskRunning.ContinueWith((ant) => TaskToRun.Run(), TaskToRun.CancelToken);
         }
 

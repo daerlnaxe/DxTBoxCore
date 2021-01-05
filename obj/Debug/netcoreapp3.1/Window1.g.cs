@@ -53,7 +53,7 @@ namespace DxTBoxCore {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.0;component/window1.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.1;component/window1.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Window1.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

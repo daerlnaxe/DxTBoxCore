@@ -1,10 +1,10 @@
 ﻿DxTBoxCore
-2.0.0.0
+2.0.0.1
 
 library
 C#
 .cs
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Debug\netcoreapp3.1\
+E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\
 DxTBoxCore
 none
 false
@@ -12,7 +12,7 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 
 11-640986909
 
-362049771815
+37867440924
 212806703137
 Box Collec\DxMCollec.xaml;Box Images\BigPic.xaml;Box Images\Duplicate_W.xaml;Box Images\PicsManager.xaml;Box MBox\DxMBox.xaml;Box Progress\DxAsCollecProgress.xaml;Box Progress\DxAsProgress.xaml;BoxChoose\ChooseFile.xaml;BoxChoose\ChooseFolder.xaml;Controls\ItemChecked.xaml;Window1.xaml;
 

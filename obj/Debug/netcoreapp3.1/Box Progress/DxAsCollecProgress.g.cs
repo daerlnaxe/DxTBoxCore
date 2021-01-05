@@ -55,7 +55,7 @@ namespace DxTBoxCore.Box_Progress {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.0;component/box%20progress/dxascollecprogress.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.1;component/box%20progress/dxascollecprogress.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Box Progress\DxAsCollecProgress.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

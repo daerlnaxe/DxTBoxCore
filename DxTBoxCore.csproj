@@ -5,11 +5,14 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
     <Company>Daerlnaxe Software</Company>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <AssemblyVersion>2.0.0.1</AssemblyVersion>
     <FileVersion>2.0.0.0</FileVersion>
     <Description>IHM Collection
 Free to use, share, distribution</Description>
     <Copyright>Daerlnaxe Software</Copyright>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Box Progress\DxCollecProgress.xaml.cs" />

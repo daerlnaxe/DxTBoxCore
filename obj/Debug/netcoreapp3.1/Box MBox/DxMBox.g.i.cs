@@ -69,7 +69,7 @@ namespace DxTBoxCore.MBox {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.0;component/box%20mbox/dxmbox.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DxTBoxCore;V2.0.0.1;component/box%20mbox/dxmbox.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Box MBox\DxMBox.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
