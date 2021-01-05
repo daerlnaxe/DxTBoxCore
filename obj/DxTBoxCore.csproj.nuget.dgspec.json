@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Programmation\\Git-Hub\\DlnxLocalTransfert\\DxTBoxCore\\DxTBoxCore.csproj": {}
+    "E:\\Programmation\\Git-Hub\\DxTBoxCore\\DxTBoxCore.csproj": {}
   },
   "projects": {
-    "E:\\Programmation\\Git-Hub\\DlnxLocalTransfert\\DxTBoxCore\\DxTBoxCore.csproj": {
+    "E:\\Programmation\\Git-Hub\\DxTBoxCore\\DxTBoxCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Programmation\\Git-Hub\\DlnxLocalTransfert\\DxTBoxCore\\DxTBoxCore.csproj",
+        "projectUniqueName": "E:\\Programmation\\Git-Hub\\DxTBoxCore\\DxTBoxCore.csproj",
         "projectName": "DxTBoxCore",
-        "projectPath": "E:\\Programmation\\Git-Hub\\DlnxLocalTransfert\\DxTBoxCore\\DxTBoxCore.csproj",
+        "projectPath": "E:\\Programmation\\Git-Hub\\DxTBoxCore\\DxTBoxCore.csproj",
         "packagesPath": "C:\\Users\\daerlnaxe\\.nuget\\packages\\",
-        "outputPath": "E:\\Programmation\\Git-Hub\\DlnxLocalTransfert\\DxTBoxCore\\obj\\",
+        "outputPath": "E:\\Programmation\\Git-Hub\\DxTBoxCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

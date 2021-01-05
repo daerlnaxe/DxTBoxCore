@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J/KncDz983+OdeVfNQVbu+0GNaz61PcRphVVoRsIw31Usq+gkmP8JHvtEY/7W9vHu65nZ/55FGMCO6uiWY3LZA==",
+  "dgSpecHash": "1pIG7aw+DmGoUZOkazUbT8TCjR8PDF5spfYeHLwuQVwC8G9/tDqs+Wr2r5tfHIoIANsoT9X4wAAE//Xxh76WQw==",
   "success": true,
-  "projectFilePath": "E:\\Programmation\\Git-Hub\\DlnxLocalTransfert\\DxTBoxCore\\DxTBoxCore.csproj",
+  "projectFilePath": "E:\\Programmation\\Git-Hub\\DxTBoxCore\\DxTBoxCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\daerlnaxe\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\daerlnaxe\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
