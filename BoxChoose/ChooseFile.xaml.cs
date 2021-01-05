@@ -143,9 +143,21 @@ namespace DxTBoxCore.BoxChoose
             Populate_Drives();
         }
 
+        /// <summary>
+        /// Create item for special folders and add to the threeview 
+        /// </summary>
+        /// <param name="itemCollec"></param>
+        /// <param name="headVal"></param>
+        /// <param name="tagVal"></param>
         private void Make_Folder(ItemCollection itemCollec, string headVal, string tagVal)
         {
-            TreeViewItem itm = new TreeViewItem() { Header = headVal, Tag = tagVal };
+            TreeViewItem itm = new TreeViewItem()
+            { 
+                Header = headVal,
+                Tag = tagVal
+            };
+
+            // If folder has content, add dummy node to give possibilité to expand it later
             if (CommonChoose.Has_Content(tagVal))
             {
                 itm.Items.Add(dummyNode);

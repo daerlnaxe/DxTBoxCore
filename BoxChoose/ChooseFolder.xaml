@@ -20,11 +20,9 @@
                         <Setter.Value>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{Binding
-                                                                    Path=Tag, 
-                                                                    RelativeSource={RelativeSource AncestorLevel=1, AncestorType=TreeViewItem,Mode=FindAncestor},
-                                                                    Converter={StaticResource img}                                                                    
-                                                                    }"
+                                    <Image Source="{Binding Path=Tag, 
+                                                            RelativeSource={RelativeSource AncestorLevel=1, AncestorType=TreeViewItem,Mode=FindAncestor},
+                                                            Converter={StaticResource img}}"
                                     RenderOptions.BitmapScalingMode="HighQuality"  />
                                     <TextBlock Text="{Binding}" Margin="5,30,0,0" />
                                 </StackPanel>

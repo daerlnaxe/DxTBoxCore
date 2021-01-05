@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
@@ -20,7 +20,20 @@ Free to use, share, distribution</Description>
     <Compile Remove="BoxChoose\ChooseMother.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\Bureaux40.png" />
+    <None Remove="Resources\Documentsx40.png" />
+    <None Remove="Resources\document_blank.png" />
+    <None Remove="Resources\Drive Internal.png" />
+    <None Remove="Resources\Drive USB.png" />
+    <None Remove="Resources\Folderx40.png" />
+    <None Remove="Resources\Mediax40.png" />
+    <None Remove="Resources\MesImagesx40.png" />
+    <None Remove="Resources\MesVideosx40.png" />
     <None Remove="Resources\question.png" />
+    <None Remove="Resources\W10_Folderx40.png" />
+    <None Remove="Resources\W10_HDDx40.png" />
+    <None Remove="Resources\W10_NetDrivex40.png" />
+    <None Remove="Resources\W10_Opticx40.png" />
   </ItemGroup>
   <ItemGroup>
     <Page Remove="Box Progress\DxCollecProgress.xaml" />
@@ -39,7 +52,46 @@ Free to use, share, distribution</Description>
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Bureaux40.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Documentsx40.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\document_blank.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Drive Internal.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Drive USB.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Folderx40.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Mediax40.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\MesImagesx40.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\MesVideosx40.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\question.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\W10_Folderx40.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\W10_HDDx40.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\W10_NetDrivex40.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\W10_Opticx40.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -55,19 +107,5 @@ Free to use, share, distribution</Description>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DxTBLang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Resources\Bureaux40.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Documentsx40.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Mediax40.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\MesVideosx40.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>

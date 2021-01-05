@@ -11,8 +11,11 @@ using System.Windows.Data;
 using DxTBoxCore.Properties;
 
 /*
- Thanks to Toma4025 for icons
-     */
+    Thanks to Toma4025 for icons
+
+    Note:
+        - Images parameters to resource generation, and mode 'not copy'
+*/
 
 namespace DxTBoxCore.BoxChoose
 {

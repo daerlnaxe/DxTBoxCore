@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DxTBoxCore.BoxChoose;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,26 @@ namespace DxTBoxCore
     /// </summary>
     public partial class Window1 : Window
     {
-        public Window1()
+        /// <summary>
+        /// Lanceur
+        /// </summary>
+        [STAThread]
+        public static void Main()
+        {
+            new Window1().ShowDialog();
+        }
+
+
+
+            public Window1()
         {
             InitializeComponent();
+        }
+
+        private void Open_ChooseFolder(object sender, RoutedEventArgs e)
+        {
+            ChooseFolder cf = new ChooseFolder();
+            cf.ShowDialog();
         }
     }
 }

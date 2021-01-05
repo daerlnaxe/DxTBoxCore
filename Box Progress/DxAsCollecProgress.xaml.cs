@@ -24,8 +24,20 @@ namespace DxTBoxCore.Box_Progress
     /// </remarks>
     public partial class DxAsCollecProgress : Window, I_ASGraph
     {
+        #region No signal
         public string TaskName { get; set; }
 
+        /// <summary>
+        /// Maximum for the current bar progress
+        /// </summary>
+        public int MaxCP { get; set; } = 100;
+
+        /// <summary>
+        /// Maximum for the total bar progress
+        /// </summary>
+        public int MaxTP { get; set; } = 100;
+
+        #endregion
 
         public ModelProgressC Model { get; private set; } = new ModelProgressC();
 
@@ -34,11 +46,7 @@ namespace DxTBoxCore.Box_Progress
             get => Model.TaskToRun;
             set => Model.SetTaskToRun(value);
         }
-        public Action<I_ASBase> TaskToRun2 
-        {
-            get => Model.TaskToRun2;
-            set => Model.TaskToRun2 = value;
-        }
+
 
         public DxAsCollecProgress(string name)
         {

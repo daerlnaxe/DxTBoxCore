@@ -26,6 +26,7 @@ namespace DxTBoxCore.Box_Progress
         private static object _syncLock = new object();
         public ObservableCollection<string> _collec = new ObservableCollection<string>();
 
+
         public ObservableCollection<string> Collec
         {
             get { return _collec; }
@@ -60,7 +61,7 @@ namespace DxTBoxCore.Box_Progress
         {
             AddToCollec(value);
         }
-        
+
         protected override void UpdateTotalStatus(string value)
         {
             TotalStatus = value;

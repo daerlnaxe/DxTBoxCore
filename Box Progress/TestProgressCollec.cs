@@ -35,13 +35,13 @@ namespace DxTBoxCore.Box_Progress
 
             try
             {
-               // Thread.Sleep(500);
+                // Thread.Sleep(500);
 
                 // Boucle Totale
                 for (int i = 0; i < 10; i++)
                 {
                     UpdateTotalStatus?.Invoke("New Task");
-                    UpdateTotalProgress?.Invoke(i*10);
+                    UpdateTotalProgress?.Invoke(i * 10);
 
                     for (int j = 0; j < 50; j++)
                     {
@@ -51,7 +51,7 @@ namespace DxTBoxCore.Box_Progress
                         if (CancelToken.IsCancellationRequested)
                             return null;
 
-                        UpdateProgress?.Invoke(j*2);
+                        UpdateProgress?.Invoke(j * 2);
                         UpdateStatus?.Invoke($"{DxTBLang.File} {i}.{j}");
                         // db2.CurrentOP = $"{DxTBLang.File} {i}";
 
@@ -59,9 +59,12 @@ namespace DxTBoxCore.Box_Progress
                         Thread.Sleep(timeSleep);
                     }
 
+                    UpdateProgress?.Invoke(100);
                 }
+                UpdateTotalProgress?.Invoke(100);
+                Thread.Sleep(100);
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
                 Debug.WriteLine(exc);
             }

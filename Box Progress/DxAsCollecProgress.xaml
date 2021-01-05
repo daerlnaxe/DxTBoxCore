@@ -15,38 +15,15 @@
         <conv:IntToString x:Key="intConv"/>
         <conv:FormatAB x:Key="FormatTxt"/>
 
-        <!-- Grids for the progress bars -->
-        <Style x:Key="StProgress" TargetType="Grid">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Height" Value="43"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                        <GradientStop Color="#FF448DD6" Offset="1"/>
-                        <GradientStop Color="White" Offset="0.5"/>
-                        <GradientStop Color="#FFB2D0EE" Offset="0"/>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
-        </Style>
+
         <!--
         <Style x:Key="BordersP" TargetType="Border">
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BorderBrush" Value="DarkGray"/>
         </Style>
             -->
-        <Style TargetType="Label">
-            <Setter Property="Width" Value="75"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
-            <Setter Property="ContentStringFormat" Value="{}{0}:"/>
 
-        </Style>
-        <Style TargetType="ProgressBar">
-            <Setter Property="Grid.Column" Value="1"/>
-        </Style>
+
     </Window.Resources>
     <Grid Margin="15,0,15,0">
         <Grid.RowDefinitions>
@@ -86,27 +63,96 @@
             </ItemsControl>
 
         </ScrollViewer>
-
-        <!-- En cours -->
-
-        <Grid Grid.Row="2" Style="{StaticResource StProgress}">
+        <!-- Progress Bars -->
+        <Grid Grid.Row="2" Margin="0,10,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="10"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label Content="{x:Static t:DxTBLang.Current}"/>
-            <ProgressBar Grid.Column="1" Value="{Binding CurrentProgress, Mode=OneWay}"/>
+            <Grid.Resources>
+                <!-- Grids for the progress bars -->
+                <Style x:Key="StProgress" TargetType="Grid">                    
+                    <Setter Property="Height" Value="43"/>
+                    <Setter Property="VerticalAlignment" Value="Bottom"/>
+                    <Setter Property="Grid.ColumnSpan" Value="2"/>
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF448DD6" Offset="1"/>
+                                <GradientStop Color="White" Offset="0.5"/>
+                                <GradientStop Color="#FFB2D0EE" Offset="0"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="Width" Value="75"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="Gray"/>
+                    <Setter Property="ContentStringFormat" Value="{}{0}:"/>
+                </Style>
+                <Style x:Key="StPercent" TargetType="TextBlock">
+                    <Setter Property="Grid.Column" Value="1"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="ProgressBar">
+                    <Setter Property="Grid.Column" Value="1"/>
+                </Style>
+                
+            </Grid.Resources>
+            <!-- En cours -->
+            <TextBlock Grid.Row="0" Grid.Column="2">
+                <TextBlock.Text>
+                    <MultiBinding Converter="{StaticResource FormatTxt}">
+                        <Binding ElementName="pBar" Path="Value" Converter="{StaticResource intConv}"  />
+                        <Binding Source="/" />
+                        <Binding ElementName="pBar" Path="Maximum" Converter="{StaticResource intConv}"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <Grid Grid.Row="1" Style="{StaticResource StProgress}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="{x:Static t:DxTBLang.Current}"/>
+                <ProgressBar Value="{Binding CurrentProgress, Mode=OneWay}" 
+                             Maximum="{Binding MaxCP, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                             />
+            </Grid>
+
+            <!-- Total -->
+            <TextBlock Grid.Row="3" Grid.Column="2">
+                <TextBlock.Text>
+                    <MultiBinding Converter="{StaticResource FormatTxt}">
+                        <Binding ElementName="pBar" Path="Value" Converter="{StaticResource intConv}"  />
+                        <Binding Source="/" />
+                        <Binding ElementName="pBar" Path="Maximum" Converter="{StaticResource intConv}"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <Grid Grid.Row="4" Style="{StaticResource StProgress}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="{x:Static t:DxTBLang.Total}" />
+                <ProgressBar Value="{Binding CurrentTotal}"/>
+                <TextBlock Style="{StaticResource ResourceKey=StPercent}" Text="50" />
+            </Grid>
+
+
         </Grid>
 
-        <!-- Total -->
-        <Grid Grid.Row="3" Style="{StaticResource StProgress}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Label Content="{x:Static t:DxTBLang.Total}" />
-            <ProgressBar Grid.Row="1" Value="{Binding CurrentTotal}"/>
-        </Grid>
     </Grid>
 
 </Window>
