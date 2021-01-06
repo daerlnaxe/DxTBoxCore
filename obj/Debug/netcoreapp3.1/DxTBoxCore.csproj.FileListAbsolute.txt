@@ -57,7 +57,6 @@ E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\Box MBox\DxMBox.g.cs
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\Box Progress\DxAsCollecProgress.g.cs
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\Box Progress\DxAsProgress.g.cs
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\ChooseFile.g.cs
-E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\ChooseFolder.g.cs
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\Controls\ItemChecked.g.cs
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\Window1.g.cs
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
@@ -71,7 +70,6 @@ E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\Box MBox\DxMBox.baml
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\Box Progress\DxAsCollecProgress.baml
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\Box Progress\DxAsProgress.baml
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\ChooseFile.baml
-E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\ChooseFolder.baml
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\Controls\ItemChecked.baml
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\Window1.baml
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.g.resources
@@ -174,3 +172,5 @@ E:\Programmation\Git-Hub\DxTBoxCore\bin\Debug\netcoreapp3.1\runtimes\win\lib\net
 E:\Programmation\Git-Hub\DxTBoxCore\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.csproj.CopyComplete
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.genruntimeconfig.cache
+E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\Choose_Experiment.g.cs
+E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\Choose_Experiment.baml

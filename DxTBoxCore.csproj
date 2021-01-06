@@ -17,7 +17,9 @@ Free to use, share, distribution</Description>
   <ItemGroup>
     <Compile Remove="Box Progress\DxCollecProgress.xaml.cs" />
     <Compile Remove="Box Progress\DxProgressB1.xaml.cs" />
+    <Compile Remove="BoxChoose\ChooseFolder.xaml.cs" />
     <Compile Remove="BoxChoose\ChooseMother.xaml.cs" />
+    <Compile Remove="BoxChoose\OldAlgoModelChoose.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Bureaux40.png" />
@@ -38,6 +40,7 @@ Free to use, share, distribution</Description>
   <ItemGroup>
     <Page Remove="Box Progress\DxCollecProgress.xaml" />
     <Page Remove="Box Progress\DxProgressB1.xaml" />
+    <Page Remove="BoxChoose\ChooseFolder.xaml" />
     <Page Remove="BoxChoose\ChooseMother.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +48,9 @@ Free to use, share, distribution</Description>
     <None Include="Box Progress\DxCollecProgress.xaml.cs" />
     <None Include="Box Progress\DxProgressB1.xaml" />
     <None Include="Box Progress\DxProgressB1.xaml.cs" />
+    <None Include="BoxChoose\OldAlgoModelChoose.cs" />
+    <None Include="BoxChoose\ChooseFolder.xaml" />
+    <None Include="BoxChoose\ChooseFolder.xaml.cs" />
     <None Include="BoxChoose\ChooseMother.xaml" />
     <None Include="BoxChoose\ChooseMother.xaml.cs" />
   </ItemGroup>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 
-11-640986909
+11-1495003814
 
-40-1553201285
+45-630527039
 212806703137
-Box Collec\DxMCollec.xaml;Box Images\BigPic.xaml;Box Images\Duplicate_W.xaml;Box Images\PicsManager.xaml;Box MBox\DxMBox.xaml;Box Progress\DxAsCollecProgress.xaml;Box Progress\DxAsProgress.xaml;BoxChoose\ChooseFile.xaml;BoxChoose\ChooseFolder.xaml;Controls\ItemChecked.xaml;Window1.xaml;
+Box Collec\DxMCollec.xaml;Box Images\BigPic.xaml;Box Images\Duplicate_W.xaml;Box Images\PicsManager.xaml;Box MBox\DxMBox.xaml;Box Progress\DxAsCollecProgress.xaml;Box Progress\DxAsProgress.xaml;BoxChoose\ChooseFile.xaml;BoxChoose\Choose_Experiment.xaml;Controls\ItemChecked.xaml;Window1.xaml;
 
-True
+False
 

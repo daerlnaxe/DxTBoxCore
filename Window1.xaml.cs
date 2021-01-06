@@ -36,13 +36,24 @@ namespace DxTBoxCore
         {
             InitializeComponent();
         }
-
-        private void Open_ChooseFolder(object sender, RoutedEventArgs e)
+        private void Open_ChooseFile(object sender, RoutedEventArgs e)
         {
-            ChooseFolder cf = new ChooseFolder()
+            ChooseFile cf = new ChooseFile()
             {
+
             };
             cf.ShowDialog();
         }
+        private void Open_ChooseFolder(object sender, RoutedEventArgs e)
+        {
+            /*ChooseFolder cf = new ChooseFolder()
+            {
+            };
+            cf.ShowDialog();*/
+            Choose_Experiment cfe = new Choose_Experiment();
+            cfe.ShowDialog();
+        }
+
+
     }
 }

@@ -28,7 +28,8 @@ namespace DxTBoxCore.BoxChoose
             }
 
             // Dossier vide
-            if (Directory.EnumerateFileSystemEntries(folder).Count() == 0) return false;
+            if (Directory.EnumerateFileSystemEntries(folder).Count() == 0)
+                return false;
 
             return true;
 

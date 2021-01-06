@@ -126,8 +126,20 @@
   <data name="Current_Word" xml:space="preserve">
     <value>Current</value>
   </data>
+  <data name="Desktop" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>Documents</value>
+  </data>
+  <data name="Downloads" xml:space="preserve">
+    <value>Downloads</value>
+  </data>
   <data name="File" xml:space="preserve">
     <value>File</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Pictures</value>
   </data>
   <data name="Information" xml:space="preserve">
     <value>Information</value>
@@ -138,8 +150,14 @@
   <data name="Left_Pic" xml:space="preserve">
     <value>Left Pic</value>
   </data>
+  <data name="Music" xml:space="preserve">
+    <value>Music</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
+  </data>
+  <data name="Optical_Drive" xml:space="preserve">
+    <value>Optical Drive</value>
   </data>
   <data name="Question" xml:space="preserve">
     <value>Question</value>
@@ -164,6 +182,9 @@
   </data>
   <data name="Trash_Question" xml:space="preserve">
     <value>Would you want to delete this ?</value>
+  </data>
+  <data name="Videos" xml:space="preserve">
+    <value>Videos</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Warning</value>

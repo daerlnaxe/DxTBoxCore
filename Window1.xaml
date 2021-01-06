@@ -14,7 +14,8 @@
             </Style>
             
         </WrapPanel.Resources>
-        <Button x:Name="button" Content="Choose Folder" Click="Open_ChooseFolder"/>
+        <Button Content="Choose File" Click="Open_ChooseFile"/>
+        <Button Content="Choose Folder" Click="Open_ChooseFolder"/>
 
     </WrapPanel>
 </Window>

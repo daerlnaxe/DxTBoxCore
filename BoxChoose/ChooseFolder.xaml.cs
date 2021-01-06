@@ -26,9 +26,9 @@ namespace DxTBoxCore.BoxChoose
         /// <summary>
         /// Datacontext model
         /// </summary>
-        public ModelChoose Model { get; set; } = new ModelChoose();
+        public A_ModelChoose Model { get; set; } = new ModelChoose();
 
-        /*
+        #region Relais vers le Modèle
         /// <summary>
         /// Folder used to initialize
         /// </summary>
@@ -37,16 +37,13 @@ namespace DxTBoxCore.BoxChoose
             get => Model.StartingFolder;
             set => Model.StartingFolder = value;            
         }
-        */
+        #endregion
 
 
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private object dummyNode = null;
+
 
         /// <summary>
         /// 
@@ -196,51 +193,10 @@ namespace DxTBoxCore.BoxChoose
         }
 
 
-        // Concerne les supports physiques
-        private void Populate_Drives()
-        {
-            foreach (DriveInfo driv in DriveInfo.GetDrives())
-            {
+      
+        
+        
 
-                // Pour chaque lecteur on fait un treeviewitem
-                TreeViewItem tvItem = new TreeViewItem();
-                string letDrive = driv.Name.TrimEnd('\\');
-
-                switch (driv.DriveType)
-                {
-                    case DriveType.CDRom:
-                        if (driv.IsReady)
-                        {
-                            tvItem.Header = $"({letDrive}) {driv.VolumeLabel}";
-                            tvItem.Items.Add(dummyNode);
-                            tvItem.Expanded += new RoutedEventHandler(Developpement_Dossier);
-                            tvItem.Selected += Select_Item;
-
-                        }
-                        else
-                        {
-                            tvItem.Header = $"({letDrive}) Lecteur Optique";
-                            FilePath.Text = "Lecteur non prêt";
-
-                        }
-                        break;
-                    default:
-                        tvItem.Header = $"({letDrive}) {driv.VolumeLabel}";
-                        tvItem.Items.Add(dummyNode);
-                        tvItem.Expanded += new RoutedEventHandler(Developpement_Dossier);
-                        tvItem.Selected += Select_Item;
-
-                        break;
-                }
-
-
-                tvItem.Tag = driv.Name;
-                tvItem.FontWeight = FontWeights.Normal;
-
-                FileTree.Items.Add(tvItem);
-                //Console.WriteLine(driv);
-            }
-        }
 
 
 

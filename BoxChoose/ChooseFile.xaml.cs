@@ -26,7 +26,7 @@ namespace DxTBoxCore.BoxChoose
         /// <summary>
         /// Datacontext model
         /// </summary>
-        public ModelChoose Model { get; set; }
+       // public A_ModelChoose Model { get; set; }
 
 
 
@@ -40,6 +40,7 @@ namespace DxTBoxCore.BoxChoose
         public List<string> Extensions { get; set; } = new List<string>();
 
         public string LinkResult { get; private set; }
+        public string StartingFolder { get; private set; }
 
         /// <summary>
         /// Changer le nom du bouton de droite (sauvegarde)
@@ -65,7 +66,7 @@ namespace DxTBoxCore.BoxChoose
 
         }
 
-        /*
+        
         private void FileTree_Loaded(object sender, RoutedEventArgs e)
         {
             Fill_TreeView();
@@ -74,7 +75,7 @@ namespace DxTBoxCore.BoxChoose
                 tbStartingFolder.Text = StartingFolder;
                 Recherche(StartingFolder);
             }
-        }*/
+        }
 
         private void Fill_TreeView()
         {
@@ -182,7 +183,24 @@ namespace DxTBoxCore.BoxChoose
         }
 
 
+      
+        
+        
+        
+        
+                
+        
+        
+        
+        
+        
+        
+        
+        
         // Concerne les supports physiques
+        /*
+         * 2021 intégré à A_ModelChoose
+         */
         private void Populate_Drives()
         {
             foreach (DriveInfo driv in DriveInfo.GetDrives())
