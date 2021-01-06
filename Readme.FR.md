@@ -2,7 +2,16 @@
  * Box progress: Ajout d'une classe générique dérivée d'I_ASBase en charge d'encapsuler n'importe quelle méthode passée afin de rendre compatible avec le système.
  * Box progress: Correction sur la box de collec d'un bug relatif à la fermeture
  * Choose Folder: Actualisation graphique et migration vers un système avec modèle
- * Choose Boxes: Correction des bugs relatifs aux images suite au passage vers .net Core
+ * Choose Boxes: 
+	- Correction des bugs relatifs aux images suite au passage vers .net Core
+ * Choose Boxes experimentale:
+	- Correction mise à jour du dossier en collapsant/développant un dossier en cas de modification par l'explorer
+	du contenu
+	- Dissociation code du model du reste + classe abstraite + classe héritée
+	- Correction : Blocage du développement quand il n'y a pas d'enfants
+	- Correction : Erreur sur les dossiers dont l'accès est refusé par l'OS
+	- Ajout: Dossier spécial via une dll c++ managée
+
 
 # Version 2.0.0.0 (04/01/2021):
  * Portage de DxTBoxWpf de .Net Framework vers .Net Core
@@ -54,7 +63,9 @@
  - [ ] Simplifier les box en utilisant soir le StringFormat, soit le multibinding converter
  - [ ] Réfléchir à la dépendance d'un tracer afin d'unifier avec les applications ou faire à la place un système de messages à coupler
  - [ ] Réfléchir à merger dans Choose Box le build pour lecteur et le build pour les autres drives
- 
+ - [ ] Réfléchir sur la Box Choose experimentale si on doit laisser le signal remonter les parents
+ - [x] Box Choose experimentale, collapser les enfants
+ - [ ] Box Choose experimentale, voir pour vider les enfants quand collapsé
 
 # Notes: 
  * Dans la mesure du possible un nouveau système d'algorithmes dénués d'interfaces va être créé pour manager les transferts, il devrait probablement être écrit en .net Standart.
