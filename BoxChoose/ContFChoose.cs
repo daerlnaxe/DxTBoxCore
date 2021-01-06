@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace DxTBoxCore.BoxChoose
@@ -13,7 +14,7 @@ namespace DxTBoxCore.BoxChoose
 
      //   public bool AccessGranted { get; set; } = true;
 
-        public List<ContFChoose> Children { get; set; }
+        public ObservableCollection<ContFChoose> Children { get; set; }
 
         public ContFChoose(E_IconFType type)
         {

@@ -17,7 +17,7 @@ namespace DxTBoxCore.BoxChoose
     /// </summary>
     public partial class Choose_Experiment : Window
     {
-        public A_ModelChoose Model { get; set; } = new A_ModelChoose();
+        public A_ModelChoose Model { get; }
 
         /// <summary>
         /// Name of Save Button
@@ -29,8 +29,10 @@ namespace DxTBoxCore.BoxChoose
         /// </summary>
         public string CancelButtonName { get; set; }
 
-        public Choose_Experiment()
-        {  
+        public Choose_Experiment(A_ModelChoose model = null)
+        {
+            Model = model ?? new A_ModelChoose();
+
             InitializeComponent();
             DataContext = Model;
         }
@@ -55,13 +57,23 @@ namespace DxTBoxCore.BoxChoose
             DialogResult = false;
         }
 
+        private void SelectedItem(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+
+        }
+
+
         private void mee(object sender, RoutedEventArgs e)
         {
             ContFChoose item = ((TreeViewItem)sender).DataContext as ContFChoose;
             Model.Populate_Folder(item);
+
+            // Important, évite la propagation sur les parents.
+            e.Handled = true;
         }
 
-        private void SelectedItem(object sender, RoutedPropertyChangedEventArgs<object> e)
+
+        private void meeclose(object sender, RoutedEventArgs e)
         {
 
         }

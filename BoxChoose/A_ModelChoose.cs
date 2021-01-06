@@ -1,6 +1,7 @@
 ﻿using DxTBoxCore.Languages;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
@@ -131,7 +132,6 @@ namespace DxTBoxCore.BoxChoose
             }
         }
 
-
         /// <summary>
         /// Construit un élément
         /// </summary>
@@ -149,7 +149,10 @@ namespace DxTBoxCore.BoxChoose
                 Name = name,
                 Path = path,
                 Children = Check_IfChildren(path) ?
-                                new List<ContFChoose>() { new ContFChoose(E_IconFType.Dummy) }
+                                new ObservableCollection<ContFChoose>()
+                                {
+                                    new ContFChoose(E_IconFType.Dummy) 
+                                }
                                 : null,
                 //FolderSystem = new DirectoryInfo(path).;
             };
@@ -169,7 +172,7 @@ namespace DxTBoxCore.BoxChoose
                 Name = driv.IsReady ? $"({lDrive}) {driv.VolumeLabel}" : $"({lDrive}) {DxTBLang.Optical_Drive}",
                 Path = driv.Name,
                 Children = driv.IsReady && Check_IfChildren(driv.Name) ?
-                                 new List<ContFChoose>()
+                                 new ObservableCollection<ContFChoose>()
                                  {
                                      new ContFChoose(E_IconFType.Dummy)
                                  }
@@ -191,7 +194,7 @@ namespace DxTBoxCore.BoxChoose
                 Name = $"({lDrive}) {driv.VolumeLabel}",
                 Path = driv.Name,
                 Children = Check_IfChildren(driv.Name) ?
-                                new List<ContFChoose>()
+                                new ObservableCollection<ContFChoose>()
                                 {
                                     new ContFChoose(E_IconFType.Dummy)
                                 }
@@ -207,7 +210,7 @@ namespace DxTBoxCore.BoxChoose
         /// <remarks>
         /// On teste aussi l'accès
         /// </remarks>
-        private ContFChoose Build_Element(E_IconFType type, string name, string path)
+        protected virtual ContFChoose Build_Element(E_IconFType type, string name, string path)
         {
             // bool accessGranted = Check_ChildrenNAccess(path);
             return new ContFChoose(type)
@@ -215,7 +218,10 @@ namespace DxTBoxCore.BoxChoose
                 Name = name,
                 Path = path,
                 Children = Check_ChildrenNAccess(path) ?
-                                new List<ContFChoose>() { new ContFChoose(E_IconFType.Dummy) }
+                                new ObservableCollection<ContFChoose>() 
+                                {
+                                    new ContFChoose(E_IconFType.Dummy) 
+                                }
                                 : null,
                 //     AccessGranted = accessGranted
             };

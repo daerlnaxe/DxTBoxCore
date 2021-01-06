@@ -50,7 +50,10 @@ namespace DxTBoxCore
             {
             };
             cf.ShowDialog();*/
-            Choose_Experiment cfe = new Choose_Experiment();
+            Choose_Experiment cfe = new Choose_Experiment(new ModelChoose())
+            {
+
+            };
             cfe.ShowDialog();
         }
 
