@@ -61,7 +61,9 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-
+        <TreeView Visibility="Hidden">
+           
+        </TreeView>
         <!--Loaded="FileTree_Loaded"-->
         <TreeView Grid.Row="1"  ItemsSource="{Binding Root}" SelectedItemChanged="SelectedItem">
             <TreeView.Resources>
@@ -89,6 +91,7 @@
                     -->
                     <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
                     <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+                    <Setter Property="Focusable" Value="{Binding IsFocusable}"/>
                     <!-- Meme event -->
                     <EventSetter Event="Expanded" Handler="mee" />
                     <EventSetter Event="Collapsed" Handler="meeclose"/>

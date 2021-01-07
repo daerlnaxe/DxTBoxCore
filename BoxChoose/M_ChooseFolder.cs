@@ -23,7 +23,7 @@ namespace DxTBoxCore.BoxChoose
             }
         }
 
-        public override ChooseMode Mode => ChooseMode.All;
+        public override ChooseMode Mode => ChooseMode.Folder;
 
         public M_ChooseFolder() : base()
         {

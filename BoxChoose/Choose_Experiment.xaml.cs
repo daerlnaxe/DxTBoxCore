@@ -78,32 +78,39 @@ namespace DxTBoxCore.BoxChoose
         {
             
             //ContFChoose item = ((TreeViewItem)sender).DataContext as ContFChoose;
-            var item = ((TreeView)sender).SelectedItem as ContFChoose;
+            var item = ((TreeView)sender).SelectedItem as I_ContChoose;
 
             if (item == null)
                 return;
 
             if (Model.Mode == ChooseMode.All)
             {
-                Model.LinkResult = item.Path;
+                Model.LinkResult = item.Path;                
                 Debug.WriteLine("All choisi");
             }
             else if (item.Type == E_IconFType.File && Model.Mode == ChooseMode.File)
             {
                 Debug.WriteLine("Fichier choisi");
-            }
+            }           
+            
             else if (item.Type != E_IconFType.File && Model.Mode == ChooseMode.Folder)
             {
                 Debug.WriteLine("Dossier choisi");
                 Model.LinkResult = item.Path;
 
             }
+            /*
+            else if (item.Type == E_IconFType.File && Model.Mode == ChooseMode.Folder)
+            {
+                e.Handled = true;
+            }*/
+
         }
 
 
         private void mee(object sender, RoutedEventArgs e)
         {
-            ContFChoose item = ((TreeViewItem)sender).DataContext as ContFChoose;
+            I_ContChoose item = ((TreeViewItem)sender).DataContext as I_ContChoose;
             Model.Populate_Folder(item);
 
             // Important, évite la propagation sur les parents

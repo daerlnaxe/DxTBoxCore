@@ -37,7 +37,7 @@ namespace DxTBoxCore.BoxChoose
         /// </summary>
         public abstract ChooseMode Mode { get; }
 
-        public List<ContFChoose> Root { get; set; } = new List<ContFChoose>();
+        public List<I_ContChoose> Root { get; set; } = new List<I_ContChoose>();
 
 
         private string _LinkResult;
@@ -56,9 +56,6 @@ namespace DxTBoxCore.BoxChoose
 
 
         private string _startingFolder;
-
-
-
         /// <summary>
         /// Start from this directory
         /// </summary>
@@ -213,21 +210,21 @@ namespace DxTBoxCore.BoxChoose
         /// </summary>
         /// <param name="p"></param>
         /// <param name="type"></param>
-        private ContFChoose Build_SpElement(E_IconFType type, string name, string path)
+        private FolderElem Build_SpElement(E_IconFType type, string name, string path)
         {
             /*
             // Dossier vide (détecte s'il y a un dossier vide)
             if (Directory.EnumerateFileSystemEntries(folder).Count() == 0)
                 return false;*/
 
-            return new ContFChoose(type)
+            return new FolderElem(type)
             {
                 Name = name,
                 Path = path,
                 Children = Check_IfChildren(path) ?
-                                new ObservableCollection<ContFChoose>()
+                                new ObservableCollection<I_ContChoose>()
                                 {
-                                    new ContFChoose(E_IconFType.Dummy)
+                                    new FolderElem(E_IconFType.Dummy)
                                 }
                                 : null,
                 //FolderSystem = new DirectoryInfo(path).;
@@ -239,18 +236,18 @@ namespace DxTBoxCore.BoxChoose
         /// </summary>
         /// <param name="driv"></param>
         /// <returns></returns>
-        private ContFChoose Build_CDrom(DriveInfo driv)
+        private FolderElem Build_CDrom(DriveInfo driv)
         {
             string lDrive = driv.Name.TrimEnd('\\');
 
-            return new ContFChoose(E_IconFType.CDRom)
+            return new FolderElem(E_IconFType.CDRom)
             {
                 Name = driv.IsReady ? $"({lDrive}) {driv.VolumeLabel}" : $"({lDrive}) {DxTBLang.Optical_Drive}",
                 Path = driv.Name,
                 Children = driv.IsReady && Check_IfChildren(driv.Name) ?
-                                 new ObservableCollection<ContFChoose>()
+                                 new ObservableCollection<I_ContChoose>()
                                  {
-                                     new ContFChoose(E_IconFType.Dummy)
+                                     new FolderElem(E_IconFType.Dummy)
                                  }
                                  : null,
             };
@@ -261,18 +258,18 @@ namespace DxTBoxCore.BoxChoose
         /// </summary>
         /// <param name="driv"></param>
         /// <returns></returns>
-        private ContFChoose Build_Drive(DriveInfo driv, E_IconFType type)
+        private FolderElem Build_Drive(DriveInfo driv, E_IconFType type)
         {
             string lDrive = driv.Name.TrimEnd('\\');
 
-            return new ContFChoose(type)
+            return new FolderElem(type)
             {
                 Name = $"({lDrive}) {driv.VolumeLabel}",
                 Path = driv.Name,
                 Children = Check_IfChildren(driv.Name) ?
-                                new ObservableCollection<ContFChoose>()
+                                new ObservableCollection<I_ContChoose>()
                                 {
-                                    new ContFChoose(E_IconFType.Dummy)
+                                    new FolderElem(E_IconFType.Dummy)
                                 }
                                 : null,
             };
@@ -349,7 +346,7 @@ namespace DxTBoxCore.BoxChoose
         /// <remarks>
         /// Le modèle de base ne liste que les sous-dossiers
         /// </remarks>        
-        public virtual void Populate_Folder(ContFChoose parent)
+        public virtual void Populate_Folder(I_ContChoose parent)
         {
             Debug.WriteLine($"- Populate Folder: '{parent.Name}'");
             /*
@@ -443,20 +440,21 @@ namespace DxTBoxCore.BoxChoose
         /// <remarks>
         /// On teste aussi l'accès
         /// </remarks>
-        protected virtual ContFChoose Build_SubFolder(/*string name,*/ string path)
+        protected virtual FolderElem Build_SubFolder(/*string name,*/ string path)
         {
             // Debug.WriteLine("Build_Subfolder");
             // bool accessGranted = Check_ChildrenNAccess(path);
-            return new ContFChoose(E_IconFType.Folder)
+            return new FolderElem(E_IconFType.Folder)
             {
                 Name = Path.GetFileName(path),
                 Path = path,
                 Children = Check_ChildrenNAccess(path) ?
-                                new ObservableCollection<ContFChoose>()
+                                new ObservableCollection<I_ContChoose>()
                                 {
-                                    new ContFChoose(E_IconFType.Dummy)
+                                    new FolderElem(E_IconFType.Dummy)
                                 }
                                 : null,
+                //IsFocusable = Mode == ChooseMode.All | Mode == ChooseMode.Folder ? true : false,
                 //     AccessGranted = accessGranted
             };
 
@@ -467,14 +465,15 @@ namespace DxTBoxCore.BoxChoose
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        private ContFChoose Build_File(string file)
+        private FileElem Build_File(string file)
         {
             // bool accessGranted = Check_ChildrenNAccess(path);
-            return new ContFChoose(E_IconFType.File)
+            return new FileElem()
             {
                 Name = Path.GetFileName(file),
-                Path = file,
-                Children = null,
+                Path = file,               
+                IsFocusable = Mode == ChooseMode.All | Mode == ChooseMode.File ? true : false,
+
                 //     AccessGranted = accessGranted
             };
         }
@@ -489,7 +488,7 @@ namespace DxTBoxCore.BoxChoose
         /// </remarks>
         internal void Recherche()
         {
-            
+
             if (string.IsNullOrEmpty(StartingFolder))
                 return;
 
@@ -512,21 +511,21 @@ namespace DxTBoxCore.BoxChoose
             Le split est LA Seule manière, en effet en cas de start with, la fin peut ne pas correspondre que ça
             renvoie que c'est ok quand même. Si on rajoute un split 
          */
-        internal virtual bool Match(string toSearch, IEnumerable<ContFChoose> collec)
+        internal virtual bool Match(string toSearch, IEnumerable<I_ContChoose> collec)
         {
             if (collec == null)
                 return false;
 
-            foreach (ContFChoose data in collec)
+            foreach (I_ContChoose data in collec)
             {
                 if (data.Path == null)
                     continue;
 
                 // Particular case for drives
                 string toAnalyse = data.Path.TrimEnd('\\');
-                                
+
                 // Rempile ce qui est avant
-                data.IsExpanded= false;
+                data.IsExpanded = false;
 
                 // Each element have its path contained, test if data.path is contained into the string to search
                 if (ComparePaths(toSearch, data.Path))
@@ -542,9 +541,9 @@ namespace DxTBoxCore.BoxChoose
                     if (toSearch.Length > toAnalyse.Length)
                     {
                         // On rempile les enfants au cas où
-                       /* foreach (var d in data.Children)
-                            if (d.IsSelected)
-                                d.IsSelected = false;*/
+                        /* foreach (var d in data.Children)
+                             if (d.IsSelected)
+                                 d.IsSelected = false;*/
 
                         data.Children.Select((x) => x.IsExpanded ? x.IsExpanded = false : false);
 

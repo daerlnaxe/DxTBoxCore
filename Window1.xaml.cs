@@ -56,7 +56,8 @@ namespace DxTBoxCore
                 {
                     StartingFolder = @"C:",
                     HideWindowsFolder = true,
-                },
+                   // Mode = ChooseMode.Folder
+                }                 
             };
 
             cfe.ShowDialog();

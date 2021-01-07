@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DxTBoxCore.BoxChoose
 {
-    public class ContFChoose : INotifyPropertyChanged
+    public sealed class FileElem : I_ContChoose
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -17,13 +17,8 @@ namespace DxTBoxCore.BoxChoose
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+
         private bool _isSelected;
-        /// <summary>
-        /// Element is Selected
-        /// </summary>
-        /// <remarks>
-        /// Activer le mode two way
-        /// </remarks>
         public bool IsSelected
         {
             get => _isSelected;
@@ -35,41 +30,28 @@ namespace DxTBoxCore.BoxChoose
             }
         }
 
-        private bool _isExpanded;
         /// <summary>
-        /// Element is Expanded
+        /// Element Expand state
         /// </summary>
         /// <remarks>
-        /// Activer le mode two way
+        /// can't be expanded
         /// </remarks>
         public bool IsExpanded
         {
-            get => _isExpanded;
-            set
-            {
-                _isExpanded = value;
-                Debug.WriteLine($"{Name}: IsExpanded {value}");
-                OnPropertyChanged();
+            get => false;
+            set 
+            { 
             }
         }
 
-        public E_IconFType Type { get; }
+        public bool IsFocusable { get; set; }
+
+        public E_IconFType Type => E_IconFType.File;
 
         public string Name { get; set; }
-
         public string Path { get; set; }
 
-
-
-        //   public bool AccessGranted { get; set; } = true;
-
-        public ObservableCollection<ContFChoose> Children { get; set; }
-
-        public ContFChoose(E_IconFType type)
-        {
-            Type = type;
-            // Children = new List<ContFChoose>();
-        }
+        public ObservableCollection<I_ContChoose> Children => null;
 
     }
 }
