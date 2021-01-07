@@ -5,13 +5,13 @@
  * Choose Boxes: 
 	- Correction des bugs relatifs aux images suite au passage vers .net Core
  * Choose Boxes experimentale:
-	- Correction mise à jour du dossier en collapsant/développant un dossier en cas de modification par l'explorer
 	du contenu
 	- Dissociation code du model du reste + classe abstraite + classe héritée
-	- Correction : Blocage du développement quand il n'y a pas d'enfants
-	- Correction : Erreur sur les dossiers dont l'accès est refusé par l'OS
 	- Ajout: Dossier spécial via une dll c++ managée
+	- Correction mise à jour du dossier en collapsant/développant un dossier en cas de modification par l'explorer
 	- Correction diverses dont l'algorithme de recherche
+	- Correction : Erreur sur les dossiers dont l'accès est refusé par l'OS
+	- Correction : Blocage du développement quand il n'y a pas d'enfants
 
 
 # Version 2.0.0.0 (04/01/2021):
@@ -62,28 +62,31 @@
 	``` 
 
 # Todo:
- - [ ] Box Choose: le expanse semble ne fonctionner qu'une fois'
- - [ ] Peut être voir pour la recherche car ça ralentit pas mal, ou faire une icone.
  - [ ] Modifier les box pour rendre plus modulaire, quand c'est possible.
+ - [ ] Simplifier les box en utilisant soir le StringFormat, soit le multibinding converter
  - [ ] Nettoyer un peu le code des progress
  - [ ] Faire quelques screenshots
- - [ ] Simplifier les box en utilisant soir le StringFormat, soit le multibinding converter
+ - [ ] Mettre les fonctionnalités dans le wiki
  - [ ] Réfléchir à la dépendance d'un tracer afin d'unifier avec les applications ou faire à la place un système de messages à coupler
- - [ ] Réfléchir à merger dans Choose Box le build pour lecteur et le build pour les autres drives
- - [ ] Réfléchir sur la Box Choose experimentale si on doit laisser le signal remonter les parents
- - [x] Box Choose experimentale, collapser les enfants
- - [ ] Box Choose experimentale, voir pour vider les enfants quand collapsé
- - [ ] Box Choose trouver ou faire un icone pour le dossier "downloads"
- - [x] Box Choose afficher aussi les fichiers
- - [x] Mettre un booléen pour utiliser les fonctions d'affichage des fichiers
- - [x] Locker la possibilité de sélectionner un fichier sur un select file
- - [x] Locker la possibilité de sélectionner un dossier sur un select folder
- - [ ] Box ChooseRefresh complet (En cours)
+ - [ ] Box Choose: Réfléchir à merger le build pour lecteur et le build pour les autres drives
+ - [ ] Box Choose: nettoyer le code commenté si pas de bugs constatés
+ - [ ] Box Choose: experimentale, voir pour vider les enfants quand collapsé
+ - [ ] Box Choose: trouver ou faire un icone pour le dossier "downloads"
+ - [ ] Box Choose: Refresh complet (En cours)
 		- graphique
 		- séparer view/view-model/model
 		- Utiliser les ressources pour le texte
- - [ ] Mettre les fonctionnalités dans le wiki
+ - [x] Box Choose: Locker la possibilité de sélectionner un dossier sur un select folder
+ - [x] Box Choose: Locker la possibilité de sélectionner un fichier sur un select file
+ - [x] Box Choose: experimentale, collapser les enfants
+ - [x] Box Choose: Mettre un booléen pour utiliser les fonctions d'affichage des fichiers
+ - [x] Box Choose: le expanse semble ne fonctionner qu'une fois'
+ - [x] Box Choose: afficher aussi les fichiers
+ - [x] Box Choose: Peut être voir pour la recherche car ça ralentit pas mal, ou faire une icone.
+ - [x] Box Choose: ~~ Réfléchir si on doit laisser le signal remonter les parents ~~ (Bug: engendre une panne cyclique)
 
 # Notes: 
  * Dans la mesure du possible un nouveau système d'algorithmes dénués d'interfaces va être créé pour manager les transferts, il devrait probablement être écrit en .net Standart.
- * Box Choose: l'explorer de windows ne collapse pas les anciens dossiers quand on déploie une autre branche.
+ * Box Choose: l'explorer de windows ne collapse pas les anciens dossiers quand on déploie une autre branche:
+		Le choix a été fait de collapser quand on utilise le mode recherche uniquement
+		
