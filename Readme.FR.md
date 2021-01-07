@@ -8,6 +8,8 @@
 	du contenu
 	- Dissociation code du model du reste + classe abstraite + classe héritée
 	- Ajout: Dossier spécial via une dll c++ managée
+	- Remplacement de la recherche temps réel par une recherche lancée via Ctrl+G, moins gourmand en ressources
+	- Mode alternatif fichier/dosser pour empêcher la selection de fichiers si l'on souhaite les afficher mais jamais pouvoir les sélectionner
 	- Correction mise à jour du dossier en collapsant/développant un dossier en cas de modification par l'explorer
 	- Correction diverses dont l'algorithme de recherche
 	- Correction : Erreur sur les dossiers dont l'accès est refusé par l'OS
@@ -76,6 +78,8 @@
 		- graphique
 		- séparer view/view-model/model
 		- Utiliser les ressources pour le texte
+ - [ ] Box Choose: Intégrer le système de gestion des erreurs sur la textbox de recherche (dont le refus de laisser un chemin finir par \
+ - [ ] Box Choose: Intégrer la commande paste par le menu item, de sorte de lancer directement la recherche
  - [x] Box Choose: Locker la possibilité de sélectionner un dossier sur un select folder
  - [x] Box Choose: Locker la possibilité de sélectionner un fichier sur un select file
  - [x] Box Choose: experimentale, collapser les enfants
