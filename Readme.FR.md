@@ -83,7 +83,7 @@
  - [x] Box Choose: le expanse semble ne fonctionner qu'une fois'
  - [x] Box Choose: afficher aussi les fichiers
  - [x] Box Choose: Peut être voir pour la recherche car ça ralentit pas mal, ou faire une icone.
- - [x] Box Choose: ~~ Réfléchir si on doit laisser le signal remonter les parents ~~ (Bug: engendre une panne cyclique)
+ - [x] Box Choose: ~~Réfléchir si on doit laisser le signal remonter les parents~~ => Bug: engendre une panne cyclique
 
 # Notes: 
  * Dans la mesure du possible un nouveau système d'algorithmes dénués d'interfaces va être créé pour manager les transferts, il devrait probablement être écrit en .net Standart.
