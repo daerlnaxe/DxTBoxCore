@@ -46,7 +46,18 @@ namespace DxTBoxCore.BoxChoose
 
                 case E_IconFType.Network:
                     return "../Resources/W10_NetDrivex40.png";
+
+                case E_IconFType.File:
+                    return @"E:\Programmation\#Graphismes\blend-png\Blend PNG\512x512 PNG\Location Generic.png";
+
+                default:
+                    break;
             }
+
+
+            //image.Source = Imaging.CreateBitmapSourceFromHIcon(ico.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+        
+
             return null;
         }
 

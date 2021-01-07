@@ -145,7 +145,7 @@
     <value>Information</value>
   </data>
   <data name="Inf_LinkOrChoose" xml:space="preserve">
-    <value>Enter a link or move in the tree structure</value>
+    <value>To develop tree, enter a link then hit ctrl+G</value>
   </data>
   <data name="Left_Pic" xml:space="preserve">
     <value>Left Pic</value>

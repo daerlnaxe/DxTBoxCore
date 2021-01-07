@@ -133,7 +133,7 @@ namespace DxTBoxCore.Languages {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Enter a link or move in the tree structure.
+        ///   Recherche une chaîne localisée semblable à To develop tree, enter a link then hit ctrl+G.
         /// </summary>
         public static string Inf_LinkOrChoose {
             get {

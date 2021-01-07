@@ -50,10 +50,15 @@ namespace DxTBoxCore
             {
             };
             cf.ShowDialog();*/
-            Choose_Experiment cfe = new Choose_Experiment(new ModelChoose())
+            Choose_Experiment cfe = new Choose_Experiment()
             {
-
+                Model = new M_ChooseFolder()
+                {
+                    StartingFolder = @"C:",
+                    HideWindowsFolder = true,
+                },
             };
+
             cfe.ShowDialog();
         }
 

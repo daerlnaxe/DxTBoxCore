@@ -31,7 +31,9 @@
         <TextBox x:Name="tbStartingFolder" Grid.Row="0" 
                  Text="{Binding StartingFolder,
                         TargetNullValue={x:Static lg:DxTBLang.Inf_LinkOrChoose},
-                        FallbackValue={x:Static lg:DxTBLang.Inf_LinkOrChoose}}"/>
+                        FallbackValue={x:Static lg:DxTBLang.Inf_LinkOrChoose}}"
+                        
+                 />
 
         <!--Loaded="FileTree_Loaded"-->
         <TreeView x:Name="FileTree" Grid.Row="1" MinHeight="400">

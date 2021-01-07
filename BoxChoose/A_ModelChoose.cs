@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Text;
 
@@ -14,13 +16,48 @@ namespace DxTBoxCore.BoxChoose
     /*
      * Don't check folder system
      */
-    public class A_ModelChoose
+    public abstract class A_ModelChoose : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+        /// <summary>
+        /// Show files when developping folders 
+        /// </summary>
+        public bool ShowFiles { get; set; } = true;
+
+        /// <summary>
+        /// Define the mode to block selection of folder/file or none
+        /// </summary>
+        public abstract ChooseMode Mode { get; }
+
         public List<ContFChoose> Root { get; set; } = new List<ContFChoose>();
 
 
+        private string _LinkResult;
+        /// <summary>
+        /// Résultat
+        /// </summary>
+        public string LinkResult
+        {
+            get => _LinkResult;
+            set
+            {
+                _LinkResult = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         private string _startingFolder;
+
+
 
         /// <summary>
         /// Start from this directory
@@ -31,23 +68,62 @@ namespace DxTBoxCore.BoxChoose
         public string StartingFolder
         {
             get => _startingFolder;
-            set => _startingFolder = string.IsNullOrEmpty(value) ? null : value;
-            //  OnPropertyChanged();
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    _startingFolder = null;
+
+                }
+                else
+                {
+
+                    _startingFolder = value;
+                    // if (!StartingFolder.EndsWith('\\'))
+                    //   Recherche();
+                }
+
+
+                OnPropertyChanged();
+            } //=> _startingFolder = string.IsNullOrEmpty(value) ? null : value;
+        }
+
+
+        /// <summary>
+        /// Listof paths to hide
+        /// </summary>
+        protected List<string> PathsToAvoid { get; set; } = new List<string>();
+
+        /// <summary>
+        /// Prevent doublon
+        /// </summary>
+        /// <param name="path"></param>
+        protected bool AddPathToAvoid(string path)
+        {
+            if (PathsToAvoid.Contains(path))
+                return false;
+
+            PathsToAvoid.Add(path);
+            return true;
         }
 
         public A_ModelChoose()
         {
             Build_Root();
 
+
         }
 
+        #region construction de la racine
+
+        /// <summary>
+        /// Construit la racine de l'arborescence
+        /// </summary>
         protected virtual void Build_Root()
         {
-            string p;
-
             PlatformID OSversion = Environment.OSVersion.Platform;
-            Environment.SpecialFolder test2 = Environment.SpecialFolder.Recent;
-            Environment.SpecialFolder test3 = Environment.SpecialFolder.Windows;
+            string test2 = Environment.GetFolderPath(Environment.SpecialFolder.Recent);
+            string test3 = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
 
             // Desktop (normalement cross) 
             Root.Add(
@@ -151,7 +227,7 @@ namespace DxTBoxCore.BoxChoose
                 Children = Check_IfChildren(path) ?
                                 new ObservableCollection<ContFChoose>()
                                 {
-                                    new ContFChoose(E_IconFType.Dummy) 
+                                    new ContFChoose(E_IconFType.Dummy)
                                 }
                                 : null,
                 //FolderSystem = new DirectoryInfo(path).;
@@ -202,33 +278,12 @@ namespace DxTBoxCore.BoxChoose
             };
         }
 
-        /// <summary>
-        /// Construit un élément
-        /// </summary>
-        /// <param name="p"></param>
-        /// <param name="type"></param>
-        /// <remarks>
-        /// On teste aussi l'accès
-        /// </remarks>
-        protected virtual ContFChoose Build_Element(E_IconFType type, string name, string path)
-        {
-            // bool accessGranted = Check_ChildrenNAccess(path);
-            return new ContFChoose(type)
-            {
-                Name = name,
-                Path = path,
-                Children = Check_ChildrenNAccess(path) ?
-                                new ObservableCollection<ContFChoose>() 
-                                {
-                                    new ContFChoose(E_IconFType.Dummy) 
-                                }
-                                : null,
-                //     AccessGranted = accessGranted
-            };
-
-        }
 
 
+        #endregion
+
+
+        #region CheckIfChildren
         /// <summary>
         /// Check that a folder have children and permissions
         /// </summary>
@@ -244,7 +299,6 @@ namespace DxTBoxCore.BoxChoose
 
                 Type oppop = test.AccessRightType;
 
-                Debug.WriteLine($" - {folder}");
                 if (folder.Contains("Infused"))
                 {
 
@@ -284,6 +338,11 @@ namespace DxTBoxCore.BoxChoose
 
             return true;
         }
+
+        #endregion
+
+
+        #region Populate
         /// <summary>
         /// Liste le contenu d'un dossier
         /// </summary>
@@ -292,6 +351,7 @@ namespace DxTBoxCore.BoxChoose
         /// </remarks>        
         public virtual void Populate_Folder(ContFChoose parent)
         {
+            Debug.WriteLine($"- Populate Folder: '{parent.Name}'");
             /*
 
 
@@ -323,18 +383,30 @@ namespace DxTBoxCore.BoxChoose
                 return;
 
             // On enlève le dummy file s'il est présent
-            if (parent.Children[0].Type == E_IconFType.Dummy)
-                parent.Children.RemoveAt(0);
+            /*if (parent.Children[0].Type == E_IconFType.Dummy)
+                parent.Children.RemoveAt(0);            */
+
+            string[] directories = Directory.GetDirectories(parent.Path, "*.*", SearchOption.TopDirectoryOnly);
+            string[] files = Directory.GetFiles(parent.Path, "*.*", SearchOption.TopDirectoryOnly);
+
+            // On revérifie en cas de modifications
+            //if (directories.Length == 0 && files.Length == 0)
+            parent.Children.Clear();
 
 
-            foreach (string d in Directory.GetDirectories(parent.Path, "*.*", SearchOption.TopDirectoryOnly))
+            // Population des dossiers
+            Debug.WriteLine($"-\t Populate with SubFolders");
+            foreach (string d in directories)
             {
-                // test 
+                // on vérifie juste que ça n'existe pas 
+                //var ex = parent.Children.FirstOrDefault();
 
+
+                // test 
                 parent.Children.Add(
-                    Build_Element(
-                        type: E_IconFType.Folder,
-                        name: Path.GetFileName(d),
+                    Build_SubFolder(
+                        //type: E_IconFType.Folder,
+                        //name: Path.GetFileName(d),
                         path: d)
 
 
@@ -351,6 +423,186 @@ namespace DxTBoxCore.BoxChoose
                         */
                         );
             }
+
+            // Ajoute les fichiers si le switch est activé
+            Debug.WriteLine($"-\t Populate with Files");
+            if (ShowFiles)
+                foreach (string f in files)
+                {
+                    parent.Children.Add(Build_File(f));
+                }
+
+            Debug.WriteLine("- Fin populate");
+        }
+
+        /// <summary>
+        /// Construit un élément
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="type"></param>
+        /// <remarks>
+        /// On teste aussi l'accès
+        /// </remarks>
+        protected virtual ContFChoose Build_SubFolder(/*string name,*/ string path)
+        {
+            // Debug.WriteLine("Build_Subfolder");
+            // bool accessGranted = Check_ChildrenNAccess(path);
+            return new ContFChoose(E_IconFType.Folder)
+            {
+                Name = Path.GetFileName(path),
+                Path = path,
+                Children = Check_ChildrenNAccess(path) ?
+                                new ObservableCollection<ContFChoose>()
+                                {
+                                    new ContFChoose(E_IconFType.Dummy)
+                                }
+                                : null,
+                //     AccessGranted = accessGranted
+            };
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        private ContFChoose Build_File(string file)
+        {
+            // bool accessGranted = Check_ChildrenNAccess(path);
+            return new ContFChoose(E_IconFType.File)
+            {
+                Name = Path.GetFileName(file),
+                Path = file,
+                Children = null,
+                //     AccessGranted = accessGranted
+            };
+        }
+        #endregion
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// La fin ne doit jamais avoir de '\' or les lecteurs finissent par '\'
+        /// </remarks>
+        internal void Recherche()
+        {
+            
+            if (string.IsNullOrEmpty(StartingFolder))
+                return;
+
+            Debug.WriteLine($"Recherche de {StartingFolder}");
+            // return;
+            if (Match(StartingFolder, Root))
+            {
+                Debug.WriteLine("Success");
+            }
+            else
+            {
+                Debug.WriteLine("Fail");
+            }
+        }
+
+
+        /*
+            Example: C:\Win est contenu dans C:\Windows,
+                    la seule manière est de comparer c:\Win\ avec c:\Windows\
+            Le split est LA Seule manière, en effet en cas de start with, la fin peut ne pas correspondre que ça
+            renvoie que c'est ok quand même. Si on rajoute un split 
+         */
+        internal virtual bool Match(string toSearch, IEnumerable<ContFChoose> collec)
+        {
+            if (collec == null)
+                return false;
+
+            foreach (ContFChoose data in collec)
+            {
+                if (data.Path == null)
+                    continue;
+
+                // Particular case for drives
+                string toAnalyse = data.Path.TrimEnd('\\');
+                                
+                // Rempile ce qui est avant
+                data.IsExpanded= false;
+
+                // Each element have its path contained, test if data.path is contained into the string to search
+                if (ComparePaths(toSearch, data.Path))
+                {
+                    data.IsSelected = true;
+                    data.IsExpanded = true;
+                    // On peuple
+                    // Pas la peine car c'est peuplé directement quand c'est expandé 
+                    //Populate_Folder(data);
+
+                    //bool isExp =;
+                    // On cherche dans les enfants si ce n'est pas terminé
+                    if (toSearch.Length > toAnalyse.Length)
+                    {
+                        // On rempile les enfants au cas où
+                       /* foreach (var d in data.Children)
+                            if (d.IsSelected)
+                                d.IsSelected = false;*/
+
+                        data.Children.Select((x) => x.IsExpanded ? x.IsExpanded = false : false);
+
+                        return Match(StartingFolder, data.Children);
+                    }
+
+                    return true;
+                }
+
+
+
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="testedF">Always the biggest, search into</param>
+        /// <param name="toSearch"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        internal virtual bool ComparePaths(string toSearch, string testedF)
+        {
+            string[] partsToTest = testedF.TrimEnd('\\').Split('\\');
+            string[] partsToSearch = toSearch.TrimEnd('\\').Split('\\');
+
+            // Si la partie à tester est plus grande que la partie à chercher c'est faux
+            if (partsToTest.Length > partsToSearch.Length)
+                return false;
+
+            /*
+             * On cherche E:\#A Trier
+             * On Tombe sur C:
+             *          
+             * On Tombe sur E:
+             *      
+             * /
+
+            /*for (int i = 0; i < refER.Length; i++)*/
+            int i = 0;
+            while (true)
+            {
+                // Si on a parcouru toute la partie à tester c'est que c'est ok
+                if (i >= partsToTest.Length)
+                    return true;
+
+                // Si une partie est fausse, alors tout est faux
+                if (!partsToTest[i].Equals(partsToSearch[i]))
+                    return false;
+
+                i++;
+            };
+
+            //return true;
         }
     }
 }

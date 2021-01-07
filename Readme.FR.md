@@ -11,6 +11,7 @@
 	- Correction : Blocage du développement quand il n'y a pas d'enfants
 	- Correction : Erreur sur les dossiers dont l'accès est refusé par l'OS
 	- Ajout: Dossier spécial via une dll c++ managée
+	- Correction diverses dont l'algorithme de recherche
 
 
 # Version 2.0.0.0 (04/01/2021):
@@ -34,6 +35,10 @@
  	- Fenêtre se termine seule
  	- Fenêtre se ferme si l'utilisateur appuie sur le bouton de fermeture (demande avant)
 	- La methode de lancement de la tâche incluse dans la classe abstraite incorpore un délais de 50ms avant de lancer la tâche et ajoute la fermeture de la fenêtre à la fin de la tâche.
+
+ * Box Choose:
+	- Recherche dans l'arborescence quand on remplit une textbox ou en initialisant le chemin à la création
+
   
 
 # Exemples (With a button to launch):
@@ -57,6 +62,8 @@
 	``` 
 
 # Todo:
+ - [ ] Box Choose: le expanse semble ne fonctionner qu'une fois'
+ - [ ] Peut être voir pour la recherche car ça ralentit pas mal, ou faire une icone.
  - [ ] Modifier les box pour rendre plus modulaire, quand c'est possible.
  - [ ] Nettoyer un peu le code des progress
  - [ ] Faire quelques screenshots
@@ -66,6 +73,17 @@
  - [ ] Réfléchir sur la Box Choose experimentale si on doit laisser le signal remonter les parents
  - [x] Box Choose experimentale, collapser les enfants
  - [ ] Box Choose experimentale, voir pour vider les enfants quand collapsé
+ - [ ] Box Choose trouver ou faire un icone pour le dossier "downloads"
+ - [x] Box Choose afficher aussi les fichiers
+ - [x] Mettre un booléen pour utiliser les fonctions d'affichage des fichiers
+ - [x] Locker la possibilité de sélectionner un fichier sur un select file
+ - [x] Locker la possibilité de sélectionner un dossier sur un select folder
+ - [ ] Box ChooseRefresh complet (En cours)
+		- graphique
+		- séparer view/view-model/model
+		- Utiliser les ressources pour le texte
+ - [ ] Mettre les fonctionnalités dans le wiki
 
 # Notes: 
  * Dans la mesure du possible un nouveau système d'algorithmes dénués d'interfaces va être créé pour manager les transferts, il devrait probablement être écrit en .net Standart.
+ * Box Choose: l'explorer de windows ne collapse pas les anciens dossiers quand on déploie une autre branche.

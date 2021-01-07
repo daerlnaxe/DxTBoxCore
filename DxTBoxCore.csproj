@@ -19,6 +19,7 @@ Free to use, share, distribution</Description>
     <Compile Remove="Box Progress\DxProgressB1.xaml.cs" />
     <Compile Remove="BoxChoose\ChooseFolder.xaml.cs" />
     <Compile Remove="BoxChoose\ChooseMother.xaml.cs" />
+    <Compile Remove="BoxChoose\E_IconType.cs" />
     <Compile Remove="BoxChoose\OldAlgoModelChoose.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +43,9 @@ Free to use, share, distribution</Description>
     <Page Remove="Box Progress\DxProgressB1.xaml" />
     <Page Remove="BoxChoose\ChooseFolder.xaml" />
     <Page Remove="BoxChoose\ChooseMother.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="BoxChoose\E_IconType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Box Progress\DxCollecProgress.xaml" />

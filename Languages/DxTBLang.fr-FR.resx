@@ -145,7 +145,7 @@
     <value>Information</value>
   </data>
   <data name="Inf_LinkOrChoose" xml:space="preserve">
-    <value>Entrez un lien ou déplacez vous dans l'arborescence</value>
+    <value>Pour développer l'arbre, tapez un lien et appuyez sur ctrl + G</value>
   </data>
   <data name="Left_Pic" xml:space="preserve">
     <value>Image de gauche</value>

@@ -83,7 +83,6 @@ E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.csproj.Co
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\fr-FR\DxTBoxCore.resources.dll
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.dll
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.pdb
-E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.csprojAssemblyReference.cache
 E:\Programmation\Git-Hub\DxTBoxCore\bin\Debug\netcoreapp3.1\DxTBoxCore.exe
 E:\Programmation\Git-Hub\DxTBoxCore\bin\Debug\netcoreapp3.1\DxTBoxCore.runtimeconfig.json
 E:\Programmation\Git-Hub\DxTBoxCore\bin\Debug\netcoreapp3.1\DxTBoxCore.runtimeconfig.dev.json
@@ -174,3 +173,4 @@ E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.csproj.Co
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.genruntimeconfig.cache
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\Choose_Experiment.g.cs
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\Choose_Experiment.baml
+E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.csprojAssemblyReference.cache

@@ -10,6 +10,7 @@ namespace DxTBoxCore.BoxChoose
     public enum E_IconFType
     {
         Dummy,
+        File,
         Folder,
         FolderDenied,
         Desktop,
