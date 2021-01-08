@@ -113,9 +113,9 @@
             <TextBlock Grid.Row="0" Grid.Column="2">
                 <TextBlock.Text>
                     <MultiBinding Converter="{StaticResource FormatTxt}">
-                        <Binding ElementName="pBar" Path="Value" Converter="{StaticResource intConv}"  />
+                        <Binding ElementName="pBarCurrent" Path="Value" Converter="{StaticResource intConv}"  />
                         <Binding Source="/" />
-                        <Binding ElementName="pBar" Path="Maximum" Converter="{StaticResource intConv}"/>
+                        <Binding ElementName="pBarCurrent" Path="Maximum" Converter="{StaticResource intConv}"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
@@ -125,7 +125,8 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label Content="{x:Static t:DxTBLang.Current}"/>
-                <ProgressBar Value="{Binding CurrentProgress, Mode=OneWay}" 
+                <ProgressBar Name="pBarCurrent"
+                                       Value="{Binding CurrentProgress, Mode=OneWay}" 
                              Maximum="{Binding MaxCP, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
                              />
             </Grid>
@@ -134,9 +135,9 @@
             <TextBlock Grid.Row="3" Grid.Column="2">
                 <TextBlock.Text>
                     <MultiBinding Converter="{StaticResource FormatTxt}">
-                        <Binding ElementName="pBar" Path="Value" Converter="{StaticResource intConv}"  />
+                        <Binding ElementName="pBarTotal" Path="Value" Converter="{StaticResource intConv}"  />
                         <Binding Source="/" />
-                        <Binding ElementName="pBar" Path="Maximum" Converter="{StaticResource intConv}"/>
+                        <Binding ElementName="pBarTotal" Path="Maximum" Converter="{StaticResource intConv}"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
@@ -146,7 +147,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label Content="{x:Static t:DxTBLang.Total}" />
-                <ProgressBar Value="{Binding CurrentTotal}"/>
+                <ProgressBar Name="pBarTotal" Value="{Binding CurrentTotal}"/>
                 <TextBlock Style="{StaticResource ResourceKey=StPercent}" Text="50" />
             </Grid>
 

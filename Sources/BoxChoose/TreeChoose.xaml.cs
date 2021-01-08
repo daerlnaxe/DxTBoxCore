@@ -52,6 +52,8 @@ namespace DxTBoxCore.BoxChoose
         {
             // Model = model;
             InitializeComponent();
+            Mouse.OverrideCursor = Cursors.AppStarting;
+
             // DataContext = model;
         }
 
@@ -59,6 +61,7 @@ namespace DxTBoxCore.BoxChoose
         {
             DataContext = Model;
             Model.Recherche();
+            Mouse.OverrideCursor = null;
         }
 
 

@@ -27,7 +27,8 @@ namespace DxTBoxCore.Box_Progress
             CancelToken = TokenSource.Token;
         }
 
-        public Func<I_ASBase, T> ToRun { get; set; }
+        public Func<I_ASBase, T> ToRun{ get; set; }
+
 
         public object Run(int timeSleep = 10)
         {

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace DxTBoxCore.Box_Progress
 {
     /// <summary>
-    /// Meuh
+    /// Modele utilisé pour les box progress simple
     /// </summary>
     public abstract class M_Progress : I_Progress, I_AsyncProgress
     {
@@ -45,7 +45,7 @@ namespace DxTBoxCore.Box_Progress
         { get; set; }
         */
         public I_ASBase TaskToRun { get; protected set; }
-        public Action<I_ASBase> TaskToRun2 { get; internal set; }
+
 
         public virtual void SetTaskToRun<T>(T taskToRun) where T : I_ASBase
         {

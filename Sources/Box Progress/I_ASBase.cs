@@ -39,6 +39,13 @@ namespace DxTBoxCore.Box_Progress
         /// </summary>
         bool IsPaused { get; set; }
 
+        /// <summary>
+        /// Run the method
+        /// </summary>
+        /// <param name="timeSleep"></param>
+        /// <returns>
+        /// Your type of object
+        /// </returns>
         object Run(int timeSleep = 10);
 
         void StopTask();

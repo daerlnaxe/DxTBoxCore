@@ -12,7 +12,7 @@ using System.Diagnostics;
 
 namespace DxTBoxCore.Box_Progress
 {
-    public abstract class M_ProgressC : M_Progress, I_ProgressC
+    public abstract class M_ProgressC: M_Progress, I_ProgressC
     {
         /*
         public event PropertyChangedEventHandler PropertyChanged;

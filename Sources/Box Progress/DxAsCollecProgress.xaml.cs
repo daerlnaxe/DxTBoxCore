@@ -39,8 +39,9 @@ namespace DxTBoxCore.Box_Progress
 
         #endregion
 
-        public ModelProgressC Model { get; private set; } = new ModelProgressC();
+        public M_ProgressC Model { get; private set; } = new ModelProgressC();
 
+        
         public I_ASBase TaskToRun
         {
             get => Model.TaskToRun;
@@ -53,12 +54,12 @@ namespace DxTBoxCore.Box_Progress
             TaskName = name;
 
             InitializeComponent();
-            DataContext = Model;
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            DataContext = Model;
             Execute_Code();
         }
 
