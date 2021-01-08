@@ -2960,11 +2960,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Programmation\\Git-Hub\\DxTBoxCore\\DxTBoxCore.csproj",
+      "projectUniqueName": "E:\\Programmation\\Git-Hub\\DxTBoxCore\\Sources\\DxTBoxCore.csproj",
       "projectName": "DxTBoxCore",
-      "projectPath": "E:\\Programmation\\Git-Hub\\DxTBoxCore\\DxTBoxCore.csproj",
+      "projectPath": "E:\\Programmation\\Git-Hub\\DxTBoxCore\\Sources\\DxTBoxCore.csproj",
       "packagesPath": "C:\\Users\\daerlnaxe\\.nuget\\packages\\",
-      "outputPath": "E:\\Programmation\\Git-Hub\\DxTBoxCore\\obj\\",
+      "outputPath": "E:\\Programmation\\Git-Hub\\DxTBoxCore\\Sources\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
