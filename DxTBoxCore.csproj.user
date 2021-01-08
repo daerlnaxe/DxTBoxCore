@@ -4,12 +4,12 @@
     <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="BoxChoose\Choose_Experiment.xaml.cs">
+    <Compile Update="BoxChoose\TreeChoose.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="BoxChoose\Choose_Experiment.xaml">
+    <Page Update="BoxChoose\TreeChoose.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

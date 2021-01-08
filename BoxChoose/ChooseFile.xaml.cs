@@ -21,6 +21,7 @@ namespace DxTBoxCore.BoxChoose
     /// <summary>
     /// Logique d'interaction pour ChooseRep.xaml
     /// </summary>
+    [Obsolete("Use TreeChoose")]
     public partial class ChooseFile : Window
     {
         /// <summary>

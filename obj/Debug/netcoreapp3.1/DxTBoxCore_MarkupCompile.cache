@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 
-11-1495003814
+12-962058224
 
-471531299128
+49-1563951619
 212806703137
-Box Collec\DxMCollec.xaml;Box Images\BigPic.xaml;Box Images\Duplicate_W.xaml;Box Images\PicsManager.xaml;Box MBox\DxMBox.xaml;Box Progress\DxAsCollecProgress.xaml;Box Progress\DxAsProgress.xaml;BoxChoose\ChooseFile.xaml;BoxChoose\Choose_Experiment.xaml;Controls\ItemChecked.xaml;Window1.xaml;
+Box Collec\DxMCollec.xaml;Box Images\BigPic.xaml;Box Images\Duplicate_W.xaml;Box Images\PicsManager.xaml;Box MBox\DxMBox.xaml;Box Progress\DxAsCollecProgress.xaml;Box Progress\DxAsProgress.xaml;BoxChoose\ChooseFile.xaml;BoxChoose\OldChooseFolder.xaml;BoxChoose\TreeChoose.xaml;Controls\ItemChecked.xaml;Window1.xaml;
 
 False
 

@@ -17,7 +17,7 @@ namespace DxTBoxCore.BoxChoose
     /// <summary>
     /// Logique d'interaction pour Choose_Experiment.xaml
     /// </summary>
-    public partial class Choose_Experiment : Window, INotifyPropertyChanged
+    public partial class TreeChoose : Window, INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -48,7 +48,7 @@ namespace DxTBoxCore.BoxChoose
 
 
 
-        public Choose_Experiment(A_ModelChoose model = null)
+        public TreeChoose(A_ModelChoose model = null)
         {
             // Model = model;
             InitializeComponent();

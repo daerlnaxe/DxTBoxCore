@@ -80,6 +80,7 @@
 		- Utiliser les ressources pour le texte
  - [ ] Box Choose: Intégrer le système de gestion des erreurs sur la textbox de recherche (dont le refus de laisser un chemin finir par \
  - [ ] Box Choose: Intégrer la commande paste par le menu item, de sorte de lancer directement la recherche
+ - [x] Box Choose: Mettre la possibilité de sensibilité à la casse dans la comparaison
  - [x] Box Choose: Locker la possibilité de sélectionner un dossier sur un select folder
  - [x] Box Choose: Locker la possibilité de sélectionner un fichier sur un select file
  - [x] Box Choose: experimentale, collapser les enfants

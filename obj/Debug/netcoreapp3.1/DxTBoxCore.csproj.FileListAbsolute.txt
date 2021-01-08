@@ -171,6 +171,8 @@ E:\Programmation\Git-Hub\DxTBoxCore\bin\Debug\netcoreapp3.1\runtimes\win\lib\net
 E:\Programmation\Git-Hub\DxTBoxCore\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.csproj.CopyComplete
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.genruntimeconfig.cache
-E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\Choose_Experiment.g.cs
-E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\Choose_Experiment.baml
 E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\DxTBoxCore.csprojAssemblyReference.cache
+E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\OldChooseFolder.g.cs
+E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\OldChooseFolder.baml
+E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\TreeChoose.g.cs
+E:\Programmation\Git-Hub\DxTBoxCore\obj\Debug\netcoreapp3.1\BoxChoose\TreeChoose.baml

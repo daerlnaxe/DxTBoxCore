@@ -21,12 +21,13 @@ namespace DxTBoxCore.BoxChoose
     /// <summary>
     /// Logique d'interaction pour ChooseRep.xaml
     /// </summary>
-    public partial class ChooseFolder : Window
+    [Obsolete("Use TreeChoose")]
+    public partial class OldChooseFolder : Window
     {
         /// <summary>
         /// Datacontext model
         /// </summary>
-        public A_ModelChoose Model { get; set; } = new ModelChoose();
+        public A_ModelChoose Model { get; set; } = new M_ChooseFolder();
 
         #region Relais vers le Modèle
         /// <summary>
@@ -67,7 +68,7 @@ namespace DxTBoxCore.BoxChoose
         /// </summary>
         public string CancelButtonName { get; set; } = "Cancel";
 
-        public ChooseFolder()
+        public OldChooseFolder()
         {
             InitializeComponent();
             DataContext = Model;
@@ -162,7 +163,7 @@ namespace DxTBoxCore.BoxChoose
             //FileTree.Items.Add(itmMus);
             Make_Folder(FileTree.Items, "Mes Vidéos", mesVids);
 
-            Populate_Drives();
+           // Model.Populate_Drives();
         }
 
         /// <summary>
@@ -182,8 +183,8 @@ namespace DxTBoxCore.BoxChoose
             // If folder has content, add dummy node to give possibilité to expand it later
             if (CommonChoose.Has_Content(tagVal))
             {
-                itm.Items.Add(dummyNode);
-                itm.Expanded += Developpement_Dossier;
+            //    itm.Items.Add(dummyNode);
+               // itm.Expanded += Developpement_Dossier;
             }
 
             itm.Selected += Select_Item;
@@ -236,7 +237,7 @@ namespace DxTBoxCore.BoxChoose
         }
         */
 
-
+        /*
 
         private void Developpement_Dossier(object sender, RoutedEventArgs e)
         {
@@ -265,7 +266,7 @@ namespace DxTBoxCore.BoxChoose
             }
             e.Handled = true;
         }
-
+        */
 
         #region vieux
         /*

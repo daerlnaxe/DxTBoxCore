@@ -26,6 +26,10 @@ namespace DxTBoxCore.BoxChoose
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /// <summary>
+        /// Set path compareason for research
+        /// </summary>
+        public StringComparison PathCompareason { get; set; } = StringComparison.CurrentCultureIgnoreCase;
 
         /// <summary>
         /// Show files when developping folders 
@@ -35,7 +39,7 @@ namespace DxTBoxCore.BoxChoose
         /// <summary>
         /// Define the mode to block selection of folder/file or none
         /// </summary>
-        public abstract ChooseMode Mode { get; }
+        public ChooseMode Mode { get; }
 
         public List<I_ContChoose> Root { get; set; } = new List<I_ContChoose>();
 
@@ -398,6 +402,12 @@ namespace DxTBoxCore.BoxChoose
                 // on vérifie juste que ça n'existe pas 
                 //var ex = parent.Children.FirstOrDefault();
 
+                // Introduction du système pour masker certains répertoires
+                if (PathsToAvoid.FirstOrDefault(
+                    (x) => x.Equals(d, StringComparison.OrdinalIgnoreCase)
+                    )!=null)
+                    continue;
+
 
                 // test 
                 parent.Children.Add(
@@ -471,7 +481,7 @@ namespace DxTBoxCore.BoxChoose
             return new FileElem()
             {
                 Name = Path.GetFileName(file),
-                Path = file,               
+                Path = file,
                 IsFocusable = Mode == ChooseMode.All | Mode == ChooseMode.File ? true : false,
 
                 //     AccessGranted = accessGranted
@@ -571,20 +581,13 @@ namespace DxTBoxCore.BoxChoose
         /// </remarks>
         internal virtual bool ComparePaths(string toSearch, string testedF)
         {
+
             string[] partsToTest = testedF.TrimEnd('\\').Split('\\');
             string[] partsToSearch = toSearch.TrimEnd('\\').Split('\\');
 
             // Si la partie à tester est plus grande que la partie à chercher c'est faux
             if (partsToTest.Length > partsToSearch.Length)
                 return false;
-
-            /*
-             * On cherche E:\#A Trier
-             * On Tombe sur C:
-             *          
-             * On Tombe sur E:
-             *      
-             * /
 
             /*for (int i = 0; i < refER.Length; i++)*/
             int i = 0;
@@ -595,7 +598,7 @@ namespace DxTBoxCore.BoxChoose
                     return true;
 
                 // Si une partie est fausse, alors tout est faux
-                if (!partsToTest[i].Equals(partsToSearch[i]))
+                if (!partsToTest[i].Equals(partsToSearch[i], PathCompareason))
                     return false;
 
                 i++;

@@ -50,13 +50,15 @@ namespace DxTBoxCore
             {
             };
             cf.ShowDialog();*/
-            Choose_Experiment cfe = new Choose_Experiment()
+            TreeChoose cfe = new TreeChoose()
             {
                 Model = new M_ChooseFolder()
                 {
                     StartingFolder = @"C:",
                     HideWindowsFolder = true,
-                   // Mode = ChooseMode.Folder
+                    PathCompareason = StringComparison.CurrentCultureIgnoreCase,
+                    //Mode = ChooseMode.Folder
+
                 }                 
             };
 
