@@ -1,6 +1,4 @@
-**/bin/Debug/*
-**/ bin/Release/*
-**/obj/Release/*
-**/obj/Debug/*
-
+**/bin/*
+**/obj/*
+*.txt
 
