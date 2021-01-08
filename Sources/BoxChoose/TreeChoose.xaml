@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DxTBoxCore.BoxChoose"
         xmlns:lg="clr-namespace:DxTBoxCore.Languages"
         mc:Ignorable="d"
-        Title="Choose_Experiment" Height="450" Width="800" Loaded="Window_Loaded" 
+        Title="TreeChoose" Height="450" Width="800" Loaded="Window_Loaded" 
         
         >
 
