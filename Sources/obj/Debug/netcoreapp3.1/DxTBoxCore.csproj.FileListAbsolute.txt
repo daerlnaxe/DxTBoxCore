@@ -220,7 +220,6 @@ E:\Programmation\Git-Hub\DxTBoxCore\Sources\bin\Debug\netcoreapp3.1\runtimes\win
 E:\Programmation\Git-Hub\DxTBoxCore\Sources\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
 E:\Programmation\Git-Hub\DxTBoxCore\Sources\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Threading.AccessControl.dll
 E:\Programmation\Git-Hub\DxTBoxCore\Sources\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-E:\Programmation\Git-Hub\DxTBoxCore\Sources\obj\Debug\netcoreapp3.1\DxTBoxCore.csprojAssemblyReference.cache
 E:\Programmation\Git-Hub\DxTBoxCore\Sources\obj\Debug\netcoreapp3.1\Box Collec\DxMCollec.g.cs
 E:\Programmation\Git-Hub\DxTBoxCore\Sources\obj\Debug\netcoreapp3.1\Box Images\BigPic.g.cs
 E:\Programmation\Git-Hub\DxTBoxCore\Sources\obj\Debug\netcoreapp3.1\Box Images\Duplicate_W.g.cs
