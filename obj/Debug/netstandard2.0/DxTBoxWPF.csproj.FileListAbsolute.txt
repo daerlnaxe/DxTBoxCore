@@ -1,7 +1,0 @@
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\netstandard2.0\DxTBoxWPF.Languages.DxTBLang.resources
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\netstandard2.0\DxTBoxWPF.Properties.Resources.resources
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\netstandard2.0\DxTBoxWPF.Languages.DxTBLang.fr-FR.resources
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\netstandard2.0\DxTBoxWPF.csproj.GenerateResource.cache
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\netstandard2.0\DxTBoxWPF.AssemblyInfoInputs.cache
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\netstandard2.0\DxTBoxWPF.AssemblyInfo.cs
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxWPF\obj\Debug\netstandard2.0\DxTBoxWPF.csproj.CoreCompileInputs.cache

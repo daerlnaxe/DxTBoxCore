@@ -1,8 +1,0 @@
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Debug\netcoreapp3.0\DxTBoxCore.Languages.DxTBLang.resources
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Debug\netcoreapp3.0\DxTBoxCore.Properties.Resources.resources
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Debug\netcoreapp3.0\DxTBoxCore.Languages.DxTBLang.fr-FR.resources
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Debug\netcoreapp3.0\DxTBoxCore.csproj.GenerateResource.cache
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Debug\netcoreapp3.0\DxTBoxCore.AssemblyInfoInputs.cache
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Debug\netcoreapp3.0\DxTBoxCore.AssemblyInfo.cs
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Debug\netcoreapp3.0\DxTBoxCore.csproj.CoreCompileInputs.cache
-E:\Programmation\Git-Hub\DlnxLocalTransfert\DxTBoxCore\obj\Debug\netcoreapp3.0\DxTBoxCore.csproj.ResolveComReference.cache
