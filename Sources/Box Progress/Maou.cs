@@ -9,7 +9,7 @@ namespace DxTBoxCore.Box_Progress
     /// <summary>
     /// Encapsule a method to make it compatible with progress boxes
     /// </summary>
-    public class Maou<T> : I_ASBaseC
+    public partial class Maou<T> : I_ASBaseC
     {
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
 

@@ -11,7 +11,7 @@ namespace DxTBoxCore.Box_Progress
     /// </summary>
     /// <typeparam name="T">Object you want to pass</typeparam>
     /// <typeparam name="Y">Object you want to get</typeparam>
-    public sealed class MaouEvo<T, Y> : Maou<Y>
+    public partial class Maou<T, Y> : Maou<Y>
     {
         /// <summary>
         /// Parameter to pass to the method

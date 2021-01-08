@@ -105,7 +105,7 @@ namespace DxTBoxCore
 
             db2 = new DxAsCollecProgress(DxTBLang.File)
             {
-                TaskToRun = new MaouEvo<string, object>()
+                TaskToRun = new Maou<string, object>()
                 {
                     ToRun = Foo,
                     Param = "Il est passé par ici"
