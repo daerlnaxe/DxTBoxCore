@@ -7,6 +7,7 @@
  * Modifications sur: [ChooseBox](https://github.com/daerlnaxe/DxTBoxCore/wiki/ChooseBox-Changelog---fr) (fr)
   
 # Version 2.0.0.0 (04/01/2021):
+ * Migration of DxTBoxWpf from .Net Framework to .Net Core
  * Portage de DxTBoxWpf de .Net Framework vers .Net Core
 
 
