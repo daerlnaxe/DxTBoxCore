@@ -70,25 +70,7 @@
  - [ ] Faire quelques screenshots
  - [ ] Mettre les fonctionnalités dans le wiki
  - [ ] Réfléchir à la dépendance d'un tracer afin d'unifier avec les applications ou faire à la place un système de messages à coupler
- - [ ] Box Choose: Réfléchir à merger le build pour lecteur et le build pour les autres drives
- - [ ] Box Choose: nettoyer le code commenté si pas de bugs constatés
- - [ ] Box Choose: experimentale, voir pour vider les enfants quand collapsé
- - [ ] Box Choose: trouver ou faire un icone pour le dossier "downloads"
- - [ ] Box Choose: Refresh complet (En cours)
-		- graphique
-		- séparer view/view-model/model
-		- Utiliser les ressources pour le texte
- - [ ] Box Choose: Intégrer le système de gestion des erreurs sur la textbox de recherche (dont le refus de laisser un chemin finir par \
- - [ ] Box Choose: Intégrer la commande paste par le menu item, de sorte de lancer directement la recherche
- - [x] Box Choose: Mettre la possibilité de sensibilité à la casse dans la comparaison
- - [x] Box Choose: Locker la possibilité de sélectionner un dossier sur un select folder
- - [x] Box Choose: Locker la possibilité de sélectionner un fichier sur un select file
- - [x] Box Choose: experimentale, collapser les enfants
- - [x] Box Choose: Mettre un booléen pour utiliser les fonctions d'affichage des fichiers
- - [x] Box Choose: le expanse semble ne fonctionner qu'une fois'
- - [x] Box Choose: afficher aussi les fichiers
- - [x] Box Choose: Peut être voir pour la recherche car ça ralentit pas mal, ou faire une icone.
- - [x] Box Choose: ~~Réfléchir si on doit laisser le signal remonter les parents~~ => Bug: engendre une panne cyclique
+
 
 # Notes: 
  * Dans la mesure du possible un nouveau système d'algorithmes dénués d'interfaces va être créé pour manager les transferts, il devrait probablement être écrit en .net Standart.
