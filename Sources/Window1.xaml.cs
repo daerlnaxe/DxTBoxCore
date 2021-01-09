@@ -125,7 +125,6 @@ namespace DxTBoxCore
         {
             Debug.WriteLine(mee);
 
-
             while (!tP.CancelToken.IsCancellationRequested)   // Stop le programme si l'annulation est requise
             {
                 while (tP.IsPaused) // Pause la tâche lorsque l'utiilsateur appuie sur le bouton de fermeture de la fenêtre

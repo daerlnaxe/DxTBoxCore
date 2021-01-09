@@ -9,7 +9,7 @@ namespace DxTBoxCore.Box_Progress
     /// <summary>
     /// Encapsule a method to make it compatible with progress boxes
     /// </summary>
-    public partial class Maou<T> : I_ASBaseC
+    public class Maou<T> : I_ASBaseC
     {
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
 
@@ -29,8 +29,7 @@ namespace DxTBoxCore.Box_Progress
 
         public Func<I_ASBase, T> ToRun{ get; set; }
 
-
-        public object Run(int timeSleep = 10)
+        public virtual object Run(int timeSleep = 10)
         {
             return ToRun(this);
         }
@@ -42,4 +41,5 @@ namespace DxTBoxCore.Box_Progress
 
 
     }
+ 
 }

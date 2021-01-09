@@ -11,7 +11,7 @@ namespace DxTBoxCore.Box_Progress
     /// </summary>
     /// <typeparam name="T">Object you want to pass</typeparam>
     /// <typeparam name="Y">Object you want to get</typeparam>
-    public partial class Maou<T, Y> : Maou<Y>
+    public class Maou<T, Y>:Maou<Y>
     {
         /// <summary>
         /// Parameter to pass to the method
@@ -21,7 +21,8 @@ namespace DxTBoxCore.Box_Progress
         /// <summary>
         /// Method to Run
         /// </summary>
-        public new Func<I_ASBase, T, Y> ToRun{ get; set; }
+        public new Func<I_ASBase, T, Y> ToRun { get; set; }
+  
 
         /// <summary>
         /// Run the method
@@ -30,11 +31,11 @@ namespace DxTBoxCore.Box_Progress
         /// <returns>
         /// Your type of object
         /// </returns>
-        public new object Run(int timeSleep = 10)
+        public override object Run(int timeSleep = 10)
         {
-            return ToRun(this, Param);
+            return this.ToRun(this, Param);
         }
-
-
     }
+    
+
 }
