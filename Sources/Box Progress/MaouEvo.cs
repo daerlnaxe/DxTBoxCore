@@ -21,7 +21,7 @@ namespace DxTBoxCore.Box_Progress
         /// <summary>
         /// Method to Run
         /// </summary>
-        public new Func<I_ASBase, T, Y> ToRun { get; set; }
+        public new Func<I_ASBaseC, T, Y> ToRun { get; set; }
   
 
         /// <summary>

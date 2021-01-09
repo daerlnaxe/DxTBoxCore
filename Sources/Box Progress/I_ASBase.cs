@@ -50,5 +50,11 @@ namespace DxTBoxCore.Box_Progress
 
         void StopTask();
 
+
+        public void Pause(int timeSleep = 100)
+        {
+            while (IsPaused)
+                Thread.Sleep(100);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
+using System.Linq;
 
 namespace DxTBoxCore.Box_Progress
 {
@@ -15,7 +16,7 @@ namespace DxTBoxCore.Box_Progress
 
         public CancellationToken CancelToken { get; }
 
-        public bool IsPaused { get ; set; }
+        public bool IsPaused { get; set; }
 
         public event DoubleDel UpdateTotalProgress;
         public event StringDel UpdateTotalStatus;
@@ -27,19 +28,53 @@ namespace DxTBoxCore.Box_Progress
             CancelToken = TokenSource.Token;
         }
 
-        public Func<I_ASBase, T> ToRun{ get; set; }
+        public Func<I_ASBaseC, T> ToRun { get; set; }
 
         public virtual object Run(int timeSleep = 10)
         {
             return ToRun(this);
         }
 
+        /// <summary>
+        /// Signal current progress
+        /// </summary>
+        /// <param name="updateProgress"></param>
+        public void SayUpdateProgress(Double updateProgress)
+        {
+            UpdateProgress?.Invoke(updateProgress);
+        }
+
+        /// <summary>
+        /// Signal current status
+        /// </summary>
+        /// <param name="updateStatus"></param>
+        public void SayUpdateStatus(string updateStatus)
+        {
+            UpdateStatus?.Invoke(updateStatus);
+        }
+
+        /// <summary>
+        /// Signale total progress
+        /// </summary>
+        /// <param name="totalProgress"></param>
+        public void SayUpdateTotalProgress(Double totalProgress)
+        {
+            UpdateTotalProgress?.Invoke(totalProgress);    
+        }
+
+        public void SayUpdateTotalStatus(string updateTotalStatus)
+        {
+            UpdateTotalStatus?.Invoke(updateTotalStatus);
+        }
+
+
+
         public void StopTask()
-        {           
+        {
             TokenSource.Cancel();
         }
 
 
     }
- 
+
 }

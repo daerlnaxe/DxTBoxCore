@@ -405,7 +405,7 @@ namespace DxTBoxCore.BoxChoose
                 // Introduction du système pour masker certains répertoires
                 if (PathsToAvoid.FirstOrDefault(
                     (x) => x.Equals(d, StringComparison.OrdinalIgnoreCase)
-                    )!=null)
+                    ) != null)
                     continue;
 
 
@@ -551,11 +551,14 @@ namespace DxTBoxCore.BoxChoose
                     if (toSearch.Length > toAnalyse.Length)
                     {
                         // On rempile les enfants au cas où
-                        /* foreach (var d in data.Children)
-                             if (d.IsSelected)
-                                 d.IsSelected = false;*/
+                        /*foreach (var d in data.Children)
+                         if (d.IsSelected)
+                          d.IsSelected = false;*/
 
-                        data.Children.Select((x) => x.IsExpanded ? x.IsExpanded = false : false);
+                  /*      foreach (var d in from d in data.Children where d.IsSelected select d)
+                        {
+                            d.IsSelected = false;
+                        }*/
 
                         return Match(StartingFolder, data.Children);
                     }
