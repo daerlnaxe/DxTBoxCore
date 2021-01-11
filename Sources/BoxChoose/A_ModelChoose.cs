@@ -10,6 +10,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DxTBoxCore.BoxChoose
 {
@@ -26,6 +28,13 @@ namespace DxTBoxCore.BoxChoose
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+
+        #region Sans notif
+        /// <summary>
+        /// Block populate (used by Search)
+        /// </summary>
+        private bool _UnactivePopulate;
+
         /// <summary>
         /// Set path compareason for research
         /// </summary>
@@ -40,6 +49,8 @@ namespace DxTBoxCore.BoxChoose
         /// Define the mode to block selection of folder/file or none
         /// </summary>
         public ChooseMode Mode { get; }
+
+        #endregion
 
         public List<I_ContChoose> Root { get; set; } = new List<I_ContChoose>();
 
@@ -349,9 +360,14 @@ namespace DxTBoxCore.BoxChoose
         /// </summary>
         /// <remarks>
         /// Le modèle de base ne liste que les sous-dossiers
+        /// On a levé le clear car il y a apparemment des events non gérés qui peuvent survenir, 
+        /// tant que le clear est actif ça change toute la population et annule l'expand à chaque fois que ces events arrivent
         /// </remarks>        
         public virtual void Populate_Folder(I_ContChoose parent)
         {
+              if (_UnactivePopulate)
+                     return;
+
             Debug.WriteLine($"- Populate Folder: '{parent.Name}'");
             /*
 
@@ -387,15 +403,51 @@ namespace DxTBoxCore.BoxChoose
             /*if (parent.Children[0].Type == E_IconFType.Dummy)
                 parent.Children.RemoveAt(0);            */
 
-            string[] directories = Directory.GetDirectories(parent.Path, "*.*", SearchOption.TopDirectoryOnly);
             string[] files = Directory.GetFiles(parent.Path, "*.*", SearchOption.TopDirectoryOnly);
 
             // On revérifie en cas de modifications
             //if (directories.Length == 0 && files.Length == 0)
-            parent.Children.Clear();
+            //parent.Children.Clear();
+
+            Populate_ByFolders(parent);
 
 
-            // Population des dossiers
+            // Ajoute les fichiers si le switch est activé
+            Debug.WriteLine($"-\t Populate with Files");
+            if (ShowFiles)
+                foreach (string f in files)
+                {
+                    parent.Children.Add(Build_File(f));
+                }
+
+            Debug.WriteLine("- Fin populate");
+        }
+
+        /// <summary>
+        /// Manages folders (add & remove)
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <remarks>
+        /// No doublon
+        /// </remarks>
+        private void Populate_ByFolders(I_ContChoose parent)
+        {
+            string[] directories = Directory.GetDirectories(parent.Path, "*.*", SearchOption.TopDirectoryOnly);
+
+            // On retire ce qui a disparu
+            for (int i = 0; i < parent.Children.Count; i++)
+            {
+                var dir = parent.Children[i];
+                if (directories.Contains(dir.Path))
+                    continue;
+
+                // On enlève
+                parent.Children.RemoveAt(i);
+                i--;
+            }
+
+
+            // Population 
             Debug.WriteLine($"-\t Populate with SubFolders");
             foreach (string d in directories)
             {
@@ -407,6 +459,11 @@ namespace DxTBoxCore.BoxChoose
                     (x) => x.Equals(d, StringComparison.OrdinalIgnoreCase)
                     ) != null)
                     continue;
+
+                // Pas de doublon
+                if (parent.Children.FirstOrDefault((x) => x.Path.Equals(d)) != null)
+                    continue;
+
 
 
                 // test 
@@ -430,17 +487,9 @@ namespace DxTBoxCore.BoxChoose
                         */
                         );
             }
-
-            // Ajoute les fichiers si le switch est activé
-            Debug.WriteLine($"-\t Populate with Files");
-            if (ShowFiles)
-                foreach (string f in files)
-                {
-                    parent.Children.Add(Build_File(f));
-                }
-
-            Debug.WriteLine("- Fin populate");
         }
+
+
 
         /// <summary>
         /// Construit un élément
@@ -507,6 +556,7 @@ namespace DxTBoxCore.BoxChoose
             if (Match(StartingFolder, Root))
             {
                 Debug.WriteLine("Success");
+
             }
             else
             {
@@ -534,17 +584,26 @@ namespace DxTBoxCore.BoxChoose
                 // Particular case for drives
                 string toAnalyse = data.Path.TrimEnd('\\');
 
+
                 // Rempile ce qui est avant
-                data.IsExpanded = false;
+                if (data.IsExpanded)
+                    data.IsExpanded = false;
 
                 // Each element have its path contained, test if data.path is contained into the string to search
                 if (ComparePaths(toSearch, data.Path))
                 {
-                    data.IsSelected = true;
-                    data.IsExpanded = true;
                     // On peuple
                     // Pas la peine car c'est peuplé directement quand c'est expandé 
-                    //Populate_Folder(data);
+                    Populate_Folder(data);
+
+                    
+                    // Bloque populate
+                    //_UnactivePopulate = true;
+                    data.IsSelected = true;
+                    data.IsExpanded = true;
+
+                    // Débloque populate
+                    //_UnactivePopulate = false;
 
                     //bool isExp =;
                     // On cherche dans les enfants si ce n'est pas terminé
@@ -555,10 +614,10 @@ namespace DxTBoxCore.BoxChoose
                          if (d.IsSelected)
                           d.IsSelected = false;*/
 
-                  /*      foreach (var d in from d in data.Children where d.IsSelected select d)
-                        {
-                            d.IsSelected = false;
-                        }*/
+                        /*      foreach (var d in from d in data.Children where d.IsSelected select d)
+                              {
+                                  d.IsSelected = false;
+                              }*/
 
                         return Match(StartingFolder, data.Children);
                     }

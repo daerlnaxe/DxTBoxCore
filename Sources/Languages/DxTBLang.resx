@@ -135,6 +135,9 @@
   <data name="Downloads" xml:space="preserve">
     <value>Downloads</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="File" xml:space="preserve">
     <value>File</value>
   </data>

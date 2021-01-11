@@ -10,10 +10,12 @@ namespace DxTBoxCore.Box_Progress
     public class TestProgressCollec : I_ASBaseC
     {
         public event DoubleDel UpdateProgress;
-        public event DoubleDel UpdateTotalProgress;
         public event StringDel UpdateStatus;
-        public event StringDel UpdateTotalStatus;
+        public event DoubleDel MaximumProgress;
 
+        public event DoubleDel UpdateProgressT;
+        public event StringDel UpdateStatusT;
+        public event DoubleDel MaximumProgressT;
 
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
 
@@ -28,6 +30,7 @@ namespace DxTBoxCore.Box_Progress
         }
 
 
+
         public object Run(int timeSleep)
         {
             if (timeSleep < 10)
@@ -40,8 +43,8 @@ namespace DxTBoxCore.Box_Progress
                 // Boucle Totale
                 for (int i = 0; i < 10; i++)
                 {
-                    UpdateTotalStatus?.Invoke("New Task");
-                    UpdateTotalProgress?.Invoke(i * 10);
+                    UpdateStatusT?.Invoke("New Task");
+                    UpdateProgressT?.Invoke(i * 10);
 
                     for (int j = 0; j < 50; j++)
                     {
@@ -61,7 +64,8 @@ namespace DxTBoxCore.Box_Progress
 
                     UpdateProgress?.Invoke(100);
                 }
-                UpdateTotalProgress?.Invoke(100);
+
+                UpdateProgressT?.Invoke(100);
                 Thread.Sleep(100);
             }
             catch (Exception exc)

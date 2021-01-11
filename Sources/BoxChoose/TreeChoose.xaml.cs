@@ -113,7 +113,7 @@ namespace DxTBoxCore.BoxChoose
 
         private void mee(object sender, RoutedEventArgs e)
         {
-            I_ContChoose item = ((TreeViewItem)sender).DataContext as I_ContChoose;
+            I_ContChoose item = ((TreeViewItem)sender).DataContext as I_ContChoose;            
             Model.Populate_Folder(item);
 
             // Important, évite la propagation sur les parents
@@ -124,7 +124,11 @@ namespace DxTBoxCore.BoxChoose
 
         private void meeclose(object sender, RoutedEventArgs e)
         {
-
+            //Voir si méthode utile à créer dans le modele 
+            /*
+            I_ContChoose item = ((TreeViewItem)sender).DataContext as I_ContChoose;
+            item.Children.Clear();
+            item.Children.Add(new FolderElem(E_IconFType.Dummy) );*/
         }
 
         private void PasteExecuted(object sender, ExecutedRoutedEventArgs e)

@@ -52,6 +52,7 @@ namespace DxTBoxCore.Box_Progress
             TaskToRun = taskToRun;
             TaskToRun.UpdateProgress += UpdateProgress;
             TaskToRun.UpdateStatus += UpdateStatus;
+            taskToRun.MaximumProgress += MaximumProgress;
         }
 
 
@@ -71,7 +72,6 @@ namespace DxTBoxCore.Box_Progress
             {
                 try
                 {
-
 #if DEBUG
                     Debug.WriteLine($"[AM_ProgressC] CurrentProgress: {value}");
 #endif
@@ -167,6 +167,11 @@ namespace DxTBoxCore.Box_Progress
         public virtual void UpdateStatus(string value)
         {
             CurrentOP = value;
+        }
+
+        public virtual void MaximumProgress(double value)
+        {
+            MaxProgress = value;
         }
         #endregion
     }

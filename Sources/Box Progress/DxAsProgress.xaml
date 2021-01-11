@@ -62,6 +62,7 @@
             <ProgressBar x:Name="pBar" Grid.Row="1" Grid.ColumnSpan="2"
                           Height="40"
                          Value="{Binding CurrentProgress, Mode=OneWay}"
+                         Maximum="{Binding TotalProgress, Mode=OneWay}"
                          />
         </Grid>
 

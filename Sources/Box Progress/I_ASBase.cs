@@ -27,6 +27,11 @@ namespace DxTBoxCore.Box_Progress
         /// </summary>
         public event StringDel UpdateStatus;
 
+        /// <summary>
+        /// Maximum of the Task
+        /// </summary>
+        public event DoubleDel MaximumProgress;
+
         CancellationTokenSource TokenSource { get; }
 
         /// <summary>

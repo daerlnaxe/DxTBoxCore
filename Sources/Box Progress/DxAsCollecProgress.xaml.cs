@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,6 +79,7 @@ namespace DxTBoxCore.Box_Progress
 
         public object AsyncClose()
         {
+            Debug.WriteLine("AsyncClose");
             Dispatcher.Invoke(() => this.Close());
             return null;
         }
@@ -85,11 +87,21 @@ namespace DxTBoxCore.Box_Progress
 
         public void OnClosing(object sender, CancelEventArgs e)
         {
+            if(Model.TaskRunning.Status == TaskStatus.Faulted)
+            {
+                MBox.DxMBox.ShowDial(Model.TaskRunning.Exception.Message, DxTBLang.Error);
+                DialogResult = false;
+                return;
+            }
+
             // Fermeture normale
             if (Model.TaskRunning.Status == TaskStatus.Canceled
                 || Model.TaskRunning.Status == TaskStatus.RanToCompletion
                 || Model.TaskToRun.TokenSource.IsCancellationRequested)
+            {
+                DialogResult = true;
                 return;
+            }
                         
             Model.TaskToRun.IsPaused = true;
             e.Cancel = true;
@@ -98,6 +110,7 @@ namespace DxTBoxCore.Box_Progress
             {
                 Model.TaskToRun.StopTask();
                 Model.TaskRunning.ContinueWith(antecedant => Dispatcher.Invoke(() => this.Close()));
+                DialogResult = false;
             }
             
             Model.TaskToRun.IsPaused = false;

@@ -30,6 +30,9 @@ namespace DxTBoxCore.BoxChoose
             get => _isSelected;
             set
             {
+                if (_isSelected == value)
+                    return;
+
                 _isSelected = value;
                 Debug.WriteLine($"{Name}: IsSelected {value}");
                 OnPropertyChanged();
@@ -42,6 +45,9 @@ namespace DxTBoxCore.BoxChoose
             get => _isExpanded;
             set
             {
+                if (_isExpanded == value)
+                    return;
+
                 _isExpanded = value;
                 Debug.WriteLine($"{Name}: IsExpanded {value}");
                 OnPropertyChanged();

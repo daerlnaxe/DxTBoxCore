@@ -126,8 +126,8 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="{x:Static t:DxTBLang.Current}"/>
                 <ProgressBar Name="pBarCurrent"
-                                       Value="{Binding CurrentProgress, Mode=OneWay}" 
-                             Maximum="{Binding MaxCP, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                             Value="{Binding CurrentProgress, Mode=OneWay}" 
+                             Maximum="{Binding MaxProgress, Mode=OneWay}"
                              />
             </Grid>
 
@@ -147,7 +147,10 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label Content="{x:Static t:DxTBLang.Total}" />
-                <ProgressBar Name="pBarTotal" Value="{Binding CurrentTotal}"/>
+                <ProgressBar Name="pBarTotal"
+                             Value="{Binding CurrentTotal, Mode=OneWay}"
+                             Maximum="{Binding MaxProgressT, Mode=OneWay}"
+                             />
                 <TextBlock Style="{StaticResource ResourceKey=StPercent}" Text="50" />
             </Grid>
 

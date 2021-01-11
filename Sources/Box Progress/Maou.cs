@@ -18,10 +18,13 @@ namespace DxTBoxCore.Box_Progress
 
         public bool IsPaused { get; set; }
 
-        public event DoubleDel UpdateTotalProgress;
-        public event StringDel UpdateTotalStatus;
         public event DoubleDel UpdateProgress;
         public event StringDel UpdateStatus;
+        public event DoubleDel MaximumProgress;
+
+        public event DoubleDel UpdateProgressT;
+        public event StringDel UpdateStatusT;
+        public event DoubleDel MaximumProgressT;
 
         public Maou()
         {
@@ -41,6 +44,7 @@ namespace DxTBoxCore.Box_Progress
         /// <param name="updateProgress"></param>
         public void SayUpdateProgress(Double updateProgress)
         {
+            Debug.WriteLine($"{nameof(SayUpdateProgress)}: {updateProgress}");
             UpdateProgress?.Invoke(updateProgress);
         }
 
@@ -50,23 +54,42 @@ namespace DxTBoxCore.Box_Progress
         /// <param name="updateStatus"></param>
         public void SayUpdateStatus(string updateStatus)
         {
+            Debug.WriteLine($"{nameof(SayUpdateStatus)}: {updateStatus}");
             UpdateStatus?.Invoke(updateStatus);
         }
 
+        public void SayMaximumProgress(Double totalProgress)
+        {
+            Debug.WriteLine($"{nameof(SayMaximumProgress)}: {totalProgress}");
+            MaximumProgress?.Invoke(totalProgress);
+        }
+        // ---
+
         /// <summary>
-        /// Signale total progress
+        /// Signal update progress Total
         /// </summary>
-        /// <param name="totalProgress"></param>
-        public void SayUpdateTotalProgress(Double totalProgress)
+        /// <param name="updateProgressT"></param>
+        public void SayUpdateProgressT(Double updateProgressT)
         {
-            UpdateTotalProgress?.Invoke(totalProgress);    
+            Debug.WriteLine($"{nameof(SayUpdateProgressT)}: {updateProgressT}");
+            UpdateProgressT?.Invoke(updateProgressT);    
         }
 
-        public void SayUpdateTotalStatus(string updateTotalStatus)
+        public void SayUpdateStatusT(string updateStatusT)
         {
-            UpdateTotalStatus?.Invoke(updateTotalStatus);
+            Debug.WriteLine($"{nameof(SayUpdateStatusT)}: {updateStatusT}");
+            UpdateStatusT?.Invoke(updateStatusT);
         }
 
+        /// <summary>
+        /// Signal Maximum for Total
+        /// </summary>
+        /// <param name="totalProgressT"></param>
+        public void SayMaximumProgressT(Double totalProgressT)
+        {
+            Debug.WriteLine($"{nameof(SayMaximumProgressT)}: {totalProgressT}");
+            MaximumProgressT?.Invoke(totalProgressT);
+        }
 
 
         public void StopTask()

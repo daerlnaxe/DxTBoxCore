@@ -11,6 +11,7 @@ namespace DxTBoxCore.Box_Progress
     {
         public event DoubleDel UpdateProgress;
         public event StringDel UpdateStatus;
+        public event DoubleDel MaximumProgress;
 
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
         public CancellationToken CancelToken { get; }
@@ -24,6 +25,8 @@ namespace DxTBoxCore.Box_Progress
 
         public object Run(int timeSleep = 100)
         {
+            MaximumProgress?.Invoke(100);
+
             for (int i = 0; i < 100; i++)
             {
                 while (IsPaused)

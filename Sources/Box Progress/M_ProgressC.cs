@@ -96,6 +96,26 @@ namespace DxTBoxCore.Box_Progress
             }
         }
 
+        private double _maxProgressT;
+        /// <summary>
+        /// </summary>
+        /// <remarks>
+        /// Normalement inutile de mettre à jour en temps réel
+        /// </remarks>
+        public double MaxProgressT
+        {
+            get => _maxProgressT;
+            set
+            {
+                _maxProgressT = value;
+#if DEBUG
+                Debug.WriteLine($"[M_ProgressC] {nameof(MaxProgressT)}: {value}");
+#endif
+                OnPropertyChanged();
+            }
+        }
+
+
         #region Virtual
         public override void SetTaskToRun<T>(T taskToRun)
         {
@@ -103,9 +123,14 @@ namespace DxTBoxCore.Box_Progress
             base.TaskToRun = taskToRun;
             base.TaskToRun.UpdateProgress += UpdateProgress;
             base.TaskToRun.UpdateStatus += UpdateStatus;
-            task2Run.UpdateTotalProgress += UpdateTotalProgress;
-            task2Run.UpdateTotalStatus += UpdateTotalStatus;
+            base.TaskToRun.MaximumProgress += MaximumProgress;
+            // --- 
+            task2Run.UpdateProgressT += UpdateTotalProgress;
+            task2Run.UpdateStatusT += UpdateTotalStatus;
+            task2Run.MaximumProgressT += MaximumProgressT;
         }
+
+
 
         protected virtual void UpdateTotalProgress(double value)
         {
@@ -114,6 +139,11 @@ namespace DxTBoxCore.Box_Progress
         protected virtual void UpdateTotalStatus(string value)
         {
             TotalStatus = value;
+        }
+
+        private void MaximumProgressT(double value)
+        {
+            MaxProgressT = value;
         }
         #endregion
 
