@@ -279,7 +279,7 @@ namespace DxTBoxCore.Images
         /// <param name="toDel"></param>
         private void DeleteFile(string toDel)
         {
-            bool? res = MBox.DxMBox.ShowDial(DxTBLang.Trash_Question + $"\n{toDel}", DxTBLang.Trash_FileTitle, DxButtons.YesNo);
+            bool? res = MBox.DxMBox.ShowDial(DxTBLang.Trash_Question + $"\n{toDel}", DxTBLang.Trash_FileTitle, E_DxButtons.YesNo);
             if (res == true)
             {
                 try

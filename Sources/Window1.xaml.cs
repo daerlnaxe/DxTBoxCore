@@ -1,4 +1,5 @@
-﻿using DxTBoxCore.Box_Progress;
+﻿using DxTBoxCore.Box_Password;
+using DxTBoxCore.Box_Progress;
 using DxTBoxCore.BoxChoose;
 using DxTBoxCore.Languages;
 using System;
@@ -140,5 +141,15 @@ namespace DxTBoxCore
             return null;
         }
 
+        /// <summary>
+        /// Show PasswordBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Open_PasswordBox(object sender, RoutedEventArgs e)
+        {
+            DxSoloPass.ShowModal();
+
+        }
     }
 }

@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="DxTBoxCore.Box_Password.EyeButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DxTBoxCore.Box_Password"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="250">
+    <UserControl.Resources>
+        <Style TargetType="Button" x:Key="BasicButton">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            
+            <!--
+            <Setter Property="Background" >            
+                <Setter.Value>
+                    <ImageBrush ImageSource="../Resources/Password_Reveal.png" Stretch="Uniform" />
+                </Setter.Value>
+            </Setter>
+            -->
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <!--
+                        <Border Name="border" Style="{StaticResource BorderLine}"
+                                BorderThickness="0" 
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>   
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" >
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="../Resources/Password_Reveal_Hover_100.png"
+                                                Stretch="Uniform" TileMode="Tile"  />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                        -->
+                        <Grid>
+                            <Image Name="Normal" Source="../Resources/Password_Reveal_50.png"/>
+                            <Image Name="Hover" Source="../Resources/Password_Reveal_Hover_50.png" Visibility="Hidden"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                                <Setter TargetName="Hover" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Button Style="{DynamicResource BasicButton}"/>
+
+    </Grid>
+</UserControl>

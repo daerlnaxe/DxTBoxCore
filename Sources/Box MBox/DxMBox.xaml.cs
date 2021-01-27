@@ -22,7 +22,7 @@ namespace DxTBoxCore.MBox
     public partial class DxMBox : Window
     {
         //DxMBox_Res DialogResult;
-        public DxButtons buttons;
+        public E_DxButtons buttons;
 
         public string Image
         {
@@ -57,26 +57,26 @@ namespace DxTBoxCore.MBox
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (buttons.HasFlag(DxButtons.YesNo))
+            if (buttons.HasFlag(E_DxButtons.YesNo))
             {
                 btValid.Content = DxTBLang.Yes;
                 btAnnul.Content = DxTBLang.No;
 
 
             }
-            else if (buttons.HasFlag(DxButtons.OkCancel))
+            else if (buttons.HasFlag(E_DxButtons.OkCancel))
             {
                 btValid.Content = "Ok";
                 btAnnul.Content = DxTBLang.Cancel;
             }
-            else if (buttons.HasFlag(DxButtons.Ok))
+            else if (buttons.HasFlag(E_DxButtons.Ok))
             {
                 btValid.Content = "Ok";
                 btAnnul.Visibility = Visibility.Collapsed;
             }
         }
 
-        public static bool? ShowDial(string message, string title = "Information", DxButtons buttons = DxButtons.Ok, string optMessage = null)
+        public static bool? ShowDial(string message, string title = "Information", E_DxButtons buttons = E_DxButtons.Ok, string optMessage = null)
         {
             DxMBox daBox = new DxMBox()
             {

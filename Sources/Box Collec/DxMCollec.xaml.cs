@@ -93,7 +93,7 @@ namespace DxTBoxCore.Collec
             }
             else
             {
-                DxMBox.ShowDial("It's not in modal mode", "!!!", DxButtons.Ok);
+                DxMBox.ShowDial("It's not in modal mode", "!!!", E_DxButtons.Ok);
             }
             this.Close();
         }
@@ -108,7 +108,7 @@ namespace DxTBoxCore.Collec
             }
             else
             {
-                DxMBox.ShowDial("It's not in modal mode", "!!!", DxButtons.Ok);
+                DxMBox.ShowDial("It's not in modal mode", "!!!", E_DxButtons.Ok);
             }
             this.Close();
         }

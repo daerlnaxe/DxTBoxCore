@@ -248,7 +248,7 @@
 
 
         <Button x:Name="BtLeave" Content="Ok" HorizontalAlignment="Right" Margin="0,520,60,20" VerticalAlignment="Bottom" Width="75" Style="{DynamicResource RoundedRectangle}"  IsDefault="True" Click="BtLeave_Click"/>
-        <Button x:Name="BtStopAll" Content="{x:Static p:DxTBLang.Stop_All}" HorizontalAlignment="Left" Margin="60,520,0,20" VerticalAlignment="Bottom" Width="75" Style="{DynamicResource RoundedRectangle}"  IsDefault="True" Click="StopAll_Click"/>
+        <Button x:Name="BtStopAll" Content="Stop all" HorizontalAlignment="Left" Margin="60,520,0,20" VerticalAlignment="Bottom" Width="75" Style="{DynamicResource RoundedRectangle}"  IsDefault="True" Click="StopAll_Click"/>
 
     </Grid>
 </Window>

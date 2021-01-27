@@ -16,6 +16,7 @@
         </WrapPanel.Resources>
         <Button Content="Choose File" Click="Open_ChooseFile"/>
         <Button Content="Choose Folder" Click="Open_ChooseFolder"/>
+        <Button Content="PasswordBox" Click="Open_PasswordBox"/>
         <Button Content="Simul Simpl+Maou" Click="Simule_SimpleProgress"/>
         <Button Content="Simul Double Progress" Click="Simule_DoubleProgress"/>
 

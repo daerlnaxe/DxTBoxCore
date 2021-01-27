@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DxTBoxCore.Box_Progress
 {
+    /// <summary>
+    /// Properties interface for simple progress datacontext
+    /// </summary>
     interface I_Progress: INotifyPropertyChanged
     {
        // event PropertyChangedEventHandler PropertyChanged;
@@ -15,6 +18,18 @@ namespace DxTBoxCore.Box_Progress
         /// Current position
         /// </summary>
         double CurrentProgress { get; set; }
+
+        /// <summary>
+        /// Current operation
+        /// </summary>
+        string CurrentOP { get; set; }
+
+        /// <summary>
+        /// Maximum progression possible
+        /// </summary>
+        double MaxProgress { get; set; }
+
+
         /// <summary>
         /// Set Current Progress
         /// </summary>
@@ -22,19 +37,12 @@ namespace DxTBoxCore.Box_Progress
         void UpdateProgress(double value);
 
         /// <summary>
-        /// Current operation
-        /// </summary>
-        string CurrentOP { get; set; }
-        /// <summary>
         /// Set Current operation
         /// </summary>
         /// <param name="value"></param>
         void UpdateStatus(string value);
 
-        /// <summary>
-        /// Maximum progression possible
-        /// </summary>
-        double MaxProgress { get; set; }
+
 
     }
 }

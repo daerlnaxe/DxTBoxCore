@@ -6,10 +6,8 @@
         xmlns:local="clr-namespace:DxTBoxCore.BoxChoose"
         xmlns:lg="clr-namespace:DxTBoxCore.Languages"
         mc:Ignorable="d"
-        Title="TreeChoose" Height="450" Width="800" Loaded="Window_Loaded" 
-        
+        Title="TreeChoose" Height="450" Width="800" Loaded="Window_Loaded"        
         >
-
     <Window.Resources>
         <!-- Vers la classe qui convertit -->
         <local:Type2IconEx x:Key="img" />

@@ -120,6 +120,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="Check_All" xml:space="preserve">
+    <value>Handle all future cases like this one. </value>
+  </data>
   <data name="Current" xml:space="preserve">
     <value>Current</value>
   </data>
@@ -162,11 +165,20 @@
   <data name="Optical_Drive" xml:space="preserve">
     <value>Optical Drive</value>
   </data>
+  <data name="OverWrite" xml:space="preserve">
+    <value>OverWrite</value>
+  </data>
+  <data name="Pass" xml:space="preserve">
+    <value>Pass</value>
+  </data>
   <data name="Question" xml:space="preserve">
     <value>Question</value>
   </data>
   <data name="Q_Want_Close" xml:space="preserve">
     <value>Do you really want to close ?</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
   </data>
   <data name="Right_Pic" xml:space="preserve">
     <value>Right Pic</value>
@@ -174,11 +186,20 @@
   <data name="Select" xml:space="preserve">
     <value>Select</value>
   </data>
-  <data name="Stop_All" xml:space="preserve">
-    <value>Stop All</value>
+  <data name="ShowPassword" xml:space="preserve">
+    <value>Show Password</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>
+  </data>
+  <data name="Trash" xml:space="preserve">
+    <value>Trash</value>
   </data>
   <data name="Trash_FileTitle" xml:space="preserve">
     <value>Delete this file</value>

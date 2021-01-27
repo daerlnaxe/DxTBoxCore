@@ -120,6 +120,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Annuler</value>
   </data>
+  <data name="Check_All" xml:space="preserve">
+    <value>Traitez tous les cas futurs comme celui-ci.</value>
+  </data>
   <data name="Current" xml:space="preserve">
     <value>En cours</value>
   </data>
@@ -162,8 +165,17 @@
   <data name="Optical_Drive" xml:space="preserve">
     <value>Lecteur Optique</value>
   </data>
+  <data name="OverWrite" xml:space="preserve">
+    <value>Ecraser</value>
+  </data>
+  <data name="Pass" xml:space="preserve">
+    <value>Passer</value>
+  </data>
   <data name="Q_Want_Close" xml:space="preserve">
     <value>Voulez-vous vraiment fermer ?</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Renommer</value>
   </data>
   <data name="Right_Pic" xml:space="preserve">
     <value>Image de droite</value>
@@ -171,11 +183,20 @@
   <data name="Select" xml:space="preserve">
     <value>Selectionner</value>
   </data>
-  <data name="Stop_All" xml:space="preserve">
-    <value>Stop Tout</value>
+  <data name="ShowPassword" xml:space="preserve">
+    <value>Montrer le mot de passe</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Soumettre</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>
+  </data>
+  <data name="Trash" xml:space="preserve">
+    <value>Corbeille</value>
   </data>
   <data name="Trash_FileTitle" xml:space="preserve">
     <value>Efface ce fichier</value>

@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace DxTBoxCore.Common
 {
-    
-    public enum DxButtons
+    public enum E_DxRes
     {
-        Ok,
-        OkCancel,
-        YesNo,
+        None,
+        Yes, 
+        No,
+        Cancel,
+        Ok
+
     }
 }

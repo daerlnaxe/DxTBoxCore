@@ -106,7 +106,7 @@ namespace DxTBoxCore.Box_Progress
             Model.TaskToRun.IsPaused = true;
             e.Cancel = true;
 
-            if (MBox.DxMBox.ShowDial(DxTBLang.Q_Want_Close, DxTBLang.Question, Common.DxButtons.YesNo) == true)
+            if (MBox.DxMBox.ShowDial(DxTBLang.Q_Want_Close, DxTBLang.Question, Common.E_DxButtons.YesNo) == true)
             {
                 Model.TaskToRun.StopTask();
                 Model.TaskRunning.ContinueWith(antecedant => Dispatcher.Invoke(() => this.Close()));

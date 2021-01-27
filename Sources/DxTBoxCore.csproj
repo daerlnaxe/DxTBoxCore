@@ -5,11 +5,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
     <Company>Daerlnaxe Software</Company>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>2.0.0.2</AssemblyVersion>
     <FileVersion>2.0.0.0</FileVersion>
     <Description>IHM Collection
 Free to use, share, distribution</Description>
-    <Copyright>Daerlnaxe Software</Copyright>
+    <Copyright>Copyright ©  2018-2021 Daerlnaxe Software</Copyright>
+    <Version>1.0.0</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>5</WarningLevel>
@@ -32,6 +33,11 @@ Free to use, share, distribution</Description>
     <None Remove="Resources\Mediax40.png" />
     <None Remove="Resources\MesImagesx40.png" />
     <None Remove="Resources\MesVideosx40.png" />
+    <None Remove="Resources\Password_Reveal.png" />
+    <None Remove="Resources\Password_Reveal_50.png" />
+    <None Remove="Resources\Password_Reveal_Hover.png" />
+    <None Remove="Resources\Password_Reveal_Hover_100.png" />
+    <None Remove="Resources\Password_Reveal_Hover_50.png" />
     <None Remove="Resources\question.png" />
     <None Remove="Resources\W10_Folderx40.png" />
     <None Remove="Resources\W10_HDDx40.png" />
@@ -84,6 +90,21 @@ Free to use, share, distribution</Description>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\MesVideosx40.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Password_Reveal.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Password_Reveal_50.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Password_Reveal_Hover.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Password_Reveal_Hover_100.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Password_Reveal_Hover_50.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\question.png">
