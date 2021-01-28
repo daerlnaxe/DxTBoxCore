@@ -5,7 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
     <Company>Daerlnaxe Software</Company>
-    <AssemblyVersion>2.0.0.2</AssemblyVersion>
+    <AssemblyVersion>2.0.0.3</AssemblyVersion>
     <FileVersion>2.0.0.0</FileVersion>
     <Description>IHM Collection
 Free to use, share, distribution</Description>

@@ -26,41 +26,9 @@ namespace DxTBoxCore.Box_Password
 
         public string Password => pwdEncPassword.Password;
 
-        public void FireError()
-        {
-            HasErrors = true;
-            PasswordError = Visibility.Visible;
-        }
-
-        public void ResetError()
-        {
-            HasErrors = false;
-            PasswordError = Visibility.Collapsed;
-        }
-
-        private Visibility _PasswordError = Visibility.Collapsed;
-        public Visibility PasswordError
-        {
-            get => _PasswordError;
-            set
-            {
-                if (value == _PasswordError)
-                    return;
-
-                _PasswordError = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PasswordError)));
-            }
-        }
-        public bool HasErrors { get; private set; }
-
-        public IEnumerable GetErrors(string propertyName)
-        {
-            if (propertyName == nameof(PasswordError))
-                return $"Password a moins de ";
-
-            return null;
-        }
-
+        /// <summary>
+        /// Show or hide eye button
+        /// </summary>
         private Visibility _ShowButtonVisibility;
         public Visibility ShowButtonVisibility
         {
@@ -89,6 +57,35 @@ namespace DxTBoxCore.Box_Password
             add { AddHandler(ShowPass_Event, value); }
             remove { RemoveHandler(ShowPass_Event, value); }
         }*/
+        #endregion
+
+        #region Error
+        /// <summary>
+        /// Permit to bind to something, just to unlock validationproperty
+        /// </summary>
+        public static readonly DependencyProperty ErrorProperty =
+            DependencyProperty.Register("Error", typeof(bool), typeof(PasswordExt), new
+                PropertyMetadata(false, new PropertyChangedCallback(OnErrorChanged)));
+
+        public bool Error
+        {
+            get => (bool)GetValue(ErrorProperty);
+            set => SetValue(ErrorProperty, value);
+        }
+
+        private static void OnErrorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            PasswordExt passExt = d as PasswordExt;
+            passExt.OnErrorChanged(e);
+        }
+
+        private void OnErrorChanged(DependencyPropertyChangedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+
+
         #endregion
 
         #region Size of eye icon
@@ -160,7 +157,6 @@ namespace DxTBoxCore.Box_Password
         {
             InitializeComponent();
 
-            DataContext = this;
             Manage_EyeBtn();
         }
 
@@ -206,7 +202,6 @@ namespace DxTBoxCore.Box_Password
                 ShowButtonVisibility = Visibility.Visible;
 
         }
-
 
 
         #endregion

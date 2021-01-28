@@ -5,16 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DxTBoxCore.Box_Password"
         xmlns:t="clr-namespace:DxTBoxCore.Languages"
+        xmlns:command="clr-namespace:DxTBoxCore.Common"
         mc:Ignorable="d"
         Title="DxSoloPass" Height="150" Width="400">
+
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="3,5,3,5"/>
             <Setter Property="Padding" Value="5"/>
         </Style>
-        <Style TargetType="local:PasswordExt">
-        </Style>
         <Style TargetType="Button" x:Key="ShowBtn">
+
+        </Style>
+        <Style TargetType="local:PasswordExt" >
+            <Setter Property="Margin" Value="3,5,3,5"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel>
+                            <!-- Infos -->
+                            <ItemsControl DockPanel.Dock="Right" ItemsSource="{Binding}" Margin="3,0,0,0">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ErrorContent.Value}" Foreground="Red"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <!-- We Put control inside it -->
+                            <Border BorderBrush="Red" BorderThickness="2">
+                                <AdornedElementPlaceholder Name="CustomAdorner"/>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding Validation.Errors}"/>
+                    <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
 
         </Style>
     </Window.Resources>
@@ -50,14 +83,26 @@
             </PasswordBox.Template>
         </PasswordBox>
 -->
+        <!--
         <AdornerDecorator  Grid.Row="1" Width="182" HorizontalAlignment="Left" Margin="3,5,3,5">
             <Border BorderBrush="red">
-                <local:PasswordExt x:Name="PasswordBox"                          
-                           MouseLeave="PasswordExt_MouseLeave"                               
+        -->
+        <local:PasswordExt x:Name="PasswordBox" Grid.Row="1"                                                      
+                           Error="{Binding ErrorPassword, NotifyOnValidationError=True}"
+                           MouseLeave="PasswordExt_MouseLeave" LostFocus="PasswordBox_LostFocus"                               
                            />
+
+
+                <!--
+                                   Validation.ErrorTemplate="{DynamicResource ResourceKey=}"
+                -->
+                <!--
+                           Error="{Binding Error}"        
+                
             </Border>
-            
+
         </AdornerDecorator>
+                -->
         <!--
 -->
         <!-- toggle show/hide 
@@ -67,7 +112,9 @@
         <!-- Boutons -->
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="{x:Static t:DxTBLang.Cancel}" IsCancel="True"/>
-            <Button Content="{x:Static t:DxTBLang.Submit}" IsDefault="True" Click="Button_Submit"/>
+            <Button Content="{x:Static t:DxTBLang.Submit}" IsDefault="True" IsEnabled="{Binding SubmitEnabled}" Click="Button_Submit"/>
         </StackPanel>
+        <!--
+        -->
     </Grid>
 </Window>

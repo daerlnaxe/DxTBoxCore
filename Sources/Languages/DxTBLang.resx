@@ -171,6 +171,9 @@
   <data name="Pass" xml:space="preserve">
     <value>Pass</value>
   </data>
+  <data name="Pass_Different" xml:space="preserve">
+    <value>Passwords are different !</value>
+  </data>
   <data name="Question" xml:space="preserve">
     <value>Question</value>
   </data>
@@ -188,6 +191,9 @@
   </data>
   <data name="ShowPassword" xml:space="preserve">
     <value>Show Password</value>
+  </data>
+  <data name="SizeShort" xml:space="preserve">
+    <value>Size it too short &lt; </value>
   </data>
   <data name="Stop" xml:space="preserve">
     <value>Stop</value>

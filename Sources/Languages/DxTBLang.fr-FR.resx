@@ -171,6 +171,9 @@
   <data name="Pass" xml:space="preserve">
     <value>Passer</value>
   </data>
+  <data name="Pass_Different" xml:space="preserve">
+    <value>Les password sont differents !</value>
+  </data>
   <data name="Q_Want_Close" xml:space="preserve">
     <value>Voulez-vous vraiment fermer ?</value>
   </data>
@@ -185,6 +188,9 @@
   </data>
   <data name="ShowPassword" xml:space="preserve">
     <value>Montrer le mot de passe</value>
+  </data>
+  <data name="SizeShort" xml:space="preserve">
+    <value>La taille est trop petite &lt; </value>
   </data>
   <data name="Stop" xml:space="preserve">
     <value>Stop</value>

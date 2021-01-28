@@ -151,5 +151,10 @@ namespace DxTBoxCore
             DxSoloPass.ShowModal();
 
         }
+
+        private void Open_PasswordDBox(object sender, RoutedEventArgs e)
+        {
+            DxDoublePass.ShowModal();
+        }
     }
 }

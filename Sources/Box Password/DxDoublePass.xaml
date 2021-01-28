@@ -8,13 +8,45 @@
         mc:Ignorable="d"
         Title="DxDoublePass" Height="200" Width="400">
     <Window.Resources>
+        <!-- Boutons -->
         <Style TargetType="Button">
             <Setter Property="Margin" Value="3,5,3,5"/>
             <Setter Property="Padding" Value="5"/>
         </Style>
-        <Style TargetType="local:PasswordExt">
+        <!-- Boites password -->
+        <Style TargetType="local:PasswordExt" >
             <Setter Property="Margin" Value="3,5,3,5"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel>
+                            <!-- Infos -->
+                            <ItemsControl DockPanel.Dock="Right" ItemsSource="{Binding}" Margin="3,0,0,0">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ErrorContent.Value}" Foreground="Red"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <!-- We Put control inside it -->
+                            <Border BorderBrush="Red" BorderThickness="2">
+                                <AdornedElementPlaceholder Name="CustomAdorner"/>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding Validation.Errors}"/>
+                </Trigger>
+            </Style.Triggers>
+
         </Style>
+
         <Style TargetType="Button" x:Key="ShowBtn">
 
         </Style>
@@ -32,12 +64,21 @@
                             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, 
                              FallbackValue='Enter the Password'}"
                         ContentStringFormat="{}{0}:" HorizontalAlignment="Left" />
-        <local:PasswordExt Grid.Row="1" Width="200" Margin="5" HorizontalAlignment="Left" />
-        <local:PasswordExt Grid.Row="2" Width="200" Margin="5" HorizontalAlignment="Left" LostFocus="PasswordExt_LostFocus" />
+        <!-- Password Box -->
+        <!-- Le 1 vérifie l'aspect du mot de passe -->
+        <local:PasswordExt x:Name="passwordBoxH" Grid.Row="1"
+                           Error="{Binding PasswordHError, NotifyOnValidationError=True}"
+                           MouseLeave="passwordBoxH_MouseLeave" />
+        <!-- Le second vérifie qu'il ressemble au premier -->
+        <local:PasswordExt x:Name="passwordBoxB" Grid.Row="2"
+                           Error="{Binding PasswordBError, NotifyOnValidationError=True}"
+                           MouseLeave="passwordBoxB_MouseLeave" />
         <!-- Boutons -->
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="{x:Static t:DxTBLang.Cancel}" IsCancel="True"/>
-            <Button Content="{x:Static t:DxTBLang.Submit}" IsDefault="True" Click="Button_Submit"/>
+            <Button Content="{x:Static t:DxTBLang.Submit}"
+                    IsEnabled="{Binding SubmitEnabled}"
+                    IsDefault="True" Click="Button_Submit"/>
         </StackPanel>
     </Grid>
 </Window>

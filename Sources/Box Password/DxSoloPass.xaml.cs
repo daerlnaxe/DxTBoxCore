@@ -1,7 +1,10 @@
-﻿using System;
+﻿using DxTBoxCore.Languages;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,30 +20,74 @@ namespace DxTBoxCore.Box_Password
     /// <summary>
     /// Logique d'interaction pour DxSoloPass.xaml
     /// </summary>
-    public partial class DxSoloPass : Window, INotifyDataErrorInfo
+    public partial class DxSoloPass : Window, INotifyDataErrorInfo, INotifyPropertyChanged
     {
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
 
         /// <summary>
         /// Define min length to validate 
         /// </summary>
         public ushort PasswordLength { get; set; } = 8;
 
+        private bool _ErrorPassword;
+        public bool ErrorPassword
+        {
+            get => _ErrorPassword;
+            set
+            {
+                _ErrorPassword = value;
+             //   PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ErrorPassword)));
+            }
+        }
 
-        private bool ErrorPassword;
-        public bool HasErrors => ErrorPassword;
+        #region Validation
+        private Dictionary<string, string> _Errors = new Dictionary<string, string>();
 
+        private void AddError(string k, string val)
+        {
+            if (_Errors.ContainsKey(k))
+                return;
 
+            _Errors.Add(k, val);
+        }
+
+        public bool HasErrors => _Errors.Any();
+
+        public IEnumerable GetErrors(string propertyName)
+        {
+            if (propertyName == nameof(ErrorPassword))
+                return _Errors;
+
+            return null;
+        }
+
+        #endregion
         /// <summary>
         /// Explanatory Note
         /// </summary>
         public string Invite { get; set; }
 
-
+        private bool _SubmitEnabled;
+        /// <summary>
+        /// Binding to enable/disable button submit
+        /// </summary>
+        public bool SubmitEnabled
+        {
+            get => _SubmitEnabled;
+            set
+            {
+                _SubmitEnabled = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SubmitEnabled)));
+            }
+        }
 
         public DxSoloPass()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
 
@@ -49,40 +96,26 @@ namespace DxTBoxCore.Box_Password
             DxSoloPass window = new DxSoloPass();
             window.ShowDialog();
 
-            //todo string res = window.passBox.Password.ToString();
+            string res = window.PasswordBox.Password;
 
-            //todo return String.IsNullOrEmpty(res) ? null : res;
-            return null;
+            return String.IsNullOrEmpty(res) ? null : res;
+            //return null;
         }
 
-
-
-        private void passB_KeyUp(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Button_Submit(object sender, RoutedEventArgs e)
         {
-
+            DialogResult = true;
         }
 
-        private void PasswordExt_ShowPassClick(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void PasswordExt_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Check_PasswordRules();
+            Keyboard.ClearFocus();
+        }
+
+        private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
         {
             Check_PasswordRules();
         }
@@ -92,23 +125,23 @@ namespace DxTBoxCore.Box_Password
 
             if (PasswordBox.Password.Length < PasswordLength)
             {
-                PasswordBox.FireError();
+                //ErrorPassword = true;
+                AddError("Taille", DxTBLang.SizeShort + PasswordLength);
+                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(ErrorPassword)));
+                SubmitEnabled = false;
+
+                Debug.WriteLine("signalé eeerr");
             }
             else
             {
-                PasswordBox.ResetError();
+                //ErrorPassword = false;
+                _Errors.Remove("Taille");
+                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(ErrorPassword)));
+                Debug.WriteLine("signalé Noneer");
+
+                SubmitEnabled = true;
             }
         }
 
-
-
-        #region Validation
-
-        public IEnumerable GetErrors(string propertyName)
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
     }
 }

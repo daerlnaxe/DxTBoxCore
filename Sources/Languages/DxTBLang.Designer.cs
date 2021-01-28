@@ -223,6 +223,15 @@ namespace DxTBoxCore.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Passwords are different !.
+        /// </summary>
+        public static string Pass_Different {
+            get {
+                return ResourceManager.GetString("Pass_Different", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Do you really want to close ?.
         /// </summary>
         public static string Q_Want_Close {
@@ -273,6 +282,15 @@ namespace DxTBoxCore.Languages {
         public static string ShowPassword {
             get {
                 return ResourceManager.GetString("ShowPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Size it too short &lt; .
+        /// </summary>
+        public static string SizeShort {
+            get {
+                return ResourceManager.GetString("SizeShort", resourceCulture);
             }
         }
         
