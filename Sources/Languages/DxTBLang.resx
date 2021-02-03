@@ -159,8 +159,14 @@
   <data name="Music" xml:space="preserve">
     <value>Music</value>
   </data>
+  <data name="NeverShow" xml:space="preserve">
+    <value>Never show me that again</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="Optical_Drive" xml:space="preserve">
     <value>Optical Drive</value>

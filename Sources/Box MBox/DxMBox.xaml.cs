@@ -30,24 +30,13 @@ namespace DxTBoxCore.MBox
             set;
         } = "/DxTBoxCore;component/Resources/question.png";
 
-        public string Titre
-        {
-            get;
-            set;
-        }
+        public string Titre { get; set; }
 
-        public string MainMessage
-        {
-            get;
-            set;
-        }
+        public string MainMessage { get; set; }
 
-        public string OptionnalMessage
-        {
-            get;
-            set;
-        }
+        public string OptionnalMessage { get; set; }
 
+        public Visibility AnnulVisible { get; set; } = Visibility.Collapsed;
 
         public DxMBox()
         {
@@ -57,23 +46,27 @@ namespace DxTBoxCore.MBox
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (buttons.HasFlag(E_DxButtons.YesNo))
-            {
+            if (buttons.HasFlag(E_DxButtons.Yes))
                 btValid.Content = DxTBLang.Yes;
+
+            if (buttons.HasFlag(E_DxButtons.Ok))
+                btValid.Content = DxTBLang.OK;
+
+            // ---
+
+            if (buttons.HasFlag(E_DxButtons.No))
+            {
                 btAnnul.Content = DxTBLang.No;
-
-
+                AnnulVisible = Visibility.Visible;
             }
-            else if (buttons.HasFlag(E_DxButtons.OkCancel))
+
+            if (buttons.HasFlag(E_DxButtons.Cancel))
             {
-                btValid.Content = "Ok";
                 btAnnul.Content = DxTBLang.Cancel;
+                AnnulVisible = Visibility.Visible;
             }
-            else if (buttons.HasFlag(E_DxButtons.Ok))
-            {
-                btValid.Content = "Ok";
-                btAnnul.Visibility = Visibility.Collapsed;
-            }
+
+
         }
 
         public static bool? ShowDial(string message, string title = "Information", E_DxButtons buttons = E_DxButtons.Ok, string optMessage = null)

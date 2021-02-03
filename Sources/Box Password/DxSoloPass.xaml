@@ -7,18 +7,14 @@
         xmlns:t="clr-namespace:DxTBoxCore.Languages"
         xmlns:command="clr-namespace:DxTBoxCore.Common"
         mc:Ignorable="d"
-        Title="DxSoloPass" Height="150" Width="400">
+        Title="DxSoloPass" Height="150" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
     <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="3,5,3,5"/>
-            <Setter Property="Padding" Value="5"/>
-        </Style>
-        <Style TargetType="Button" x:Key="ShowBtn">
-
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="10,5,3,5"/>
         </Style>
         <Style TargetType="local:PasswordExt" >
-            <Setter Property="Margin" Value="3,5,3,5"/>
+            <Setter Property="Margin" Value="10,5,3,5"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Width" Value="200"/>
             <Setter Property="Validation.ErrorTemplate">
@@ -50,6 +46,10 @@
             </Style.Triggers>
 
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0,0,10,10"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>  
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>

@@ -29,11 +29,13 @@
     <Grid Margin="30,15,30,15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="tbStartingFolder" Grid.Row="0" KeyDown="StartFolder_KeyDown" 
+        <TextBlock Text="{Binding Info, StringFormat='{}{0}:', FallbackValue=Info}" Margin="0,0,0,20" TextWrapping="WrapWithOverflow" />
+        <TextBox x:Name="tbStartingFolder" Grid.Row="1" KeyDown="StartFolder_KeyDown" 
                
                         >
             <!--="{Binding StartingFolder, UpdateSourceTrigger=PropertyChanged,
@@ -63,7 +65,7 @@
            
         </TreeView>
         <!--Loaded="FileTree_Loaded"-->
-        <TreeView Grid.Row="1"  ItemsSource="{Binding Root}" SelectedItemChanged="SelectedItem">
+        <TreeView Grid.Row="2"  ItemsSource="{Binding Root}" SelectedItemChanged="SelectedItem">
             <TreeView.Resources>
                 <Style TargetType="TreeViewItem">
                     <Setter Property="HeaderTemplate" >
@@ -97,11 +99,11 @@
             </TreeView.Resources>
         </TreeView>
 
-        <TextBox x:Name="FilePath" Grid.Row="2" TextWrapping="Wrap"
+        <TextBox x:Name="FilePath" Grid.Row="3" TextWrapping="Wrap"
                  Text="{Binding LinkResult}"
                  IsReadOnly="True"
                  />
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" >
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" >
             <Button Content="{Binding CancelButtonName
                                 , FallbackValue={x:Static lg:DxTBLang.Cancel}
                                 , TargetNullValue={x:Static lg:DxTBLang.Cancel}

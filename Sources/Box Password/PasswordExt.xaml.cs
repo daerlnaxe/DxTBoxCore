@@ -24,7 +24,11 @@ namespace DxTBoxCore.Box_Password
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public string Password => pwdEncPassword.Password;
+        public string Password
+        {
+            get => pwdEncPassword.Password;
+            set => pwdEncPassword.Password = value;
+        }
 
         /// <summary>
         /// Show or hide eye button
@@ -94,7 +98,7 @@ namespace DxTBoxCore.Box_Password
         /// </summary>
         public static readonly DependencyProperty EyeSizeProperty =
             DependencyProperty.Register("EyeSize", typeof(int), typeof(PasswordExt), new
-                PropertyMetadata(1, new PropertyChangedCallback(OnEyeSizeChanged)));
+                PropertyMetadata(25, new PropertyChangedCallback(OnEyeSizeChanged)));
 
 
         /// <summary>
@@ -115,11 +119,67 @@ namespace DxTBoxCore.Box_Password
 
         private void OnEyeSizeChanged(DependencyPropertyChangedEventArgs e)
         {
-            EyeButton.Width = 25 * (int)e.NewValue;
-            EyeButton.Height = 25 * (int)e.NewValue;
+         //   EyeButton.Width = (int)e.NewValue;
+           // EyeButton.Height = (int)e.NewValue;
         }
         #endregion
 
+        // --- Graphismes
+
+        #region BorderBrush
+        
+        /// <summary>
+        /// OverWrite BorderThickness of UserControl
+        /// </summary>
+        public static new readonly DependencyProperty BorderThicknessProperty =
+            DependencyProperty.Register(nameof(BorderThickness), typeof(int), typeof(PasswordExt), 
+                new PropertyMetadata(1));
+
+        public new int BorderThickness
+        {
+            get => (int)GetValue(BorderThicknessProperty);
+            set => SetValue(BorderThicknessProperty, value);
+        }
+        
+        /// <summary>
+        /// 
+        /// Permit to bind to something, just to unlock validationproperty
+        /// </summary>
+        public static readonly new DependencyProperty BorderBrushProperty =
+            DependencyProperty.Register(nameof(BorderBrush), typeof(Brush), typeof(PasswordExt),
+                new UIPropertyMetadata(Brushes.DarkGray));
+
+        public new Brush BorderBrush
+        {
+            get => (Brush)GetValue(BorderBrushProperty);
+            set => SetValue(BorderBrushProperty, value);
+        }
+        
+        private static void OnPwdBorderBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            PasswordExt passExt = d as PasswordExt;
+            passExt.OnPwdBorderBrushChanged(e);
+        }
+
+        private void OnPwdBorderBrushChanged(DependencyPropertyChangedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+
+
+        /*
+        private static void OnBorderBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            PasswordExt passExt = d as PasswordExt;
+            passExt.OnBorderBrushChanged(e);
+        }
+        
+        private void OnBorderBrushChanged(DependencyPropertyChangedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }*/
+        #endregion
 
         #region
         /*

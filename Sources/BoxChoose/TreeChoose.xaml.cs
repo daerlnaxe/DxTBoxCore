@@ -17,6 +17,7 @@ namespace DxTBoxCore.BoxChoose
     /// <summary>
     /// Logique d'interaction pour Choose_Experiment.xaml
     /// </summary>
+    /// <remarks>You must assign a model</remarks>
     public partial class TreeChoose : Window, INotifyPropertyChanged
     {
 
@@ -36,6 +37,9 @@ namespace DxTBoxCore.BoxChoose
             }
         }
 
+        public string LinkResult => Model.LinkResult;
+ 
+
         /// <summary>
         /// Name of Save Button
         /// </summary>
@@ -45,7 +49,6 @@ namespace DxTBoxCore.BoxChoose
         /// Name of Cancel Button
         /// </summary>
         public string CancelButtonName { get; set; }
-
 
 
         public TreeChoose(A_ModelChoose model = null)

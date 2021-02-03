@@ -54,6 +54,13 @@ namespace DxTBoxCore.BoxChoose
 
         public List<I_ContChoose> Root { get; set; } = new List<I_ContChoose>();
 
+        /// <summary>
+        /// Show info on the top of the window
+        /// </summary>
+        /// <example>
+        /// Select your database document
+        /// </example>
+        public string Info { get; set; }
 
         private string _LinkResult;
         /// <summary>

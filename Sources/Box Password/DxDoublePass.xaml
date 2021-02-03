@@ -6,16 +6,15 @@
         xmlns:local="clr-namespace:DxTBoxCore.Box_Password"
         xmlns:t="clr-namespace:DxTBoxCore.Languages"
         mc:Ignorable="d"
-        Title="DxDoublePass" Height="200" Width="400">
+        Title="DxDoublePass" Height="200" Width="400" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <!-- Boutons -->
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="3,5,3,5"/>
-            <Setter Property="Padding" Value="5"/>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="10,5,3,5"/>
         </Style>
         <!-- Boites password -->
         <Style TargetType="local:PasswordExt" >
-            <Setter Property="Margin" Value="3,5,3,5"/>
+            <Setter Property="Margin" Value="10,5,3,5"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Width" Value="200"/>
             <Setter Property="Validation.ErrorTemplate">
@@ -46,9 +45,10 @@
             </Style.Triggers>
 
         </Style>
-
-        <Style TargetType="Button" x:Key="ShowBtn">
-
+        <!-- Boutons -->
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0,0,10,10"/>
+            <Setter Property="Padding" Value="5"/>
         </Style>
     </Window.Resources>
     <Grid>

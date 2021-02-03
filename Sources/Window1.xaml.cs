@@ -17,14 +17,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using DxTBoxCore.Box_Password;
 
 namespace DxTBoxCore
 {
     /// <summary>
     /// Logique d'interaction pour Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1 : Window, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _Value;
+        public ref string Value =>ref _Value;
+
+        
 
         /// <summary>
         /// Lanceur
@@ -35,11 +43,12 @@ namespace DxTBoxCore
             new Window1().ShowDialog();
         }
 
-
+        
 
         public Window1()
         {
             InitializeComponent();
+            DataContext = this;
         }
         private void Open_ChooseFile(object sender, RoutedEventArgs e)
         {
@@ -156,5 +165,32 @@ namespace DxTBoxCore
         {
             DxDoublePass.ShowModal();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Initialize les TextBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void InitTB_Click(object sender, RoutedEventArgs e)
+        {
+            _Value = "merde";
+            //tBExt.Text = Value;
+            //tBExt.SetText(ref _Value);
+         //   PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
+
+            _Value = "rien";
+            //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
+        }
+
+        private void PasswordDec_AskDectryption(object sender, RoutedEventArgs e)
+        {
+            PasswordDec pass = (PasswordDec)sender;
+            pass.ClearPassword = pass.EncPassword;
+                  }
     }
 }

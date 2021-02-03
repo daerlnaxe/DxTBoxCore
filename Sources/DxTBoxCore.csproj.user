@@ -7,6 +7,9 @@
     <Compile Update="Box Decisions\MBDecision.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Box MBox\DxCaution.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Box Password\DxDoublePass.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -14,6 +17,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Box Password\EyeButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Box Password\PasswordDec.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Box Password\PasswordExt.xaml.cs">
@@ -25,6 +31,18 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Box Decisions\MBDecision.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Box MBox\DxCaution.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Box Password\CustomControl1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Box Password\PasswordDec.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Box Password\TextBoxExt.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Box Password\DxDoublePass.xaml">
@@ -40,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="BoxChoose\TreeChoose.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

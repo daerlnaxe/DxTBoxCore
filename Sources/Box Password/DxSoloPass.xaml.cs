@@ -39,7 +39,7 @@ namespace DxTBoxCore.Box_Password
             set
             {
                 _ErrorPassword = value;
-             //   PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ErrorPassword)));
+                //   PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ErrorPassword)));
             }
         }
 
@@ -91,14 +91,22 @@ namespace DxTBoxCore.Box_Password
         }
 
 
-        public static string ShowModal()
+        public static string ShowModal(string invite = null)
         {
-            DxSoloPass window = new DxSoloPass();
-            window.ShowDialog();
+            DxSoloPass window = new DxSoloPass()
+            {
+                Invite = invite
+            };
 
-            string res = window.PasswordBox.Password;
+            string res = null;
+            if (window.ShowDialog() == true)
+            {
 
-            return String.IsNullOrEmpty(res) ? null : res;
+                res = window.PasswordBox.Password;
+            }
+
+            //eturn String.IsNullOrEmpty(res) ? null : res;
+            return res;
             //return null;
         }
 

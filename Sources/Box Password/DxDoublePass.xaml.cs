@@ -101,14 +101,22 @@ namespace DxTBoxCore.Box_Password
             }
         }
 
-        public static string ShowModal()
+        public static string ShowModal(string invite = null)
         {
-            DxDoublePass window = new DxDoublePass();
-            window.ShowDialog();
+            DxDoublePass window = new DxDoublePass()
+            {
+                Invite = invite
+            };
 
-            string res = window.passwordBoxH.Password;
+            string res = null;
+            if (window.ShowDialog() == true)
+            {
 
-            return String.IsNullOrEmpty(res) ? null : res;
+                res = window.passwordBoxH.Password;
+            }
+
+            //return String.IsNullOrEmpty(res) ? null : res;
+            return res;
             //return null;
         }
 
@@ -155,7 +163,7 @@ namespace DxTBoxCore.Box_Password
 
         private void Check_SimilarPass()
         {
-            if(passwordBoxH.Password != passwordBoxB.Password)
+            if (passwordBoxH.Password != passwordBoxB.Password)
             {
                 Add_Error(ref _ErrorsB, "Similar", DxTBLang.Pass_Different);
                 ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(PasswordBError)));
@@ -171,7 +179,7 @@ namespace DxTBoxCore.Box_Password
 
                 SubmitEnabled = !HasErrors;
             }
-         
+
         }
 
 
