@@ -161,7 +161,8 @@ namespace DxTBoxCore.Box_Password
             get => (bool)GetValue(RevealModeProperty);
             set
             {
-                this.Dispatcher.Invoke(() => SetValue(RevealModeProperty, value));
+                SetValue(RevealModeProperty, value);
+               // this.Dispatcher.Invoke(() => SetValue(RevealModeProperty, value));
             }
         }
         #endregion
