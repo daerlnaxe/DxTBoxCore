@@ -9,7 +9,7 @@ namespace DxTBoxCore.BoxChoose
     /// <summary>
     /// Used to get right icon link according type
     /// </summary>
-    class Type2IconEx : IValueConverter
+    class Conv_Type2IconEx : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -48,7 +48,7 @@ namespace DxTBoxCore.BoxChoose
                     return "../Resources/W10_NetDrivex40.png";
 
                 case E_IconFType.File:
-                    return @"E:\Programmation\#Graphismes\blend-png\Blend PNG\512x512 PNG\Location Generic.png";
+                    return @"../Resources/Location Generic.png";
 
                 default:
                     break;

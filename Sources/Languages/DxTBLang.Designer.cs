@@ -97,6 +97,15 @@ namespace DxTBoxCore.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Desktop.
         /// </summary>
         public static string Desktop {
@@ -138,6 +147,15 @@ namespace DxTBoxCore.Languages {
         public static string File {
             get {
                 return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à File name.
+        /// </summary>
+        public static string File_Name {
+            get {
+                return ResourceManager.GetString("File_Name", resourceCulture);
             }
         }
         
@@ -192,6 +210,15 @@ namespace DxTBoxCore.Languages {
         public static string NeverShow {
             get {
                 return ResourceManager.GetString("NeverShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à New document.
+        /// </summary>
+        public static string New_Doc {
+            get {
+                return ResourceManager.GetString("New_Doc", resourceCulture);
             }
         }
         
@@ -268,6 +295,15 @@ namespace DxTBoxCore.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Remove.
+        /// </summary>
+        public static string Remove {
+            get {
+                return ResourceManager.GetString("Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Rename.
         /// </summary>
         public static string Rename {
@@ -282,6 +318,24 @@ namespace DxTBoxCore.Languages {
         public static string Right_Pic {
             get {
                 return ResourceManager.GetString("Right_Pic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Save Under.
+        /// </summary>
+        public static string Save_Under {
+            get {
+                return ResourceManager.GetString("Save_Under", resourceCulture);
             }
         }
         
@@ -363,6 +417,15 @@ namespace DxTBoxCore.Languages {
         public static string Trash_Question {
             get {
                 return ResourceManager.GetString("Trash_Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Type.
+        /// </summary>
+        public static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
             }
         }
         

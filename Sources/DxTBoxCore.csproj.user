@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ShowAllFiles>false</ShowAllFiles>
+    <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Box Decisions\MBDecision.xaml.cs">
@@ -26,6 +26,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="BoxChoose\TreeChoose.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="BoxChoose\TreeSave.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -58,6 +61,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="BoxChoose\TreeChoose.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="BoxChoose\TreeSave.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\Generic.xaml">

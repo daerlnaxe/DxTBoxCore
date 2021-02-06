@@ -30,6 +30,8 @@ namespace DxTBoxCore.BoxChoose
 
 
         #region Sans notif
+
+
         /// <summary>
         /// Block populate (used by Search)
         /// </summary>

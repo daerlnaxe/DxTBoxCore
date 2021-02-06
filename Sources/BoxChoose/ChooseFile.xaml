@@ -8,7 +8,7 @@
         Title="Choose File" Height="737" Width="1144">
     <Window.Resources>
         <!-- Vers la classe qui convertit -->
-        <local:Img2HeaderConverter x:Key="img" />
+        <local:Conv_Img2Header x:Key="img" />
     </Window.Resources>
     <Grid>
         <!-- Starting Folder -->

@@ -9,6 +9,8 @@ namespace DxTBoxCore.Common
     public class Commands
     {
         public static readonly RoutedUICommand Submit = new RoutedUICommand(DxTBLang.Submit, "Submit", typeof(Commands));
+        public static readonly RoutedUICommand Delete = new RoutedUICommand(DxTBLang.Delete, "Delete", typeof(Commands));
+        public static readonly RoutedUICommand Remove = new RoutedUICommand(DxTBLang.Remove, "Remove", typeof(Commands));
 
     }
 }

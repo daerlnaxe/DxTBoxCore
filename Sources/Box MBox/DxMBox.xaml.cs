@@ -36,7 +36,12 @@ namespace DxTBoxCore.MBox
 
         public string OptionnalMessage { get; set; }
 
-        public Visibility AnnulVisible { get; set; } = Visibility.Collapsed;
+        /*
+        public Visibility AnnulVisible 
+        { 
+            get;
+            set;
+        } = Visibility.Collapsed;*/
 
         public DxMBox()
         {
@@ -57,16 +62,14 @@ namespace DxTBoxCore.MBox
             if (buttons.HasFlag(E_DxButtons.No))
             {
                 btAnnul.Content = DxTBLang.No;
-                AnnulVisible = Visibility.Visible;
+                btAnnul.Visibility = Visibility.Visible;
             }
 
             if (buttons.HasFlag(E_DxButtons.Cancel))
             {
                 btAnnul.Content = DxTBLang.Cancel;
-                AnnulVisible = Visibility.Visible;
+                btAnnul.Visibility = Visibility.Visible;
             }
-
-
         }
 
         public static bool? ShowDial(string message, string title = "Information", E_DxButtons buttons = E_DxButtons.Ok, string optMessage = null)
@@ -81,9 +84,7 @@ namespace DxTBoxCore.MBox
             //daBox.MessagePart.Text = message;
             daBox.buttons = buttons;
 
-
             return daBox.ShowDialog();
-
         }
 
         private void btOk_Click(object sender, RoutedEventArgs e)

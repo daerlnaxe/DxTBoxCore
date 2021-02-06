@@ -31,6 +31,7 @@ Free to use, share, distribution</Description>
     <None Remove="Resources\Drive Internal.png" />
     <None Remove="Resources\Drive USB.png" />
     <None Remove="Resources\Folderx40.png" />
+    <None Remove="Resources\Location Generic.png" />
     <None Remove="Resources\Mediax40.png" />
     <None Remove="Resources\MesImagesx40.png" />
     <None Remove="Resources\MesVideosx40.png" />
@@ -52,6 +53,9 @@ Free to use, share, distribution</Description>
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="BoxChoose\E_IconType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Location Generic.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Box Progress\DxCollecProgress.xaml" />

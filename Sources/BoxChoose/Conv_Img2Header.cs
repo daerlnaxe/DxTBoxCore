@@ -19,7 +19,7 @@ using DxTBoxCore.Properties;
 
 namespace DxTBoxCore.BoxChoose
 {
-    public class Img2HeaderConverter : IValueConverter
+    public class Conv_Img2Header : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

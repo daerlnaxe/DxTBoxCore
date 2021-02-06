@@ -9,7 +9,7 @@
         Title="Choose File" Height="600" Width="800">
     <Window.Resources>
         <!-- Vers la classe qui convertit -->
-        <local:Img2HeaderConverter x:Key="img" />
+        <local:Conv_Img2Header x:Key="img" />
         <!-- Style des boutons -->
         <Style TargetType="Button">
             <Setter Property="Margin" Value="3"/>
