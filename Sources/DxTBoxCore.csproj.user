@@ -31,6 +31,9 @@
     <Compile Update="BoxChoose\TreeSave.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\TextBoxAutoC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Box Decisions\MBDecision.xaml">
@@ -64,6 +67,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="BoxChoose\TreeSave.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\TextBoxAutoC.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\Generic.xaml">

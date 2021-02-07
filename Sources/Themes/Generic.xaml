@@ -7,8 +7,11 @@
 
     <ResourceDictionary.MergedDictionaries>
         <!--
+        <ResourceDictionary Source="/DxTBoxCore;component/Box Password/CustomControl1.xaml" />
         -->
-        <ResourceDictionary Source="/DxTBoxCore;component/Box_Password/CustomControl1.xaml" />
-        <ResourceDictionary Source="/DxTBoxCore;component/Box_Password/TextBoxExt.xaml" />
+        <ResourceDictionary Source="/DxTBoxCore;component/Box Password/TextBoxExt.xaml" />
+        <ResourceDictionary Source="/DxTBoxCore;component/Controls/Textbox_AC.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+
 </ResourceDictionary>

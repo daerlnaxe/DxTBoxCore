@@ -19,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using DxTBoxCore.Box_Password;
+using System.Collections.ObjectModel;
 
 namespace DxTBoxCore
 {
@@ -32,7 +33,17 @@ namespace DxTBoxCore
         private string _Value;
         public ref string Value =>ref _Value;
 
+        public Dictionary<string, int> Caca { get; set; } = new Dictionary<string, int>() 
+        { 
+            { "mee",0 },
+            { "bluu",1 }
+        };
         
+        public ObservableCollection<string> Caca2 { get; set; } = new ObservableCollection<string>() 
+        { 
+            "mee2",
+            "bluu2",
+        };
 
         /// <summary>
         /// Lanceur
@@ -49,6 +60,7 @@ namespace DxTBoxCore
         {
             InitializeComponent();
             DataContext = this;
+            //tbAC1.AvailableItems2 = Caca2;
         }
         private void Open_ChooseFile(object sender, RoutedEventArgs e)
         {
@@ -192,5 +204,17 @@ namespace DxTBoxCore
             PasswordDec pass = (PasswordDec)sender;
             pass.ClearPassword = pass.EncPassword;
                   }
+
+        private void tbAC1_AskToAdd(object sender, RoutedEventArgs e)
+        {
+            Caca = new Dictionary<string, int>(Caca);
+            Caca.Add("areuh", 3);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Caca)));
+        }
+
+        private void tbAC2_AskToAdd(object sender, RoutedEventArgs e)
+        {
+            Caca2.Add("Glabou");
+        }
     }
 }

@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DxTBoxCore"
         xmlns:Box="clr-namespace:DxTBoxCore.Box_Password"
-    xmlns:Box_Password="clr-namespace:DxTBoxCore.Box_Password"
+        xmlns:Controls="clr-namespace:DxTBoxCore.Controls"
     x:Class="DxTBoxCore.Window1"
         mc:Ignorable="d"
+    d:Background="AliceBlue"
         Title="Window1" Height="450" Width="800">
     <WrapPanel>
         <WrapPanel.Resources>
@@ -26,14 +27,16 @@
         <Button x:Name="button" Content="Init Textboxes" Click="InitTB_Click"/>
         <TextBox x:Name="tBox" Text="{Binding Value, Mode=OneWay}" TextWrapping="Wrap" Width="120"/>
 
+        <Box:PasswordDec AskDectryption="PasswordDec_AskDectryption"/>
+        <Controls:Textbox_AC ItemsSource="{Binding Caca}" DisplayMemberPath="Value" Cursor="IBeam" />
+        <Controls:TextBoxAutoC x:Name="tbAC1" AvailableItems="{Binding Caca}"
+                               DisplayMemberPath="Key" Text="ee" VerticalAlignment="Top" AskToAdd="tbAC1_AskToAdd" />
+        <Controls:TextBoxAutoC x:Name="tbAC2" AvailableItems="{Binding Caca2}"
+                               Text="ee" VerticalAlignment="Top" AskToAdd="tbAC2_AskToAdd" />
 
-
-
-        <Box_Password:PasswordDec AskDectryption="PasswordDec_AskDectryption"/>
-        <TextBox x:Name="textBox" TextWrapping="Wrap"/>
-
-
-
-
+        <!--
+        
+        <Controls:TextBoxAC AvailableItems="{Binding Caca}"/>
+        -->
     </WrapPanel>
 </Window>
