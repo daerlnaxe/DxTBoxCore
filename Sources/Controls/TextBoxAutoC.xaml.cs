@@ -60,9 +60,7 @@ namespace DxTBoxCore.Controls
 
         #region Selected Item
         public static readonly DependencyProperty SelectedItemProperty = DependencyProperty.Register
-            (nameof(SelectedItem), typeof(object), typeof(TextBoxAutoC)
-
-            );
+            (nameof(SelectedItem), typeof(object), typeof(TextBoxAutoC));
 
         public object SelectedItem
         {
@@ -173,7 +171,66 @@ namespace DxTBoxCore.Controls
         }
 
         #endregion
+        
+        //--- Graphismes
 
+        #region Graphismes
+
+        #region BorderBrush
+
+        /// <summary>
+        /// OverWrite BorderThickness of UserControl
+        /// </summary>
+        public static new readonly DependencyProperty BorderThicknessProperty =
+            DependencyProperty.Register(nameof(BorderThickness), typeof(int), typeof(TextBoxAutoC),
+                new PropertyMetadata(1));
+
+        public new int BorderThickness
+        {
+            get => (int)GetValue(BorderThicknessProperty);
+            set => SetValue(BorderThicknessProperty, value);
+        }
+
+        /// <summary>
+        /// 
+        /// Permit to bind to something, just to unlock validationproperty
+        /// </summary>
+        public static readonly new DependencyProperty BorderBrushProperty =
+            DependencyProperty.Register(nameof(BorderBrush), typeof(Brush), typeof(TextBoxAutoC),
+                new UIPropertyMetadata(Brushes.DarkGray));
+
+        public new Brush BorderBrush
+        {
+            get => (Brush)GetValue(BorderBrushProperty);
+            set => SetValue(BorderBrushProperty, value);
+        }
+
+
+        /*
+        private static void OnBorderBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            PasswordExt passExt = d as PasswordExt;
+            passExt.OnBorderBrushChanged(e);
+        }
+        
+        private void OnBorderBrushChanged(DependencyPropertyChangedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }*/
+        #endregion
+
+        #region Padding
+        public static readonly new DependencyProperty PaddingProperty = DependencyProperty.Register(
+            nameof(Padding), typeof(Thickness), typeof(TextBoxAutoC));
+
+        public new Thickness Padding
+        {
+            get => (Thickness)GetValue(PaddingProperty);
+            set => SetValue(PaddingProperty, value);
+        }
+        #endregion
+
+        #endregion Graphismes
 
         // ---
 
@@ -278,14 +335,13 @@ namespace DxTBoxCore.Controls
 
         private void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Complete_TextBox();
+            Complete_TextBox();             
         }
 
         private void Complete_TextBox()
         {
             if (SelectedItem != null)
                 tBox.Text = _Type.GetProperty(DisplayMemberPath).GetValue(SelectedItem).ToString();
-
         }
 
         private void Add_Value(object sender, RoutedEventArgs e)

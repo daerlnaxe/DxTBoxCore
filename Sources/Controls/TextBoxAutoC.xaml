@@ -5,27 +5,51 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DxTBoxCore.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="120" d:DesignWidth="800"
-             Background="White"             
-             Width="120"              
+             d:DesignHeight="25" d:DesignWidth="120"
              Loaded="UserControl_Loaded" 
-             VerticalAlignment="Top" HorizontalAlignment="Left"    
+             BorderBrush="Transparent" BorderThickness="0"
+             HorizontalAlignment="Left"
              >
+    <!-- Ne pas mettre
+    - Taille
+    - Horitontal/Vertival alignment
+    
+    -->
     <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
         <Style TargetType="ListBoxItem">
             <EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick"/>
         </Style>
     </UserControl.Resources>
-    <Border BorderBrush="LightGray" BorderThickness="1">
+    <Border BorderThickness="{Binding Path=BorderThickness,
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:TextBoxAutoC},
+            FallbackValue=1, TargetNullValue=5
+            }"
+        BorderBrush="{Binding Path=BorderBrush,
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:TextBoxAutoC},
+            FallbackValue=Black, TargetNullValue=Yellow
+            }"                 
+            Padding="0"
+            >
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
-                <ColumnDefinition Width="25"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="tBox" KeyUp="tBox_KeyUp" Background="Transparent" BorderBrush="Transparent" BorderThickness="0"/>
+            <TextBox x:Name="tBox"
+                     KeyUp="tBox_KeyUp"
+                     Padding="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:TextBoxAutoC}}"
+                     Text="123"
+                     
+                     VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                     />
             <Button Grid.Column="1" 
-                    Height="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualWidth}"
                     Click="Add_Value"
+                    Width="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight}"
                     />
             
             <!--        
@@ -36,11 +60,15 @@
             <Popup x:Name="pUP" PlacementTarget="{Binding ElementName=tBox}" Placement="Bottom">
                 <ListBox x:Name="lBox2"
                      ItemsSource="{Binding FilteredItems, RelativeSource={RelativeSource AncestorType=local:TextBoxAutoC}}"
-                     SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType=local:TextBoxAutoC}}"
-                     SelectionChanged="lBox2_SelectionChanged" KeyUp="lBox2_KeyUp"
+                     SelectedItem="{Binding SelectedItem,
+                            RelativeSource={RelativeSource AncestorType=local:TextBoxAutoC},
+                            UpdateSourceTrigger=PropertyChanged
+                            }"
+                         KeyUp="lBox2_KeyUp"
                      />
 
                 <!--
+                     SelectionChanged="lBox2_SelectionChanged"
             -->
             </Popup>
         </Grid>

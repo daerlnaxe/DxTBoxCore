@@ -33,11 +33,10 @@ namespace DxTBoxCore
         private string _Value;
         public ref string Value =>ref _Value;
 
-        public Dictionary<string, int> Caca { get; set; } = new Dictionary<string, int>() 
-        { 
-            { "mee",0 },
-            { "bluu",1 }
-        };
+        KeyValuePair<string, int> one = new KeyValuePair<string, int>("mee",0);
+        KeyValuePair<string, int> two = new KeyValuePair<string, int>("bluu",1);
+
+        public List<KeyValuePair<string, int>> Caca { get; set; } = new List<KeyValuePair<string, int>>();
         
         public ObservableCollection<string> Caca2 { get; set; } = new ObservableCollection<string>() 
         { 
@@ -45,20 +44,37 @@ namespace DxTBoxCore
             "bluu2",
         };
 
+        private object _SelectedItem;
+        public object SelectedItem
+        {
+            get => _SelectedItem;
+            set
+            {
+                Debug.WriteLine($"set: {value}");
+                _SelectedItem = value;
+            }
+        }
+
         /// <summary>
         /// Lanceur
         /// </summary>
         [STAThread]
         public static void Main()
         {
+            
             new Window1().ShowDialog();
+
         }
 
         
 
         public Window1()
         {
+            Caca.Add(one);
+            Caca.Add(two);
+            SelectedItem = two;
             InitializeComponent();
+            tbAC1.pUP.IsOpen = true;
             DataContext = this;
             //tbAC1.AvailableItems2 = Caca2;
         }
@@ -109,8 +125,6 @@ namespace DxTBoxCore
 
                 },*/
                 TaskToRun = new TestProgressCollec(),
-
-
             };
 
 
@@ -205,12 +219,6 @@ namespace DxTBoxCore
             pass.ClearPassword = pass.EncPassword;
                   }
 
-        private void tbAC1_AskToAdd(object sender, RoutedEventArgs e)
-        {
-            Caca = new Dictionary<string, int>(Caca);
-            Caca.Add("areuh", 3);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Caca)));
-        }
 
         private void tbAC2_AskToAdd(object sender, RoutedEventArgs e)
         {

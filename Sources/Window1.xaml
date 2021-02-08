@@ -28,11 +28,17 @@
         <TextBox x:Name="tBox" Text="{Binding Value, Mode=OneWay}" TextWrapping="Wrap" Width="120"/>
 
         <Box:PasswordDec AskDectryption="PasswordDec_AskDectryption"/>
-        <Controls:Textbox_AC ItemsSource="{Binding Caca}" DisplayMemberPath="Value" Cursor="IBeam" />
-        <Controls:TextBoxAutoC x:Name="tbAC1" AvailableItems="{Binding Caca}"
-                               DisplayMemberPath="Key" Text="ee" VerticalAlignment="Top" AskToAdd="tbAC1_AskToAdd" />
+        <Controls:Textbox_AC ItemsSource="{Binding Caca}" DisplayMemberPath="Value" Cursor="IBeam"/>
+        <Controls:TextBoxAutoC x:Name="tbAC1" Width="120"
+                               AvailableItems="{Binding Caca}"
+                               DisplayMemberPath="Key" Text="ee" 
+                               SelectedItem="{Binding SelectedItem}"
+                               
+                               />
         <Controls:TextBoxAutoC x:Name="tbAC2" AvailableItems="{Binding Caca2}"
-                               Text="ee" VerticalAlignment="Top" AskToAdd="tbAC2_AskToAdd" />
+                               Text="eezdazdazdazdzadadzazdazd" 
+                               AskToAdd="tbAC2_AskToAdd" />
+        <TextBox x:Name="textBox" Text="TextBox" TextWrapping="Wrap" Width="120"/>
 
         <!--
         
