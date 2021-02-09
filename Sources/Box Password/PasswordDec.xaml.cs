@@ -23,7 +23,7 @@ namespace DxTBoxCore.Box_Password
     /// </remarks>
     public partial class PasswordDec : UserControl
     {
-        public string EncPassword
+        public string EncryptedPass
         {
             get => pwdEncPassword.Password;
             set => pwdEncPassword.Password = value;

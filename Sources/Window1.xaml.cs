@@ -216,7 +216,7 @@ namespace DxTBoxCore
         private void PasswordDec_AskDectryption(object sender, RoutedEventArgs e)
         {
             PasswordDec pass = (PasswordDec)sender;
-            pass.ClearPassword = pass.EncPassword;
+            pass.ClearPassword = pass.EncryptedPass;
                   }
 
 

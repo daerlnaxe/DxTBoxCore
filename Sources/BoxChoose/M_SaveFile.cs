@@ -8,6 +8,10 @@ namespace DxTBoxCore.BoxChoose
     {
         public new ChooseMode Mode => ChooseMode.Folder;
 
-        public string FileValue { get; set; } = Languages.DxTBLang.New_Doc;
+        public string FileValue 
+        {
+            get;
+            set;
+        } = Languages.DxTBLang.New_Doc;
     }
 }

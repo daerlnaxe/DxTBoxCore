@@ -34,27 +34,15 @@ namespace DxTBoxCore.Controls
         #region Text
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register(nameof(Text), typeof(string), typeof(TextBoxAutoC),
-                new PropertyMetadata("Hello Dolly", new PropertyChangedCallback(OnTextChanged)));
+                new FrameworkPropertyMetadata("Hello Dolly", FrameworkPropertyMetadataOptions.BindsTwoWayByDefault ));
 
         public string Text
         {
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
+        #endregion
 
-
-
-        private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            TextBoxAutoC me = (TextBoxAutoC)d;
-            me.OnTextChanged(e);
-        }
-
-        private void OnTextChanged(DependencyPropertyChangedEventArgs e)
-        {
-            tBox.Text = (string)e.NewValue;
-        }
-        #endregion Text
 
         // ---
 
@@ -110,12 +98,16 @@ namespace DxTBoxCore.Controls
 
         private void OnAvailableItemsChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue == null)
+            if (e.NewValue == null )
                 return;
 
             FilteredItems.Clear();
             foreach (object o in (IEnumerable)e.NewValue)
                 FilteredItems.Add(o);
+
+            // todo trouver peut être quelque chose de plus propre
+            if (FilteredItems.Count == 0)
+                return;
 
             _Type = FilteredItems[0].GetType();
             _aProperties = _Type.GetProperties();
@@ -341,7 +333,10 @@ namespace DxTBoxCore.Controls
         private void Complete_TextBox()
         {
             if (SelectedItem != null)
+            {
                 tBox.Text = _Type.GetProperty(DisplayMemberPath).GetValue(SelectedItem).ToString();
+                pUP.IsOpen = false;
+            }
         }
 
         private void Add_Value(object sender, RoutedEventArgs e)
