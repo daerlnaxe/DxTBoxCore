@@ -141,6 +141,9 @@
   <data name="Downloads" xml:space="preserve">
     <value>Downloads</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>

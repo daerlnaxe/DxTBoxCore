@@ -31,15 +31,15 @@ namespace DxTBoxCore
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _Value;
-        public ref string Value =>ref _Value;
+        public ref string Value => ref _Value;
 
-        KeyValuePair<string, int> one = new KeyValuePair<string, int>("mee",0);
-        KeyValuePair<string, int> two = new KeyValuePair<string, int>("bluu",1);
+        KeyValuePair<string, int> one = new KeyValuePair<string, int>("mee", 0);
+        KeyValuePair<string, int> two = new KeyValuePair<string, int>("bluu", 1);
 
         public List<KeyValuePair<string, int>> Caca { get; set; } = new List<KeyValuePair<string, int>>();
-        
-        public ObservableCollection<string> Caca2 { get; set; } = new ObservableCollection<string>() 
-        { 
+
+        public ObservableCollection<string> Caca2 { get; set; } = new ObservableCollection<string>()
+        {
             "mee2",
             "bluu2",
         };
@@ -47,7 +47,12 @@ namespace DxTBoxCore
         private object _SelectedItem;
         public object SelectedItem
         {
-            get => _SelectedItem;
+            get
+            {
+                Debug.WriteLine("Selecteditem get");
+
+                return _SelectedItem;
+            }
             set
             {
                 Debug.WriteLine($"set: {value}");
@@ -55,18 +60,32 @@ namespace DxTBoxCore
             }
         }
 
+        public object ChoCho 
+        {
+            get
+            {
+                Debug.WriteLine("Chocho Get");
+                return null;
+            }
+            set
+            {
+                Debug.WriteLine("Chocho set");
+            }
+        }
+
+
         /// <summary>
         /// Lanceur
         /// </summary>
         [STAThread]
         public static void Main()
         {
-            
+
             new Window1().ShowDialog();
 
         }
 
-        
+
 
         public Window1()
         {
@@ -207,7 +226,7 @@ namespace DxTBoxCore
             _Value = "merde";
             //tBExt.Text = Value;
             //tBExt.SetText(ref _Value);
-         //   PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
+            //   PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
 
             _Value = "rien";
             //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
@@ -217,7 +236,7 @@ namespace DxTBoxCore
         {
             PasswordDec pass = (PasswordDec)sender;
             pass.ClearPassword = pass.EncryptedPass;
-                  }
+        }
 
 
         private void tbAC2_AskToAdd(object sender, RoutedEventArgs e)

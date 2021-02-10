@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -48,14 +50,43 @@ namespace DxTBoxCore.Controls
 
         #region Selected Item
         public static readonly DependencyProperty SelectedItemProperty = DependencyProperty.Register
-            (nameof(SelectedItem), typeof(object), typeof(TextBoxAutoC));
+            (nameof(SelectedItem), typeof(object), typeof(TextBoxAutoC), new FrameworkPropertyMetadata(null,
+                
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
+        /// <summary>
+        /// Selected Item 
+        /// </summary>
+        /// <remarks>
+        /// See also ChosenItem
+        /// </remarks>
+        [Description("Selected Item when focus is on an element, two way")]
+        [Category("Custom")]
         public object SelectedItem
         {
             get => GetValue(SelectedItemProperty);
             set => SetValue(SelectedItemProperty, value);
         }
         #endregion Selected Item
+
+        // ---
+
+        /*
+        #region Chosen Item (different from selected)
+        public static readonly DependencyProperty ChosenItemProperty = DependencyProperty.Register
+            (nameof(ChosenItem), typeof(object), typeof(TextBoxAutoC),
+            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+
+        [Description("Chosen item when double click/enter on an element")]
+        [Category("Custom")]
+        public object ChosenItem
+        {
+            get => GetValue(ChosenItemProperty);
+            set => SetValue(ChosenItemProperty, value);
+        }
+        #endregion 
+        */
 
         // --- 
 
@@ -68,6 +99,7 @@ namespace DxTBoxCore.Controls
                 new PropertyChangedCallback(OnAvailableItemsChanged)/*,
                 new CoerceValueCallback(OnBleble)*/));
 
+        [Obsolete]
         private static object OnBleble(DependencyObject d, object baseValue)
         {
             if (baseValue != null)
@@ -78,6 +110,8 @@ namespace DxTBoxCore.Controls
             //throw new NotImplementedException();
         }
 
+        [Description("Available items used to find a value")]
+        [Category("Custom")]
         public IEnumerable AvailableItems
         {
             get => (IEnumerable)GetValue(AvailableItemsProperty);
@@ -120,6 +154,8 @@ namespace DxTBoxCore.Controls
 
         //public IEnumerable<object> AvailableItems2 { get; set; }
 
+        [Description("List of Items filtered from available items by the field's value")]
+        [Category("Custom")]
         public ObservableCollection<object> FilteredItems { get; set; } = new ObservableCollection<object>();
 
 
@@ -132,6 +168,8 @@ namespace DxTBoxCore.Controls
             nameof(DisplayMemberPath), typeof(string), typeof(TextBoxAutoC),
             new PropertyMetadata(null, new PropertyChangedCallback(OnDisplayMemberPathChanged)));
 
+        [Description("Indicate wich field showing")]
+        [Category("Custom")]
         public string DisplayMemberPath
         {
             get => (string)GetValue(DisplayMemberPathProperty);
@@ -312,6 +350,7 @@ namespace DxTBoxCore.Controls
             if (e.Key == Key.Enter)
             {
                 Complete_TextBox();
+                //ChosenItem = SelectedItem;
             }
             else if (e.Key == Key.Left)
             {
@@ -327,9 +366,13 @@ namespace DxTBoxCore.Controls
 
         private void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Complete_TextBox();             
+            Complete_TextBox();
+            //ChosenItem = SelectedItem;
         }
 
+        /// <summary>
+        /// Complete textbox with the element chosen
+        /// </summary>
         private void Complete_TextBox()
         {
             if (SelectedItem != null)

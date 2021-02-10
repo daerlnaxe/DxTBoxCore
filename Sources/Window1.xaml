@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DxTBoxCore"
         xmlns:Box="clr-namespace:DxTBoxCore.Box_Password"
-        xmlns:Controls="clr-namespace:DxTBoxCore.Controls"
+        xmlns:ctrl="clr-namespace:DxTBoxCore.Controls"
+        xmlns:DxCtrl="clr-namespace:DxCCtrl;assembly=DxCoreControls"
+        xmlns:DxTb="clr-namespace:DxCCtrl.TextBoxS;assembly=DxCoreControls"
+    xmlns:Buttons="clr-namespace:DxCCtrl.Buttons;assembly=DxCCtrl"
     x:Class="DxTBoxCore.Window1"
         mc:Ignorable="d"
     d:Background="AliceBlue"
@@ -28,21 +31,30 @@
         <TextBox x:Name="tBox" Text="{Binding Value, Mode=OneWay}" TextWrapping="Wrap" Width="120"/>
 
         <Box:PasswordDec AskDectryption="PasswordDec_AskDectryption"/>
-        <Controls:Textbox_AC ItemsSource="{Binding Caca}" DisplayMemberPath="Value" Cursor="IBeam"/>
-        <Controls:TextBoxAutoC x:Name="tbAC1" Width="120"
-                               AvailableItems="{Binding Caca}"
-                               DisplayMemberPath="Key" Text="ee" 
-                               SelectedItem="{Binding SelectedItem}"
-                               
-                               />
-        <Controls:TextBoxAutoC x:Name="tbAC2" AvailableItems="{Binding Caca2}"
-                               Text="eezdazdazdazdzadadzazdazd" 
-                               AskToAdd="tbAC2_AskToAdd" />
-        <TextBox x:Name="textBox" Text="TextBox" TextWrapping="Wrap" Width="120"/>
+
 
         <!--
         
         <Controls:TextBoxAC AvailableItems="{Binding Caca}"/>
         -->
+        <!--
+        
+        <DxTb:TextboxAC />
+        <DxTb:TextboxAC ItemsSource="{Binding Caca}" DisplayMemberPath="Value" Cursor="IBeam"/>
+        -->
+
+        <ctrl:TextBoxAutoC x:Name="tbAC1" Width="120"
+                               AvailableItems="{Binding Caca}"
+                               DisplayMemberPath="Key" Text="ee" 
+                               SelectedItem="{Binding SelectedItem}"                               
+                               />
+        <ctrl:TextBoxAutoC x:Name="tbAC2" AvailableItems="{Binding Caca2}"
+                               Text="eezdazdazdazdzadadzazdazd" 
+                               AskToAdd="tbAC2_AskToAdd" />
+        <TextBox x:Name="textBox" Text="TextBox" TextWrapping="Wrap" Width="120"/>
+        <Button x:Name="button1" Content="Button"/>
+
+
+        <Buttons:ImgButton x:Name="imgButton" Content="ImgButton"/>
     </WrapPanel>
 </Window>

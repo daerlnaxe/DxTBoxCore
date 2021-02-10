@@ -133,6 +133,15 @@ namespace DxTBoxCore.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Error.
         /// </summary>
         public static string Error {

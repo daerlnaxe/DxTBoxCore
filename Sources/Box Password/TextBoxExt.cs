@@ -158,11 +158,9 @@ namespace DxTBoxCore.Box_Password
         }
 
         public static readonly DependencyProperty TickBrushProperty =
-    DependencyProperty.RegisterAttached(
-        "TickBrush",
-        typeof(Brush),
-        typeof(TextBoxExt),
-        new FrameworkPropertyMetadata(Brushes.Black));
+            DependencyProperty.RegisterAttached(
+                "TickBrush", typeof(Brush), typeof(TextBoxExt),
+                new FrameworkPropertyMetadata(Brushes.Black));
 
         #endregion Timer;
     }

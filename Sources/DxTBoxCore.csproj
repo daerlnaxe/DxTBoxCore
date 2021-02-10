@@ -71,6 +71,9 @@ Free to use, share, distribution</Description>
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DxCoreControls\Source\DxCCtrl.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\Bureaux40.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

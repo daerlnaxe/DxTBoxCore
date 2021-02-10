@@ -54,7 +54,7 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <Button Style="{DynamicResource BasicButton}"/>
+        <Button Style="{DynamicResource BasicButton}" IsTabStop="False"/>
 
     </Grid>
 </UserControl>
