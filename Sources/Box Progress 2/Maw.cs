@@ -12,13 +12,6 @@ namespace DxTBoxCore.Box_Progress
     */
     public class Maw : A_Progress, I_ASBase/*, I_TProgressD*/
     {
-        /*public event DoubleHandler UpdateProgress;
-        public event DoubleHandler MaximumProgress;
-        public event MessageHandler UpdateStatus;
-        public event DoubleHandler UpdateProgressT;
-        public event MessageHandler UpdateStatusT;
-        public event DoubleHandler MaximumProgressT;
-        */
 
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
 

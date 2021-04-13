@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace DxTBoxCore.Box_Progress
 {
-    class MawEvo: A_ProgressD, I_RProgressD, I_TProgressD
+    class MawEvo: A_ProgressD, I_ASBase
     {
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
 

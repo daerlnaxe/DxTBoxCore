@@ -158,7 +158,7 @@ namespace DxTBoxCore
             DxAsCollecProgress db2 = new DxAsCollecProgress(DxTBLang.File)
             {
                 Model = maou,
-                Launcher = BasicLauncher<Maw>.Create(maou, () => Foo(maou, "Il est passé par ici")),
+                Launcher = BasicLauncher<MawEvo>.Create(maou, () => Foo(maou, "Il est passé par ici")),
                 /*
                 new Maou<string, object>()
                 {
