@@ -12,7 +12,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Threading;
 
-namespace DxTBoxCore.Box_Progress.Basix
+namespace DxTBoxCore.Async_Box_Progress.Basix
 {
     /// <summary>
     /// Model to communicate with a window progress managing a collection
@@ -25,9 +25,33 @@ namespace DxTBoxCore.Box_Progress.Basix
     /// le texte
     /// </remarks>
     /// 
-    public abstract class A_ProgressL : I_RProgressLA, I_TProgress
+    public abstract class A_ProgressPersist : A_Progress, I_TProgress
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        protected string _Status;
+        public override string Status
+        {
+            get { return _Status; }
+            set
+            {
+                _Status += value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public override void SetStatus(object sender, string value)
+        {
+            Status = $"{value} ";
+        }
+
+        public override void SetStatusNL(object sender, string value)
+        {
+            Status = $"{value}\r\n";
+        }
+
+
+        /*
+            public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             try
@@ -76,7 +100,7 @@ namespace DxTBoxCore.Box_Progress.Basix
         }
 
 
-
+/*
         public virtual ObservableCollection<string> CurrentOP
         {
             get { return _collec; }
@@ -104,38 +128,38 @@ namespace DxTBoxCore.Box_Progress.Basix
 
             }
         }
+            */
+        /*
+    public A_ProgressL()
+    {
+        // Important to make a thread-safe update of the collection
+        BindingOperations.EnableCollectionSynchronization(_collec, _syncLock);
+    }
 
-
-        public A_ProgressL()
+    public void AddToCollec(string value)
+    {
+        lock (_syncLock)
         {
-            // Important to make a thread-safe update of the collection
-            BindingOperations.EnableCollectionSynchronization(_collec, _syncLock);
+            CurrentOP.Add(value);
         }
+        OnPropertyChanged(nameof(Collec));   
+    }*/
+        /*
+    public virtual void SetProgress(object sender, double value)
+    {
+        CurrentProgress = value;
+    }
 
-        public void AddToCollec(string value)
-        {
-            lock (_syncLock)
-            {
-                CurrentOP.Add(value);
-            }
-            OnPropertyChanged(nameof(Collec));   
-        }
+    public virtual void SetStatus(object sender, string value)
+    {            
+        AddToCollec($"{value}");
+    }
 
-        public virtual void SetProgress(object sender, double value)
-        {
-            CurrentProgress = value;
-        }
+    public virtual void SetMaximum(object sender, double value)
+    {
+        MaxProgress = value;
+    }
 
-        public virtual void SetStatus(object sender, string value)
-        {            
-            AddToCollec($"{value}");
-        }
-
-        public virtual void SetMaximum(object sender, double value)
-        {
-            MaxProgress = value;
-        }
-
-
+        */
     }
 }

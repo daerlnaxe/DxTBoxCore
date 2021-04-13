@@ -1,5 +1,4 @@
 ﻿using DxLocalTransf.Progress;
-using DxTBoxCore.Box_Progress.Basix;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,25 +9,26 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace DxTBoxCore.Box_Progress.Basix
+namespace DxTBoxCore.Async_Box_Progress.Basix
 {
-    public class A_ProgressLD : A_ProgressL, I_RProgressLD, I_TProgressD
+
+    public class A_ProgressLD : A_ProgressD, I_RProgressD, I_TProgressD
     {
         private double _currentTotal;
-        public virtual double CurrentTotal
+        public new virtual double CurrentTotal
         {
             get => _currentTotal;
             set
             {
 #if DEBUG
-                Debug.WriteLine($"[M_ProgressC] {nameof(CurrentTotal)}: {value}");
+                Debug.WriteLine($"{nameof(A_ProgressLD)} {nameof(CurrentTotal)}: {value}");
 #endif
-                _currentTotal = value;
+                _currentTotal += value;
                 OnPropertyChanged();
             }
         }
 
-
+        /*
         private string _totalStatus;
         public virtual string TotalStatus
         {
@@ -74,7 +74,7 @@ namespace DxTBoxCore.Box_Progress.Basix
             objet.MaximumProgress += MaximumProgress;
         }*/
 
-
+        /*
         public virtual void SetTotalProgress(object sender, double value)
         {
             CurrentTotal = value;
@@ -90,6 +90,7 @@ namespace DxTBoxCore.Box_Progress.Basix
             MaxProgressT = value;
         }
         #endregion
+        */
 
 
 

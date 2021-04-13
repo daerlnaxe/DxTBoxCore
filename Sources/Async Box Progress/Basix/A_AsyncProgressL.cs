@@ -1,17 +1,22 @@
-﻿using System;
+﻿using DxTBoxCore.Async_Box_Progress.Basix;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DxTBoxCore.Box_Progress.Basix
+namespace DxTBoxCore.Async_Box_Progress.Basix
 {
     /// <summary>
-    /// Classe servant à hériter
+    /// Classe servant à hériter, les M_Progress ne doivent pas en hériter
     /// </summary>
-    public abstract class A_AsyncProgress : A_Progress, I_Async
+    public abstract class A_AsyncProgressL : A_ProgressPersistD, I_Async
     {
         public virtual CancellationTokenSource TokenSource { get; set; } = new CancellationTokenSource();
 
         public virtual CancellationToken CancelToken => TokenSource.Token;
+
 
         public virtual bool IsPaused { get; set; }
 
@@ -21,7 +26,6 @@ namespace DxTBoxCore.Box_Progress.Basix
 
         public virtual Task TaskRunning { get; protected set; }
 
-
         // <summary>
         /// Launch task
         /// </summary>
@@ -30,27 +34,25 @@ namespace DxTBoxCore.Box_Progress.Basix
         /// </param>
         public virtual async void Launch_Task(Func<object> Ending, int delay = 50)
         {
+            if (TaskToRun==null)
+                throw new Exception("LaunchTask : you forgot to set a method to launch");
 
+            await Task.Delay(delay);
             //base.TaskRunning = Task.Run(() => base.TaskToRun(base.CancelToken, test), base.TaskToRun.CancelToken);
 
             TaskRunning = Task.Run(
-               async () =>
-                    {
-                        await Task.Delay(delay);
-                        TaskToRun();
-                    }
-                    , CancelToken);
+                () =>
+                {
+                    TaskToRun();
+                }
+                            , CancelToken);
 
             if (Ending != null)
             {
                 var kwa = TaskRunning.ContinueWith((ant) => Ending());
             }
 
-            //await TaskRunning;
-
-            //TaskRunning.ContinueWith((ant) => TaskToRun.Run(), TaskToRun.CancelToken);
         }
-
         public virtual void StopTask()
         {
             TokenSource.Cancel();

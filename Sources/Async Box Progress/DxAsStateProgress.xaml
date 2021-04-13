@@ -1,9 +1,9 @@
-﻿<Window x:Class="DxTBoxCore.Box_Progress.DxAsStateProgress"
+﻿<Window x:Class="DxTBoxCore.Async_Box_Progress.DxAsStateProgress"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DxTBoxCore.Box_Progress"
+        xmlns:local="clr-namespace:DxTBoxCore.Async_Box_Progress"
         xmlns:l="clr-namespace:DxTBoxCore.Languages"
         mc:Ignorable="d"
         Title="DxAsStateP" Height="450" Width="800" Loaded="Window_Loaded"   
@@ -13,27 +13,28 @@
         <CommandBinding Command="local:DxAsStateProgress.OkCommand" CanExecute="CanEx_Ok" Executed="Exec_Ok"/>
     </Window.CommandBindings>
     <DockPanel Margin="10">
-        <!-- Fichiers -->
+        <!-- Fichiers 
         <ListBox DockPanel.Dock="Left"/>
+        -->
         <!-- Buttons -->
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="{x:Static l:DxTBLang.Stop}" Style="{StaticResource btStyle}" Click="Stop_Click"/>
-            <Button Content="{x:Static l:DxTBLang.OK}" Style="{StaticResource btStyle}" Command="local:DxAsStateProgress.OkCommand"/>
+            <Button Content="{x:Static l:DxTBLang.Stop}"  Click="Stop_Click"/>
+            <Button Content="{x:Static l:DxTBLang.OK}"  Command="local:DxAsStateProgress.OkCommand"/>
         </StackPanel>
         <!-- Progression -->
         <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
             <ProgressBar 
-                Value="{Binding CurrentProgress}" Maximum="{Binding MaxProgress}"
+                Value="{Binding Progress}" Maximum="{Binding MaxValue}"
                 Orientation="Vertical" Width="20" Margin="5"
                          />
             <ProgressBar 
-                Value="{Binding CurrentTotal}" Maximum="{Binding MaxProgressT}"                
+                Value="{Binding ProgressTotal}" Maximum="{Binding MaximumTotal}"                
                 Orientation="Vertical" Width="20" Margin="5"
                 />
         </StackPanel>
         <!-- Log -->
         <ScrollViewer>
-            <ItemsControl ItemsSource="{Binding CurrentOP}"/>
+           <TextBox Text="{Binding Status}" IsEnabled="true" AcceptsReturn="True" IsReadOnly="True" />
         </ScrollViewer>
     </DockPanel>
 </Window>

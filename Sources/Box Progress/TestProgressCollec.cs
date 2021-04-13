@@ -14,10 +14,12 @@ namespace DxTBoxCore.Box_Progress
     {
         public event DoubleHandler UpdateProgress;
         public event MessageHandler UpdateStatus;
+        public event MessageHandler UpdateStatusNL;
         public event DoubleHandler MaximumProgress;
 
         public event DoubleHandler UpdateProgressT;
         public event MessageHandler UpdateStatusT;
+        public event MessageHandler UpdateStatusTNL;
         public event DoubleHandler MaximumProgressT;
 
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
@@ -42,11 +44,12 @@ namespace DxTBoxCore.Box_Progress
             try
             {
                 // Thread.Sleep(500);
-
+                MaximumProgress?.Invoke(this, 100);
+                MaximumProgressT?.Invoke(this, 100);
                 // Boucle Totale
                 for (int i = 0; i < 10; i++)
                 {
-                    UpdateStatusT?.Invoke(this, "New Task");
+                    UpdateStatusTNL?.Invoke(this, "New Task");
                     UpdateProgressT?.Invoke(this, i * 10);
 
                     for (int j = 0; j < 50; j++)
@@ -58,7 +61,7 @@ namespace DxTBoxCore.Box_Progress
                             return null;
 
                         UpdateProgress?.Invoke(this, j * 2);
-                        UpdateStatus?.Invoke(this, $"{DxTBLang.File} {i}.{j}");
+                        UpdateStatusNL?.Invoke(this, $"{DxTBLang.File} {i}.{j}");
                         // db2.CurrentOP = $"{DxTBLang.File} {i}";
 
 

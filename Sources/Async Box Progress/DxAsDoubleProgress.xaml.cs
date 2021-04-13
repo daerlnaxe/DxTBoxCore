@@ -1,12 +1,12 @@
 ﻿using DxLocalTransf.Progress;
-using DxLocalTransf.Progress.ToImp;
-using DxTBoxCore.Box_Progress.Basix;
+using DxTBoxCore.Async_Box_Progress.Basix;
 using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,65 +14,69 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace DxTBoxCore.Box_Progress
+namespace DxTBoxCore.Async_Box_Progress
 {
     /// <summary>
-    /// Logique d'interaction pour DxAsStateP.xaml
+    /// 
     /// </summary>
-    public partial class DxAsStateProgress : Window, I_ASGraph
+    /// <remarks>
+    /// </remarks>
+    /// <date>
+    /// 29/03/2021
+    /// </date>
+    public partial class DxAsDoubleProgress : Window, I_ASGraph
     {
+        #region Hide Close button
+        private const int GWL_STYLE = -16;
+        private const int WS_SYSMENU = 0x80000;
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+        [DllImport("user32.dll")]
+        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        public bool HideCloseButton { get; set; }
+        #endregion
 
         public string TaskName { get; set; }
 
-        public static readonly RoutedUICommand OkCommand = new RoutedUICommand(DxTBLang.OK, "OK", typeof(DxAsStateProgress));
 
-        /*
-        public I_ASBase TaskToRun
-        {
-            get => Model.TaskToRun;
-            set => Model.SetTaskToRun(value);
-        }*/
+        public I_RProgressD Model { get; set; }
 
-        public bool AutoClose { get; set; } = false;
+        public I_Async Launcher { get; set; }
 
-        I_RProgressLD Model { get; set; }
 
-        public I_AsyncProgress Launcher { get; set; }
-
-        public DxAsStateProgress()
+        public DxAsDoubleProgress()
         {
             InitializeComponent();
+            bool tooTest = true;
+            int res = tooTest ? 1 : -1;
         }
+
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (Launcher == null)
+                throw new ArgumentNullException(nameof(Launcher));
+
+            if (HideCloseButton)
+            {
+                // Remove close button
+                var hwnd = new WindowInteropHelper(this).Handle;
+                SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
+            }
+
+
             DataContext = Model;
-            if (AutoClose)
-                Launcher.Launch_Task(Ending: this.AsyncClose);
-            else
-                Launcher.Launch_Task(null);
-        }
 
-        private void CanEx_Ok(object sender, CanExecuteRoutedEventArgs e)
-        {
-            if(Model != null)
-            e.CanExecute = Launcher.TaskRunning.Status == TaskStatus.RanToCompletion;
-        }
+            Launcher.Launch_Task(this.AsyncClose);
 
-        private void Exec_Ok(object sender, ExecutedRoutedEventArgs e)
-        {
-            DialogResult = true;
-            this.Close();
-        }
-
-        private void Stop_Click(object sender, RoutedEventArgs e)
-        {
-            Launcher.TokenSource.Cancel();
         }
 
 
@@ -96,7 +100,7 @@ namespace DxTBoxCore.Box_Progress
             // Fermeture normale
             if (Launcher.TaskRunning.Status == TaskStatus.Canceled
                 || Launcher.TaskRunning.Status == TaskStatus.RanToCompletion
-                || Launcher.CancelToken.IsCancellationRequested)
+                || Launcher.TokenSource.IsCancellationRequested)
             {
                 DialogResult = true;
                 return;
@@ -115,9 +119,6 @@ namespace DxTBoxCore.Box_Progress
             Launcher.IsPaused = false;
         }
 
-        private void Window_StateChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }

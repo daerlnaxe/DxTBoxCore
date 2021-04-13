@@ -1,12 +1,12 @@
 ﻿using DxLocalTransf.Progress;
-using DxTBoxCore.Box_Progress.Basix;
+using DxTBoxCore.Async_Box_Progress.Basix;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DxTBoxCore.Box_Progress
+namespace DxTBoxCore.Async_Box_Progress
 {
 
     /// <summary>

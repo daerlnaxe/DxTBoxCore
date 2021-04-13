@@ -6,21 +6,21 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace DxTBoxCore.Box_Progress.Basix
+namespace DxTBoxCore.Async_Box_Progress.Basix
 {
     /// <summary>
     /// Classe abstraite qui implémente les propriétés et méthodes pour siganler les progrès
     /// </summary>
-    public class A_ProgressD : A_Progress, I_RProgressD, I_TProgressD
+    public class A_ProgressEphD : A_ProgressEph, I_RProgressD, I_TProgressD
     {
         private double _currentTotal;
-        public virtual double CurrentTotal
+        public virtual double ProgressTotal
         {
             get => _currentTotal;
             set
             {
 #if DEBUG
-                Debug.WriteLine($"[M_ProgressC] {nameof(CurrentTotal)}: {value}");
+                Debug.WriteLine($"[M_ProgressC] {nameof(ProgressTotal)}: {value}");
 #endif
                 _currentTotal = value;
                 OnPropertyChanged();
@@ -28,16 +28,25 @@ namespace DxTBoxCore.Box_Progress.Basix
         }
 
 
-        private string _totalStatus;
+        private string _TotalStatus;
+        private bool _WriteToEndT;
         public virtual string TotalStatus
         {
-            get => _totalStatus;
+            get => _TotalStatus;
             set
             {
-#if DEBUG
-                Debug.WriteLine($"[M_ProgressC] {nameof(TotalStatus)}: {value}");
-#endif
-                _totalStatus = value;
+                if (_WriteToEndT)
+                {
+                    Debug.WriteLine($"[{nameof(TotalStatus)}] CurrentProgress: {value}");
+                    _TotalStatus = value;
+
+                }
+                else
+                {
+                    _TotalStatus += value;
+                    Debug.Write(value);
+                }
+                _TotalStatus = value;
                 OnPropertyChanged();
             }
         }
@@ -48,14 +57,14 @@ namespace DxTBoxCore.Box_Progress.Basix
         /// <remarks>
         /// Normalement inutile de mettre à jour en temps réel
         /// </remarks>
-        public virtual double MaxProgressT
+        public virtual double MaximumTotal
         {
             get => _maxProgressT;
             set
             {
                 _maxProgressT = value;
 #if DEBUG
-                Debug.WriteLine($"[M_ProgressC] {nameof(MaxProgressT)}: {value}");
+                Debug.WriteLine($"[M_ProgressC] {nameof(MaximumTotal)}: {value}");
 #endif
                 OnPropertyChanged();
             }
@@ -76,18 +85,27 @@ namespace DxTBoxCore.Box_Progress.Basix
 
         public virtual void SetTotalProgress(object sender, double value)
         {
-            CurrentTotal = value;
+            ProgressTotal = value;
         }
 
         public virtual void SetTotalStatus(object sender, string value)
         {
             TotalStatus = value;
+            _WriteToEndT = false;
+        }
+
+        public void SetTotalStatusNL(object sender, string value)
+        {
+            TotalStatus = value;
+            _WriteToEndT = true;
         }
 
         public void SetTotalMaximum(object sender, double value)
         {
-            MaxProgressT = value;
+            MaximumTotal = value;
         }
+
+
         #endregion
 
 

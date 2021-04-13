@@ -1,13 +1,12 @@
 ﻿using DxLocalTransf.Progress;
 using DxLocalTransf.Progress.ToImp;
-using DxTBoxCore.Box_Progress.Basix;
+using DxTBoxCore.Async_Box_Progress.Basix;
 using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,48 +18,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace DxTBoxCore.Box_Progress
+namespace DxTBoxCore.Async_Box_Progress
 {
     /// <summary>
-    /// Logique d'interaction pour DxAsCollecProgress.xaml
+    /// Logique d'interaction pour DxAsStateP.xaml
     /// </summary>
-    /// <remarks>
-    /// Permet le traitement en asynchrone d'une tâche
-    /// </remarks>
-    public partial class DxAsCollecProgress : Window, I_ASGraph
+    public partial class DxAsStateProgress : Window, I_ASGraph
     {
-        #region No signal
+
         public string TaskName { get; set; }
-        /*
-        /// <summary>
-        /// Maximum for the current bar progress
-        /// </summary>
-        public int MaxCP { get; set; } = 100;
 
-        /// <summary>
-        /// Maximum for the total bar progress
-        /// </summary>
-        public int MaxTP { get; set; } = 100;
-        */
-        #endregion
-
-        //public I_AsyncProgress Model { get; set; } = new M_ProgressDL();
-        public I_RProgress Model { get; set; }
-
-        public I_Async Launcher { get; set; }
+        public static readonly RoutedUICommand OkCommand = new RoutedUICommand(DxTBLang.OK, "OK", typeof(DxAsStateProgress));
 
         /*
         public I_ASBase TaskToRun
         {
             get => Model.TaskToRun;
             set => Model.SetTaskToRun(value);
-        }
-        */
+        }*/
 
-        public DxAsCollecProgress(string name)
+        public bool AutoClose { get; set; } = false;
+
+        public I_RProgressD Model { get; set; }
+
+        public I_Async Launcher { get; set; }
+
+        public DxAsStateProgress()
         {
-            TaskName = name;
-
             InitializeComponent();
         }
 
@@ -68,19 +52,29 @@ namespace DxTBoxCore.Box_Progress
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = Model;
-
-            if (Launcher == null)
-                throw new Exception($"{nameof(DxAsCollecProgress)}: {nameof(Launcher)} is null");
-
-            Launcher.Launch_Task(this.AsyncClose);
+            if (AutoClose)
+                Launcher.Launch_Task(Ending: this.AsyncClose);
+            else
+                Launcher.Launch_Task(null);
         }
 
-        /*
-        public new bool? ShowDialog()
+        private void CanEx_Ok(object sender, CanExecuteRoutedEventArgs e)
         {
-            Execute_Code();
-            return base.ShowDialog();
-        }*/
+            if(Model != null)
+            e.CanExecute = Launcher.TaskRunning.Status == TaskStatus.RanToCompletion;
+        }
+
+        private void Exec_Ok(object sender, ExecutedRoutedEventArgs e)
+        {
+            DialogResult = true;
+            this.Close();
+        }
+
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            Launcher.TokenSource.Cancel();
+        }
+
 
         public object AsyncClose()
         {
@@ -92,7 +86,7 @@ namespace DxTBoxCore.Box_Progress
 
         public void OnClosing(object sender, CancelEventArgs e)
         {
-            if(Launcher.TaskRunning.Status == TaskStatus.Faulted)
+            if (Launcher.TaskRunning.Status == TaskStatus.Faulted)
             {
                 MBox.DxMBox.ShowDial(Launcher.TaskRunning.Exception.Message, DxTBLang.Error);
                 DialogResult = false;
@@ -102,7 +96,7 @@ namespace DxTBoxCore.Box_Progress
             // Fermeture normale
             if (Launcher.TaskRunning.Status == TaskStatus.Canceled
                 || Launcher.TaskRunning.Status == TaskStatus.RanToCompletion
-                || Launcher.TokenSource.IsCancellationRequested)
+                || Launcher.CancelToken.IsCancellationRequested)
             {
                 DialogResult = true;
                 return;
@@ -121,5 +115,9 @@ namespace DxTBoxCore.Box_Progress
             Launcher.IsPaused = false;
         }
 
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

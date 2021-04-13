@@ -26,8 +26,9 @@
         <Button Content="PasswordBox" Click="Open_PasswordBox"/>
         <Button Content="PasswordDBox" Click="Open_PasswordDBox"/>
         <Button Content="Simul Simple Progress" Click="Simule_SimpleProgress"/>
-        <Button Content="Simul Simpl+Maou" Click="Simule_SimpleProgressMaou"/>
         <Button Content="Simul Double Progress" Click="Simule_DoubleProgress"/>
+        <Button Content="Simul Simpl+Maou" Click="Simule_SimpleProgressMaou"/>
+        <Button Content="Simul Double+Maou" Click="Simule_DoubleProgressMaou"/>
         <Button x:Name="button" Content="Init Textboxes" Click="InitTB_Click"/>
         <TextBox x:Name="tBox" Text="{Binding Value, Mode=OneWay}" TextWrapping="Wrap" Width="120"/>
 

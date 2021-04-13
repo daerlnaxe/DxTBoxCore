@@ -1,5 +1,6 @@
 ﻿using DxLocalTransf.Progress;
 using DxLocalTransf.Progress.ToImp;
+using DxTBoxCore.Async_Box_Progress;
 using DxTBoxCore.Box_Password;
 using DxTBoxCore.Box_Progress;
 using DxTBoxCore.BoxChoose;
@@ -124,24 +125,6 @@ namespace DxTBoxCore
             cfe.ShowDialog();
         }
 
-        private void Simule_DoubleProgress(object sender, System.Windows.RoutedEventArgs e)
-        {
-            MawEvo maw = new MawEvo();
-            var db2 = new DxAsCollecProgress(DxTBLang.File)
-            {
-                Model = maw,
-                Launcher = BasicLauncher<MawEvo>.Create(maw, ()=> Foo(maw)),
-
-            };
-            /*           TaskToRun = ,
-                           TaskToRun = new TestProgressCollec(),*/
-
-            //db2.Execute_Code();
-            //db2.Show();
-            db2.ShowDialog();
-            //    db2.Model.TaskRunning.Wait();
-
-        }
 
         private void Simule_SimpleProgress(object sender, RoutedEventArgs e)
         {
@@ -149,6 +132,28 @@ namespace DxTBoxCore
 
             Maw maw = new Maw();
             maw.RerouteSignal(tps);
+
+            DxAsProgress window = new DxAsProgress()
+            {
+                Model = maw,
+                Launcher = BasicLauncher<Maw>.Create(maw, () => tps.Run()),
+            };
+            window.ShowDialog();
+        }
+
+        private void Simule_DoubleProgress(object sender, RoutedEventArgs e)
+        {
+            TestProgressCollec tps = new TestProgressCollec();
+
+            MawEvo maw = new MawEvo();
+            maw.RerouteSignal(tps);
+
+            DxAsDoubleProgress window = new DxAsDoubleProgress()
+            {
+                Model = maw,
+                Launcher = BasicLauncher<MawEvo>.Create(maw, () => tps.Run(10)),
+            };
+            window.ShowDialog();
         }
 
         private void Simule_SimpleProgressMaou(object sender, RoutedEventArgs e)
@@ -169,6 +174,24 @@ namespace DxTBoxCore
             db2.ShowDialog();
         }
 
+        private void Simule_DoubleProgressMaou(object sender, System.Windows.RoutedEventArgs e)
+        {
+            MawEvo maw = new MawEvo();
+            var db2 = new DxAsCollecProgress(DxTBLang.File)
+            {
+                Model = maw,
+                Launcher = BasicLauncher<MawEvo>.Create(maw, () => Foo(maw)),
+
+            };
+            /*           TaskToRun = ,
+                           TaskToRun = new TestProgressCollec(),*/
+
+            //db2.Execute_Code();
+            //db2.Show();
+            db2.ShowDialog();
+            //    db2.Model.TaskRunning.Wait();
+
+        }
 
         private object Foo(I_ASBase arg)
         {

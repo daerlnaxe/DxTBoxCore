@@ -1,7 +1,7 @@
 ﻿using DxLocalTransf;
 using DxLocalTransf.Progress;
 using DxLocalTransf.Progress.ToImp;
-using DxTBoxCore.Box_Progress.Basix;
+using DxTBoxCore.Async_Box_Progress.Basix;
 using System.Diagnostics;
 using System.Threading;
 
@@ -10,8 +10,22 @@ namespace DxTBoxCore.Box_Progress
     /*
      * Maw is the answer because Maw is Maw, get a Maw or become a Maw.
     */
-    public class Maw : A_Progress, I_ASBase/*, I_TProgressD*/
+    public class Maw : A_ProgressEph, I_ASBase, I_RProgress/*, I_TProgressD*/
     {
+        public override string Status { get ; set; }
+
+        public override void SetStatus(object sender, string value)
+        {
+            //throw new System.NotImplementedException();
+        }
+
+        public override void SetStatusNL(object sender, string value)
+        {
+            //throw new System.NotImplementedException();
+        }
+
+
+
 
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
 
@@ -19,11 +33,11 @@ namespace DxTBoxCore.Box_Progress
 
         public bool IsPaused { get; set; }
 
-
         public virtual void RerouteSignal<T>(T objet)where T: I_AsyncSig
         {
             objet.UpdateProgress += SetProgress;
             objet.UpdateStatus += SetStatus;
+            objet.UpdateStatusNL += SetStatusNL;
             objet.MaximumProgress += SetMaximum;
         }
 

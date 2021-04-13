@@ -1,14 +1,16 @@
-﻿using System;
+﻿using DxLocalTransf.Progress;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 
-namespace DxTBoxCore.Box_Progress
+namespace DxTBoxCore.Async_Box_Progress.Basix
 {
     /// <summary>
     /// Used by windows to implement a method to safe-thread close it
     /// </summary>
-    [Obsolete("voir I_ASGraph2")]
     interface I_ASGraph
     {
         /// <summary>
@@ -19,14 +21,22 @@ namespace DxTBoxCore.Box_Progress
         /// </example>
         public string TaskName { get; set; }
 
+      //  public I_RProgress Model { get; set; }
+
         /// <summary>
-        /// Function to launch task (see example)
+        /// 
         /// </summary>
-        /// <example>
-        /// Model.Launch_Task();
-        /// Model.TaskRunning.ContinueWith((ant) => this.AsyncClose());
-        /// </example>
-        //void Execute_Code();
+        public I_Async Launcher { get; set; }
+
+        /*/// <summary>
+        /// Task runnig in background
+        /// </summary>
+        Task TaskRunning { get; }*/
+
+        /// <summary>
+        /// Model used that will signal progress
+        /// </summary>
+      //  ToImp.I_ASBase Model { get; }
 
         /// <summary>
         /// Function to close windows without exception (see example)

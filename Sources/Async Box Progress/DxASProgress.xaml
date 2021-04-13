@@ -1,9 +1,9 @@
-﻿<Window x:Class="DxTBoxCore.Box_Progress_2.DxAsProgress"
+﻿<Window x:Class="DxTBoxCore.Async_Box_Progress.DxAsProgress"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DxTBoxCore.Box_Progress_2"
+        xmlns:local="clr-namespace:DxTBoxCore.Async_Box_Progress"
         xmlns:conv="clr-namespace:DxTBoxCore.Converters"
         mc:Ignorable="d"
         Title="W_ASProgress" Height="150" Width="480"
@@ -52,8 +52,8 @@
                 <!-- Barre de progression -->
                 <ProgressBar x:Name="pBar" Grid.Row="1" Grid.ColumnSpan="2"
                     Height="40"
-                    Value="{Binding CurrentProgress, Mode=OneWay}"
-                    Maximum="{Binding TotalProgress, Mode=OneWay}"
+                    Value="{Binding Progress, Mode=OneWay}"
+                    Maximum="{Binding MaxValue, Mode=OneWay}"
                     
                          />
             </Grid>
@@ -62,7 +62,7 @@
                 <MultiBinding Converter="{StaticResource FormatTxt}">
                     <Binding Path="TaskName" RelativeSource="{RelativeSource AncestorType={x:Type Window}}" />
                     <Binding Source=": "/>
-                    <Binding Path="CurrentOP"/>
+                    <Binding Path="Status"/>
                 </MultiBinding>
 
             </TextBlock.Text>

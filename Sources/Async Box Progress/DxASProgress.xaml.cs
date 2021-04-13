@@ -1,6 +1,6 @@
 ﻿using DxLocalTransf.Progress;
-using DxTBoxCore.Box_Progress.Basix;
-using DxTBoxCore.Box_Progress_2;
+using DxTBoxCore.Async_Box_Progress.Basix;
+using DxTBoxCore.Box_Progress;
 using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
 using System;
@@ -20,17 +20,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace DxTBoxCore.Box_Progress
+namespace DxTBoxCore.Async_Box_Progress
 {
     /// <summary>
-    /// 
+    /// Logique d'interaction pour W_ASProgress.xaml
     /// </summary>
-    /// <remarks>
-    /// </remarks>
-    /// <date>
-    /// 29/03/2021
-    /// </date>
-    public partial class DxAsDoubleProgress : Window, Basix.I_ASGraph
+    public partial class DxAsProgress : Window, I_ASGraph
     {
         #region Hide Close button
         private const int GWL_STYLE = -16;
@@ -44,25 +39,24 @@ namespace DxTBoxCore.Box_Progress
         public bool HideCloseButton { get; set; }
         #endregion
 
+        /// <summary>
+        /// Task Name to Show
+        /// </summary>
+        /// <example>
+        /// File
+        /// </example>
         public string TaskName { get; set; }
 
+        public I_RProgress Model { get; set; }
 
-//        public Task TaskRunning { get; private set; }
-
-        // public ToImp.I_Progress Model { get; set; }
-        public I_AsyncProgress Model { get; set; }
+        public I_Async Launcher { get; set; }
 
 
-        //public Func<object> TaskToRun { get; set; }
 
-
-        public DxAsDoubleProgress()
+        public DxAsProgress()
         {
             InitializeComponent();
-            bool tooTest = true;
-            int res = tooTest ? 1 : -1;
         }
-
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -80,50 +74,55 @@ namespace DxTBoxCore.Box_Progress
 
             DataContext = Model;
 
-            Model.Launch_Task(this.AsyncClose);
-
+            Launcher.Launch_Task(this.AsyncClose);
         }
-
 
         public object AsyncClose()
         {
             Debug.WriteLine("AsyncClose");
-            Dispatcher.Invoke(() => this.Close());
+            Dispatcher.Invoke(
+                () =>
+                {
+                    DialogResult = true;
+                    Debug.WriteLine("Dialog result set to true");
+                    this.Close();
+                }
+                );
+
             return null;
         }
 
 
         public void OnClosing(object sender, CancelEventArgs e)
         {
-            if (Model.TaskRunning.Status == TaskStatus.Faulted)
+            Debug.WriteLine("On closing");
+            if (Launcher.TaskRunning.Status == TaskStatus.Faulted)
             {
-                MBox.DxMBox.ShowDial(Model.TaskRunning.Exception.Message, DxTBLang.Error);
+                MBox.DxMBox.ShowDial(Launcher.TaskRunning.Exception.Message, DxTBLang.Error);
                 DialogResult = false;
                 return;
             }
 
             // Fermeture normale
-            if (Model.TaskRunning.Status == TaskStatus.Canceled
-                || Model.TaskRunning.Status == TaskStatus.RanToCompletion
-                || Model.TokenSource.IsCancellationRequested)
+            if (Launcher.TaskRunning.Status == TaskStatus.Canceled
+                || Launcher.TaskRunning.Status == TaskStatus.RanToCompletion
+                || Launcher.TokenSource.IsCancellationRequested)
             {
                 DialogResult = true;
                 return;
             }
 
-            Model.IsPaused = true;
+            Launcher.IsPaused = true;
             e.Cancel = true;
 
             if (MBox.DxMBox.ShowDial(DxTBLang.Q_Want_Close, DxTBLang.Question, E_DxButtons.Yes | E_DxButtons.No) == true)
             {
-                Model.StopTask();
-                Model.TaskRunning.ContinueWith(antecedant => Dispatcher.Invoke(() => this.Close()));
+                Launcher.StopTask();
+                Launcher.TaskRunning.ContinueWith(antecedant => Dispatcher.Invoke(() => this.Close()));
                 DialogResult = false;
             }
 
-            Model.IsPaused = false;
+            Launcher.IsPaused = false;
         }
-
-
     }
 }

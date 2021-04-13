@@ -1,5 +1,5 @@
 ﻿using DxLocalTransf.Progress;
-using DxTBoxCore.Box_Progress.Basix;
+using DxTBoxCore.Async_Box_Progress.Basix;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace DxTBoxCore.Box_Progress
 {
-    class MawEvo: A_ProgressD, I_ASBase
+    class MawEvo: A_ProgressEphD, I_ASBase
     {
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
 
@@ -20,16 +20,15 @@ namespace DxTBoxCore.Box_Progress
 
         public void RerouteSignal<U>(U objet) where U : I_AsyncSigD
         {
-
-
             objet.UpdateProgress += SetProgress;
             objet.UpdateStatus += SetStatus;
+            objet.UpdateStatusNL += SetStatusNL;
             objet.MaximumProgress += SetMaximum;
 
             objet.UpdateProgressT += SetTotalProgress;
             objet.UpdateStatusT += SetTotalStatus;
+            objet.UpdateStatusTNL += SetTotalStatusNL;
             objet.MaximumProgressT += SetTotalMaximum;
-
         }
 
 

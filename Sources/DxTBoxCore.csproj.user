@@ -29,15 +29,15 @@
     <Compile Update="Box Password\PasswordExt.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <None Update="Box Progress 2\DxAsDoubleProgress.xaml.cs">
-      <SubType>Code</SubType>
-    </None>
-    <Compile Update="Box Progress 2\DxASProgress.xaml.cs">
+    <Compile Update="Async Box Progress\DxAsDoubleProgress.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <None Update="Box Progress 2\DxAsStateProgress.xaml.cs">
+    <Compile Update="Async Box Progress\DxASProgress.xaml.cs">
       <SubType>Code</SubType>
-    </None>
+    </Compile>
+    <Compile Update="Async Box Progress\DxAsStateProgress.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="BoxChoose\TreeChoose.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -85,15 +85,15 @@
     <Page Update="Box Password\PasswordExt.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <None Update="Box Progress 2\DxAsDoubleProgress.xaml">
-      <SubType>Designer</SubType>
-    </None>
-    <Page Update="Box Progress 2\DxASProgress.xaml">
+    <Page Update="Async Box Progress\DxAsDoubleProgress.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <None Update="Box Progress 2\DxAsStateProgress.xaml">
+    <Page Update="Async Box Progress\DxASProgress.xaml">
       <SubType>Designer</SubType>
-    </None>
+    </Page>
+    <Page Update="Async Box Progress\DxAsStateProgress.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="BoxChoose\TreeChoose.xaml">
       <SubType>Designer</SubType>
     </Page>

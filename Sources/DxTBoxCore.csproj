@@ -17,28 +17,22 @@ Free to use, share, distribution</Description>
     <WarningLevel>5</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Box Progress 2\Basix\A_AsyncProgressD.cs" />
-    <Compile Remove="Box Progress 2\Basix\A_AsyncProgressLD.cs" />
-    <Compile Remove="Box Progress 2\Basix\I_AsyncProgressD.cs" />
-    <Compile Remove="Box Progress 2\Basix\I_AsyncProgressLD.cs" />
-    <Compile Remove="Box Progress 2\DxAsDoubleProgress.xaml.cs" />
-    <Compile Remove="Box Progress 2\DxAsStateProgress.xaml.cs" />
-    <Compile Remove="Box Progress 2\Maou.cs" />
-    <Compile Remove="Box Progress 2\MaouEvo.cs" />
-    <Compile Remove="Box Progress 2\Merde.cs" />
-    <Compile Remove="Box Progress 2\M_Progress.cs" />
-    <Compile Remove="Box Progress 2\M_ProgressD.cs" />
-    <Compile Remove="Box Progress 2\M_ProgressDL.cs" />
+    <Compile Remove="Async Box Progress\Basix\A_AsyncProgressD.cs" />
+    <Compile Remove="Async Box Progress\Basix\A_AsyncProgressLD.cs" />
+    <Compile Remove="Async Box Progress\Basix\A_ProgressLD.cs" />
+    <Compile Remove="Async Box Progress\Basix\I_AsyncProgressD.cs" />
+    <Compile Remove="Async Box Progress\Basix\I_AsyncProgressLD.cs" />
+    <Compile Remove="Async Box Progress\Basix\I_Initialize.cs" />
+    <Compile Remove="Async Box Progress\Maou.cs" />
+    <Compile Remove="Async Box Progress\MaouEvo.cs" />
+    <Compile Remove="Async Box Progress\Merde.cs" />
+    <Compile Remove="Async Box Progress\M_Progress.cs" />
+    <Compile Remove="Async Box Progress\M_ProgressD.cs" />
+    <Compile Remove="Async Box Progress\M_ProgressDL.cs" />
     <Compile Remove="Box Progress\DxAsCollecProgress.xaml.cs" />
-    <Compile Remove="Box Progress\DxAsProgress.xaml.cs" />
     <Compile Remove="Box Progress\DxCollecProgress.xaml.cs" />
     <Compile Remove="Box Progress\DxProgressB1.xaml.cs" />
-    <Compile Remove="Box Progress\I_ASGraph.cs" />
-    <Compile Remove="Box Progress\ModelProgress.cs" />
-    <Compile Remove="Box Progress\M_Progress.cs" />
-    <Compile Remove="Box Progress\M_ProgressC.cs" />
     <Compile Remove="Box Progress\M_ProgressCC.cs" />
-    <Compile Remove="Box Progress\M_ProgressExt.cs" />
     <Compile Remove="BoxChoose\ChooseFolder.xaml.cs" />
     <Compile Remove="BoxChoose\ChooseMother.xaml.cs" />
     <Compile Remove="BoxChoose\E_IconType.cs" />
@@ -68,39 +62,27 @@ Free to use, share, distribution</Description>
     <None Remove="Resources\W10_Opticx40.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Remove="Box Progress 2\DxAsDoubleProgress.xaml" />
-    <Page Remove="Box Progress 2\DxAsStateProgress.xaml" />
     <Page Remove="Box Progress\DxAsCollecProgress.xaml" />
-    <Page Remove="Box Progress\DxAsProgress.xaml" />
     <Page Remove="Box Progress\DxCollecProgress.xaml" />
     <Page Remove="Box Progress\DxProgressB1.xaml" />
     <Page Remove="BoxChoose\ChooseMother.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Box Progress 2\Basix\A_AsyncProgressD.cs" />
-    <None Include="Box Progress 2\Basix\A_AsyncProgressLD.cs" />
-    <None Include="Box Progress 2\Basix\I_AsyncProgressD.cs" />
-    <None Include="Box Progress 2\Basix\I_AsyncProgressLD.cs" />
-    <None Include="Box Progress 2\DxAsCollecProgress.xaml.cs" />
-    <None Include="Box Progress 2\DxAsDoubleProgress.xaml" />
-    <None Include="Box Progress 2\DxAsDoubleProgress.xaml.cs" />
-    <None Include="Box Progress 2\DxAsStateProgress.xaml" />
-    <None Include="Box Progress 2\DxAsStateProgress.xaml.cs" />
-    <None Include="Box Progress 2\Maou.cs" />
-    <None Include="Box Progress 2\M_ProgressD.cs" />
-    <None Include="Box Progress 2\M_ProgressDL.cs" />
-    <None Include="Box Progress\DxAsProgress.xaml" />
-    <None Include="Box Progress\DxAsProgress.xaml.cs" />
+    <None Include="Async Box Progress\Basix\A_AsyncProgressD.cs" />
+    <None Include="Async Box Progress\Basix\A_AsyncProgressLD.cs" />
+    <None Include="Async Box Progress\Basix\I_AsyncProgressD.cs" />
+    <None Include="Async Box Progress\Basix\I_AsyncProgressLD.cs" />
+    <None Include="Async Box Progress\Basix\I_Initialize.cs" />
+    <None Include="Async Box Progress\DxAsCollecProgress.xaml.cs" />
+    <None Include="Async Box Progress\Maou.cs" />
+    <None Include="Async Box Progress\M_ProgressD.cs" />
+    <None Include="Async Box Progress\M_ProgressDL.cs" />
     <None Include="Box Progress\DxCollecProgress.xaml" />
     <None Include="Box Progress\DxProgressB1.xaml" />
     <None Include="Box Progress\DxProgressB1.xaml.cs" />
-    <None Include="Box Progress\I_ASGraph.cs" />
-    <None Include="Box Progress\ModelProgress.cs" />
-    <None Include="Box Progress\M_Progress.cs" />
-    <None Include="Box Progress\M_ProgressC.cs" />
-    <None Include="Box Progress\M_ProgressExt.cs" />
-    <None Include="Box Progress 2\MaouEvo.cs" />
-    <None Include="Box Progress 2\M_Progress.cs" />
+    <None Include="Async Box Progress\MaouEvo.cs" />
+    <None Include="Async Box Progress\M_Progress.cs" />
+    <None Include="Async Box Progress\Basix\A_ProgressLD.cs" />
     <CodeAnalysisDictionary Include="BoxChoose\E_IconType.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,9 +162,12 @@ Free to use, share, distribution</Description>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Box Progress 2\Merde.cs" />
+    <None Include="Async Box Progress\Merde.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Async Box Progress\Basix\A_ProgressPersist.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
     <Compile Update="Languages\DxTBLang.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

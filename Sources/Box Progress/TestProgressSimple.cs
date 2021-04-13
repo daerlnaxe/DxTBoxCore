@@ -14,6 +14,7 @@ namespace DxTBoxCore.Box_Progress
     {
         public event DoubleHandler UpdateProgress;
         public event MessageHandler UpdateStatus;
+        public event MessageHandler UpdateStatusNL;
         public event DoubleHandler MaximumProgress;
 
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
@@ -39,7 +40,7 @@ namespace DxTBoxCore.Box_Progress
                     return null;
 
                 UpdateProgress?.Invoke(this, i);
-                UpdateStatus?.Invoke(this, $"{DxTBLang.File} {i}");
+                UpdateStatusNL?.Invoke(this, $"{DxTBLang.File} {i}");
                 // db2.CurrentOP = $"{DxTBLang.File} {i}";
 
 

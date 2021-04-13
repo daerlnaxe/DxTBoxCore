@@ -1,13 +1,13 @@
 ﻿using DxLocalTransf.Progress;
-using DxTBoxCore.Box_Progress;
-using DxTBoxCore.Box_Progress.Basix;
+using DxLocalTransf.Progress.ToImp;
+using DxTBoxCore.Async_Box_Progress.Basix;
 using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,88 +15,83 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace DxTBoxCore.Box_Progress_2
+namespace DxTBoxCore.Async_Box_Progress
 {
     /// <summary>
-    /// Logique d'interaction pour W_ASProgress.xaml
+    /// Logique d'interaction pour DxAsCollecProgress.xaml
     /// </summary>
-    public partial class DxAsProgress : Window, I_ASGraph
+    /// <remarks>
+    /// Permet le traitement en asynchrone d'une tâche
+    /// </remarks>
+    public partial class DxAsCollecProgress : Window, I_ASGraph
     {
-        #region Hide Close button
-        private const int GWL_STYLE = -16;
-        private const int WS_SYSMENU = 0x80000;
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-        [DllImport("user32.dll")]
-        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
-
-        public bool HideCloseButton { get; set; }
-        #endregion
+        #region No signal
+        public string TaskName { get; set; }
+        /*
+        /// <summary>
+        /// Maximum for the current bar progress
+        /// </summary>
+        public int MaxCP { get; set; } = 100;
 
         /// <summary>
-        /// Task Name to Show
+        /// Maximum for the total bar progress
         /// </summary>
-        /// <example>
-        /// File
-        /// </example>
-        public string TaskName { get; set; }
+        public int MaxTP { get; set; } = 100;
+        */
+        #endregion
 
+        //public I_AsyncProgress Model { get; set; } = new M_ProgressDL();
         public I_RProgress Model { get; set; }
 
         public I_Async Launcher { get; set; }
 
-
-
-        public DxAsProgress()
+        /*
+        public I_ASBase TaskToRun
         {
+            get => Model.TaskToRun;
+            set => Model.SetTaskToRun(value);
+        }
+        */
+
+        public DxAsCollecProgress(string name)
+        {
+            TaskName = name;
+
             InitializeComponent();
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Model == null)
-                throw new ArgumentNullException(nameof(Model));
-
-            if (HideCloseButton)
-            {
-                // Remove close button
-                var hwnd = new WindowInteropHelper(this).Handle;
-                SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
-            }
-
-
             DataContext = Model;
+
+            if (Launcher == null)
+                throw new Exception($"{nameof(DxAsCollecProgress)}: {nameof(Launcher)} is null");
 
             Launcher.Launch_Task(this.AsyncClose);
         }
 
+        /*
+        public new bool? ShowDialog()
+        {
+            Execute_Code();
+            return base.ShowDialog();
+        }*/
+
         public object AsyncClose()
         {
             Debug.WriteLine("AsyncClose");
-            Dispatcher.Invoke(
-                () =>
-                {
-
-                    DialogResult = true;
-                    Debug.WriteLine("Dialog result set to true");
-                    this.Close();
-                }
-                );
-
+            Dispatcher.Invoke(() => this.Close());
             return null;
         }
 
 
         public void OnClosing(object sender, CancelEventArgs e)
         {
-            Debug.WriteLine("On closing");
             if (Launcher.TaskRunning.Status == TaskStatus.Faulted)
             {
                 MBox.DxMBox.ShowDial(Launcher.TaskRunning.Exception.Message, DxTBLang.Error);
@@ -125,5 +120,6 @@ namespace DxTBoxCore.Box_Progress_2
 
             Launcher.IsPaused = false;
         }
+
     }
 }
