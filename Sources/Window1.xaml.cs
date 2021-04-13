@@ -143,8 +143,15 @@ namespace DxTBoxCore
 
         }
 
-
         private void Simule_SimpleProgress(object sender, RoutedEventArgs e)
+        {
+            TestProgressSimple tps = new TestProgressSimple();
+
+            Maw maw = new Maw();
+            maw.RerouteSignal(tps);
+        }
+
+        private void Simule_SimpleProgressMaou(object sender, RoutedEventArgs e)
         {
             MawEvo maou = new MawEvo();
 
@@ -243,5 +250,7 @@ namespace DxTBoxCore
         {
             FirstCollection.Add("Green");
         }
+
+
     }
 }

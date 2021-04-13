@@ -27,11 +27,11 @@ namespace DxTBoxCore.Box_Progress
         public bool IsPaused { get; set; }
 
 
-        public virtual void RerouteSignal<T>(T objet)where T: I_RProgressA
+        public virtual void RerouteSignal<T>(T objet)where T: I_AsyncSig
         {
-            objet.CurrentProgress += CurrentProgress;
-            objet.CurrentOP += CurrentOP;
-            objet.MaxProgress += MaxProgress;
+            objet.UpdateProgress += SetProgress;
+            objet.UpdateStatus += SetStatus;
+            objet.MaximumProgress += SetMaximum;
         }
 
         public void StopTask()

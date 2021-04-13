@@ -4,69 +4,44 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Threading;
 
 namespace DxTBoxCore.Box_Progress
 {
-    class MawEvo:Maw, I_RProgressD
+    class MawEvo: A_ProgressD, I_RProgressD, I_TProgressD
     {
-        private double _currentTotal;
-        public virtual double CurrentTotal
+        public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
+
+        public CancellationToken CancelToken => TokenSource.Token;
+
+        public bool IsPaused { get; set; }
+
+
+
+        public void RerouteSignal<U>(U objet) where U : I_AsyncSigD
         {
-            get => _currentTotal;
-            set
-            {
-#if DEBUG
-                Debug.WriteLine($"[M_ProgressC] {nameof(CurrentTotal)}: {value}");
-#endif
-                _currentTotal = value;
-                OnPropertyChanged();
-            }
+
+
+            objet.UpdateProgress += SetProgress;
+            objet.UpdateStatus += SetStatus;
+            objet.MaximumProgress += SetMaximum;
+
+            objet.UpdateProgressT += SetTotalProgress;
+            objet.UpdateStatusT += SetTotalStatus;
+            objet.MaximumProgressT += SetTotalMaximum;
+
         }
 
 
-        private string _totalStatus;
-        public virtual string TotalStatus
+
+
+        public void StopTask()
         {
-            get => _totalStatus;
-            set
-            {
-#if DEBUG
-                Debug.WriteLine($"[M_ProgressC] {nameof(TotalStatus)}: {value}");
-#endif
-                _totalStatus = value;
-                OnPropertyChanged();
-            }
+            TokenSource.Cancel();
+            Debug.WriteLine("Maw, stop task asked");
+
+            // throw new System.NotImplementedException();
         }
 
-        private double _maxProgressT;
-        /// <summary>
-        /// </summary>
-        /// <remarks>
-        /// Normalement inutile de mettre à jour en temps réel
-        /// </remarks>
-        public virtual double MaxProgressT
-        {
-            get => _maxProgressT;
-            set
-            {
-                _maxProgressT = value;
-#if DEBUG
-                Debug.WriteLine($"[M_ProgressC] {nameof(MaxProgressT)}: {value}");
-#endif
-                OnPropertyChanged();
-            }
-        }
-
-
-        public new void RerouteSignal<U>(U objet) where U : I_RProgressD
-        {
-            base.RerouteSignal(objet);
-
-            objet.CurrentTotal += CurrentTotal;
-            objet.TotalStatus += TotalStatus;
-            objet.MaxProgressT += MaxProgressT;
-            //objet.pro
-
-        }
     }
 }
