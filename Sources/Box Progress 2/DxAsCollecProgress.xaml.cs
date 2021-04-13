@@ -1,4 +1,7 @@
-﻿using DxTBoxCore.Common;
+﻿using DxLocalTransf.Progress;
+using DxLocalTransf.Progress.ToImp;
+using DxTBoxCore.Box_Progress.Basix;
+using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
 using System;
 using System.Collections.Generic;
@@ -28,7 +31,7 @@ namespace DxTBoxCore.Box_Progress
     {
         #region No signal
         public string TaskName { get; set; }
-
+        /*
         /// <summary>
         /// Maximum for the current bar progress
         /// </summary>
@@ -38,18 +41,21 @@ namespace DxTBoxCore.Box_Progress
         /// Maximum for the total bar progress
         /// </summary>
         public int MaxTP { get; set; } = 100;
-
+        */
         #endregion
 
-        public M_ProgressC Model { get; private set; } = new ModelProgressC();
+        //public I_AsyncProgress Model { get; set; } = new M_ProgressDL();
+        public I_RProgress Model { get; set; }
 
-        
+        public I_Async Launcher { get; set; }
+
+        /*
         public I_ASBase TaskToRun
         {
             get => Model.TaskToRun;
             set => Model.SetTaskToRun(value);
         }
-
+        */
 
         public DxAsCollecProgress(string name)
         {
@@ -62,13 +68,11 @@ namespace DxTBoxCore.Box_Progress
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = Model;
-            Execute_Code();
-        }
 
-        private async void Execute_Code()
-        {
-  
-            Model.Launch_Task(this.AsyncClose);            
+            if (Launcher == null)
+                throw new Exception($"{nameof(DxAsCollecProgress)}: {nameof(Launcher)} is null");
+
+            Launcher.Launch_Task(this.AsyncClose);
         }
 
         /*
@@ -88,33 +92,33 @@ namespace DxTBoxCore.Box_Progress
 
         public void OnClosing(object sender, CancelEventArgs e)
         {
-            if(Model.TaskRunning.Status == TaskStatus.Faulted)
+            if(Launcher.TaskRunning.Status == TaskStatus.Faulted)
             {
-                MBox.DxMBox.ShowDial(Model.TaskRunning.Exception.Message, DxTBLang.Error);
+                MBox.DxMBox.ShowDial(Launcher.TaskRunning.Exception.Message, DxTBLang.Error);
                 DialogResult = false;
                 return;
             }
 
             // Fermeture normale
-            if (Model.TaskRunning.Status == TaskStatus.Canceled
-                || Model.TaskRunning.Status == TaskStatus.RanToCompletion
-                || Model.TaskToRun.TokenSource.IsCancellationRequested)
+            if (Launcher.TaskRunning.Status == TaskStatus.Canceled
+                || Launcher.TaskRunning.Status == TaskStatus.RanToCompletion
+                || Launcher.TokenSource.IsCancellationRequested)
             {
                 DialogResult = true;
                 return;
             }
-                        
-            Model.TaskToRun.IsPaused = true;
+
+            Launcher.IsPaused = true;
             e.Cancel = true;
 
             if (MBox.DxMBox.ShowDial(DxTBLang.Q_Want_Close, DxTBLang.Question, E_DxButtons.Yes | E_DxButtons.No) == true)
             {
-                Model.TaskToRun.StopTask();
-                Model.TaskRunning.ContinueWith(antecedant => Dispatcher.Invoke(() => this.Close()));
+                Launcher.StopTask();
+                Launcher.TaskRunning.ContinueWith(antecedant => Dispatcher.Invoke(() => this.Close()));
                 DialogResult = false;
             }
-            
-            Model.TaskToRun.IsPaused = false;
+
+            Launcher.IsPaused = false;
         }
 
     }

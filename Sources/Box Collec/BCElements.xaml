@@ -1,0 +1,98 @@
+﻿<Window x:Class="DxTBoxCore.Box_Collec.BCElements"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DxTBoxCore.Box_Collec"
+        xmlns:l="clr-namespace:DxTBoxCore.Languages"
+        mc:Ignorable="d"
+        Title="BCElements" Height="450" Width="800"
+        Loaded="Window_Loaded" WindowStartupLocation="CenterScreen"
+        >
+    <Window.CommandBindings>
+        <CommandBinding Command="local:BCElements.AllCommand" CanExecute="Can_All" Executed="Exec_All"/>
+        <CommandBinding Command="local:BCElements.NoneCommand" CanExecute="Can_None" Executed="Exec_None"/>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <x:Array x:Key="testArray" Type="sys:String"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:sys="clr-namespace:System;assembly=mscorlib">
+            <sys:String>Bear</sys:String>
+            <sys:String>Bird</sys:String>
+            <sys:String>Cat</sys:String>
+        </x:Array>
+        <Style TargetType="GroupBox" >
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="StackPanel" >
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="ContentStringFormat" Value="{}{0}:"/>
+        </Style>
+        <Style TargetType="ListView" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Padding="5">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- Message -->
+        <Label Grid.Row="0" Content="{Binding Message, FallbackValue=Message}"/>
+        <!-- Chosen -->
+        <GroupBox Grid.Row="1" Header="{x:Static l:DxTBLang.Selected}">
+            <ListView BorderThickness="0" Grid.Row="3" ItemsSource="{Binding ChosenElements, FallbackValue={StaticResource testArray}}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseDoubleClick" Handler="RemoveChosen_DblClick"/>
+                        <Setter Property="Tag" Value="{Binding}"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </GroupBox>
+        <!-- Selection buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="{x:Static l:DxTBLang.None}" Command="local:BCElements.NoneCommand"/>
+            <Button Content="{x:Static l:DxTBLang.All}" Command="local:BCElements.AllCommand"/>
+        </StackPanel>
+        <!-- Discarded -->
+        <GroupBox Grid.Row="3" Header="{x:Static l:DxTBLang.Unwanted}">
+
+            <ListView Grid.Row="3" ItemsSource="{Binding DiscardedElements}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseDoubleClick" Handler="RemoveDicarded_DblClick"/>
+                        <Setter Property="Tag" Value="{Binding}"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </GroupBox>
+        <!-- Buttons -->
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+
+            <Button Content="{x:Static l:DxTBLang.Validate}" Click="Validate_Click"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

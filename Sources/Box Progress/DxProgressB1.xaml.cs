@@ -108,6 +108,7 @@ namespace DxTBoxCore.Box_Progress
 
         #region statique version
         private static DxProgressB1 _StatWindow;
+
         public static void ModalShow(string name, double max)
         {
             _StatWindow = new DxProgressB1(max);

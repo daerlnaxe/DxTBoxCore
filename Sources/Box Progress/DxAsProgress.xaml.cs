@@ -24,7 +24,7 @@ namespace DxTBoxCore.Box_Progress
     /// <remarks>
     /// Permet de lancer une tâche asynchrone en fond
     /// </remarks>
-
+    [Obsolete("voir la nouvelle version")]
     public partial class DxAsProgress : Window, I_ASGraph
     {
 

@@ -30,6 +30,10 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!-- Buttons -->
+    <Style TargetType="Button" x:Key="btStyle">
+        <Setter Property="Padding" Value="5"/>
+    </Style>
 
 
 

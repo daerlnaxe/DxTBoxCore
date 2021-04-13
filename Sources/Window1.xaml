@@ -35,20 +35,20 @@
 
         <!--
         
-        <Controls:TextBoxAC AvailableItems="{Binding Caca}"/>
+        <Controls:TextBoxAC AvailableItems="{Binding FirstList}"/>
         -->
         <!--
         
         <DxTb:TextboxAC />
-        <DxTb:TextboxAC ItemsSource="{Binding Caca}" DisplayMemberPath="Value" Cursor="IBeam"/>
+        <DxTb:TextboxAC ItemsSource="{Binding FirstList}" DisplayMemberPath="Value" Cursor="IBeam"/>
         -->
 
         <ctrl:TextBoxAutoC x:Name="tbAC1" Width="120"
-                               AvailableItems="{Binding Caca}"
+                               AvailableItems="{Binding FirstList}"
                                DisplayMemberPath="Key" Text="ee" 
                                SelectedItem="{Binding SelectedItem}"                               
                                />
-        <ctrl:TextBoxAutoC x:Name="tbAC2" AvailableItems="{Binding Caca2}"
+        <ctrl:TextBoxAutoC x:Name="tbAC2" AvailableItems="{Binding FirstCollection}"
                                Text="eezdazdazdazdzadadzazdazd" 
                                AskToAdd="tbAC2_AskToAdd" />
         <TextBox x:Name="textBox" Text="TextBox" TextWrapping="Wrap" Width="120"/>

@@ -5,19 +5,40 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
     <Company>Daerlnaxe Software</Company>
-    <AssemblyVersion>2.0.1.3</AssemblyVersion>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
     <FileVersion>2.0.0.1</FileVersion>
     <Description>IHM Collection
 Free to use, share, distribution</Description>
     <Copyright>Copyright ©  2018-2021 Daerlnaxe Software</Copyright>
     <Version>1.0.0</Version>
+    <PackageReleaseNotes>- BugFix Error for Box Choose</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>5</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Box Progress 2\Basix\A_AsyncProgressD.cs" />
+    <Compile Remove="Box Progress 2\Basix\A_AsyncProgressLD.cs" />
+    <Compile Remove="Box Progress 2\Basix\I_AsyncProgressD.cs" />
+    <Compile Remove="Box Progress 2\Basix\I_AsyncProgressLD.cs" />
+    <Compile Remove="Box Progress 2\DxAsDoubleProgress.xaml.cs" />
+    <Compile Remove="Box Progress 2\DxAsStateProgress.xaml.cs" />
+    <Compile Remove="Box Progress 2\Maou.cs" />
+    <Compile Remove="Box Progress 2\MaouEvo.cs" />
+    <Compile Remove="Box Progress 2\Merde.cs" />
+    <Compile Remove="Box Progress 2\M_Progress.cs" />
+    <Compile Remove="Box Progress 2\M_ProgressD.cs" />
+    <Compile Remove="Box Progress 2\M_ProgressDL.cs" />
+    <Compile Remove="Box Progress\DxAsCollecProgress.xaml.cs" />
+    <Compile Remove="Box Progress\DxAsProgress.xaml.cs" />
     <Compile Remove="Box Progress\DxCollecProgress.xaml.cs" />
     <Compile Remove="Box Progress\DxProgressB1.xaml.cs" />
+    <Compile Remove="Box Progress\I_ASGraph.cs" />
+    <Compile Remove="Box Progress\ModelProgress.cs" />
+    <Compile Remove="Box Progress\M_Progress.cs" />
+    <Compile Remove="Box Progress\M_ProgressC.cs" />
+    <Compile Remove="Box Progress\M_ProgressCC.cs" />
+    <Compile Remove="Box Progress\M_ProgressExt.cs" />
     <Compile Remove="BoxChoose\ChooseFolder.xaml.cs" />
     <Compile Remove="BoxChoose\ChooseMother.xaml.cs" />
     <Compile Remove="BoxChoose\E_IconType.cs" />
@@ -47,31 +68,57 @@ Free to use, share, distribution</Description>
     <None Remove="Resources\W10_Opticx40.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Remove="Box Progress 2\DxAsDoubleProgress.xaml" />
+    <Page Remove="Box Progress 2\DxAsStateProgress.xaml" />
+    <Page Remove="Box Progress\DxAsCollecProgress.xaml" />
+    <Page Remove="Box Progress\DxAsProgress.xaml" />
     <Page Remove="Box Progress\DxCollecProgress.xaml" />
     <Page Remove="Box Progress\DxProgressB1.xaml" />
     <Page Remove="BoxChoose\ChooseMother.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Box Progress 2\Basix\A_AsyncProgressD.cs" />
+    <None Include="Box Progress 2\Basix\A_AsyncProgressLD.cs" />
+    <None Include="Box Progress 2\Basix\I_AsyncProgressD.cs" />
+    <None Include="Box Progress 2\Basix\I_AsyncProgressLD.cs" />
+    <None Include="Box Progress 2\DxAsCollecProgress.xaml.cs" />
+    <None Include="Box Progress 2\DxAsDoubleProgress.xaml" />
+    <None Include="Box Progress 2\DxAsDoubleProgress.xaml.cs" />
+    <None Include="Box Progress 2\DxAsStateProgress.xaml" />
+    <None Include="Box Progress 2\DxAsStateProgress.xaml.cs" />
+    <None Include="Box Progress 2\Maou.cs" />
+    <None Include="Box Progress 2\M_ProgressD.cs" />
+    <None Include="Box Progress 2\M_ProgressDL.cs" />
+    <None Include="Box Progress\DxAsProgress.xaml" />
+    <None Include="Box Progress\DxAsProgress.xaml.cs" />
+    <None Include="Box Progress\DxCollecProgress.xaml" />
+    <None Include="Box Progress\DxProgressB1.xaml" />
+    <None Include="Box Progress\DxProgressB1.xaml.cs" />
+    <None Include="Box Progress\I_ASGraph.cs" />
+    <None Include="Box Progress\ModelProgress.cs" />
+    <None Include="Box Progress\M_Progress.cs" />
+    <None Include="Box Progress\M_ProgressC.cs" />
+    <None Include="Box Progress\M_ProgressExt.cs" />
+    <None Include="Box Progress 2\MaouEvo.cs" />
+    <None Include="Box Progress 2\M_Progress.cs" />
     <CodeAnalysisDictionary Include="BoxChoose\E_IconType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Location Generic.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Box Progress\DxCollecProgress.xaml" />
     <None Include="Box Progress\DxCollecProgress.xaml.cs" />
-    <None Include="Box Progress\DxProgressB1.xaml" />
-    <None Include="Box Progress\DxProgressB1.xaml.cs" />
     <None Include="BoxChoose\OldAlgoModelChoose.cs" />
     <None Include="BoxChoose\ChooseMother.xaml" />
     <None Include="BoxChoose\ChooseMother.xaml.cs" />
     <None Include="Box Password\old_TextBoxExt.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DxCoreControls\Source\DxCCtrl.csproj" />
+    <ProjectReference Include="..\..\DxLocalTrans\DxLocalTrans\DxLocalTransf.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Bureaux40.png">
@@ -133,6 +180,9 @@ Free to use, share, distribution</Description>
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Box Progress 2\Merde.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Languages\DxTBLang.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -140,9 +190,17 @@ Free to use, share, distribution</Description>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Languages\DxTBLang.fr-FR.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Languages\DxTBLang.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DxTBLang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Box Decisions\MBSimpleD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 </Project>

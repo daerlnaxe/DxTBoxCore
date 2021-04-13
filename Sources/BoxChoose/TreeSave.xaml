@@ -102,10 +102,11 @@
             </TreeView.Resources>
         </TreeView>
 
+        <!--
         <TextBox x:Name="FilePath" Grid.Row="3" TextWrapping="Wrap"
                  Text="{Binding LinkResult}" Visibility="Collapsed"
                  IsReadOnly="True"
-                 />
+                 />-->
         <!-- Filtres, sélection -->
         <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>

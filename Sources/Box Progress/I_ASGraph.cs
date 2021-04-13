@@ -8,6 +8,7 @@ namespace DxTBoxCore.Box_Progress
     /// <summary>
     /// Used by windows to implement a method to safe-thread close it
     /// </summary>
+    [Obsolete("voir I_ASGraph2")]
     interface I_ASGraph
     {
         /// <summary>

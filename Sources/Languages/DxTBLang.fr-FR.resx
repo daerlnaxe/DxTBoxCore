@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="All" xml:space="preserve">
+    <value>Tous</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Parcourir</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Annuler</value>
   </data>
@@ -177,6 +183,12 @@
   <data name="No" xml:space="preserve">
     <value>Non</value>
   </data>
+  <data name="NoLongerAsk" xml:space="preserve">
+    <value>Ne plus poser la question</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Aucun</value>
+  </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
@@ -191,6 +203,9 @@
   </data>
   <data name="Pass_Different" xml:space="preserve">
     <value>Les password sont differents !</value>
+  </data>
+  <data name="Pivot" xml:space="preserve">
+    <value>Pivot</value>
   </data>
   <data name="Q_Want_Close" xml:space="preserve">
     <value>Voulez-vous vraiment fermer ?</value>
@@ -212,6 +227,9 @@
   </data>
   <data name="Select" xml:space="preserve">
     <value>Selectionner</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>Sélectionné(s)</value>
   </data>
   <data name="ShowPassword" xml:space="preserve">
     <value>Montrer le mot de passe</value>
@@ -239,6 +257,12 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="Unwanted" xml:space="preserve">
+    <value>Non voulu(s)</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Valider</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Vidéos</value>

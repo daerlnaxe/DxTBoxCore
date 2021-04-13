@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="DxMCollec" Height="322" Width="559" WindowStartupLocation="CenterScreen">
     <Grid>
-
         <WrapPanel FlowDirection="RightToLeft" Height="21" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="240" HorizontalAlignment="Right">
             <Button x:Name="btValid" Content="OK" Width="75" HorizontalAlignment="Left" IsDefault="True" Click="btValid_Click"/>
             <Button x:Name="btAnnul" Content="Cancel" Width="75" HorizontalAlignment="Left" IsCancel="True" Click="btAnnul_Click"/>
         </WrapPanel>
-        <TextBlock x:Name="MessagePart" Text="{Binding Path=Message}" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="531" Height="36"/>
+        <TextBlock x:Name="MessagePart" Text="{Binding Path=Message, FallbackValue=Message,StringFormat='{}{0}:'}"
+                   TextWrapping="Wrap" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="531" Height="36"/>
         <ListBox x:Name="lboxElements" ItemsSource="{Binding Elements}" Height="189" Margin="10,51,10,0" VerticalAlignment="Top" >          
             <ListBox.ContextMenu>
                 <ContextMenu>

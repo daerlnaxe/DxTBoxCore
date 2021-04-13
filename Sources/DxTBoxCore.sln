@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DxTBoxCore", "DxTBoxCore.csproj", "{7F794E5D-6319-45A9-8B95-0C89ACCBFB3A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DxLocalTransf", "..\..\DxLocalTrans\DxLocalTrans\DxLocalTransf.csproj", "{417B2DC9-7B75-4680-B706-C89DE65EF885}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DxCCtrl", "..\..\DxCoreControls\Source\DxCCtrl.csproj", "{2E158D74-83A6-457D-8805-77973D65CC31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7F794E5D-6319-45A9-8B95-0C89ACCBFB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F794E5D-6319-45A9-8B95-0C89ACCBFB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F794E5D-6319-45A9-8B95-0C89ACCBFB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{417B2DC9-7B75-4680-B706-C89DE65EF885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{417B2DC9-7B75-4680-B706-C89DE65EF885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{417B2DC9-7B75-4680-B706-C89DE65EF885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{417B2DC9-7B75-4680-B706-C89DE65EF885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E158D74-83A6-457D-8805-77973D65CC31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E158D74-83A6-457D-8805-77973D65CC31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E158D74-83A6-457D-8805-77973D65CC31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E158D74-83A6-457D-8805-77973D65CC31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

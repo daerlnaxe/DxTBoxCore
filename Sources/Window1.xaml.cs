@@ -1,25 +1,16 @@
-﻿using DxTBoxCore.Box_Password;
+﻿using DxLocalTransf.Progress;
+using DxLocalTransf.Progress.ToImp;
+using DxTBoxCore.Box_Password;
 using DxTBoxCore.Box_Progress;
 using DxTBoxCore.BoxChoose;
 using DxTBoxCore.Languages;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.ComponentModel;
-using DxTBoxCore.Box_Password;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Threading;
+using System.Windows;
 
 namespace DxTBoxCore
 {
@@ -33,15 +24,15 @@ namespace DxTBoxCore
         private string _Value;
         public ref string Value => ref _Value;
 
-        KeyValuePair<string, int> one = new KeyValuePair<string, int>("mee", 0);
-        KeyValuePair<string, int> two = new KeyValuePair<string, int>("bluu", 1);
+        KeyValuePair<string, int> one = new KeyValuePair<string, int>("Test1", 0);
+        KeyValuePair<string, int> two = new KeyValuePair<string, int>("blue1", 1);
 
-        public List<KeyValuePair<string, int>> Caca { get; set; } = new List<KeyValuePair<string, int>>();
+        public List<KeyValuePair<string, int>> FirstList { get; set; } = new List<KeyValuePair<string, int>>();
 
-        public ObservableCollection<string> Caca2 { get; set; } = new ObservableCollection<string>()
+        public ObservableCollection<string> FirstCollection { get; set; } = new ObservableCollection<string>()
         {
-            "mee2",
-            "bluu2",
+            "Test2",
+            "blue2",
         };
 
         private object _SelectedItem;
@@ -60,7 +51,7 @@ namespace DxTBoxCore
             }
         }
 
-        public object ChoCho 
+        public object ChoCho
         {
             get
             {
@@ -72,6 +63,7 @@ namespace DxTBoxCore
                 Debug.WriteLine("Chocho set");
             }
         }
+
 
 
         /// <summary>
@@ -89,8 +81,8 @@ namespace DxTBoxCore
 
         public Window1()
         {
-            Caca.Add(one);
-            Caca.Add(two);
+            FirstList.Add(one);
+            FirstList.Add(two);
             SelectedItem = two;
             InitializeComponent();
             tbAC1.pUP.IsOpen = true;
@@ -134,18 +126,15 @@ namespace DxTBoxCore
 
         private void Simule_DoubleProgress(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            MawEvo maw = new MawEvo();
             var db2 = new DxAsCollecProgress(DxTBLang.File)
             {
+                Model = maw,
+                Launcher = BasicLauncher<MawEvo>.Create(maw, ()=> Foo(maw)),
 
-                /*TaskToRun = new Maou<bool>()
-                {
-                    ToRun = Foo
-
-                },*/
-                TaskToRun = new TestProgressCollec(),
             };
-
+            /*           TaskToRun = ,
+                           TaskToRun = new TestProgressCollec(),*/
 
             //db2.Execute_Code();
             //db2.Show();
@@ -154,19 +143,29 @@ namespace DxTBoxCore
 
         }
 
+
         private void Simule_SimpleProgress(object sender, RoutedEventArgs e)
         {
-            DxAsCollecProgress db2;
+            MawEvo maou = new MawEvo();
 
-            db2 = new DxAsCollecProgress(DxTBLang.File)
+            DxAsCollecProgress db2 = new DxAsCollecProgress(DxTBLang.File)
             {
-                TaskToRun = new Maou<string, object>()
+                Model = maou,
+                Launcher = BasicLauncher<Maw>.Create(maou, () => Foo(maou, "Il est passé par ici")),
+                /*
+                new Maou<string, object>()
                 {
                     ToRun = Foo,
                     Param = "Il est passé par ici"
-                },
+                },*/
             };
             db2.ShowDialog();
+        }
+
+
+        private object Foo(I_ASBase arg)
+        {
+            return Foo(arg , null);
         }
 
         /// <summary>
@@ -176,8 +175,9 @@ namespace DxTBoxCore
         /// <returns>
         /// Ce que vous voulez, Maou est generique, si vous devez retourner 'void' laissez sur 'object'
         /// </returns
-        private object Foo(I_ASBase tP, string mee = null)
+        private object Foo(I_ASBase tP = null, string mee = null)
         {
+
             Debug.WriteLine(mee);
 
             while (!tP.CancelToken.IsCancellationRequested)   // Stop le programme si l'annulation est requise
@@ -223,7 +223,7 @@ namespace DxTBoxCore
         /// <param name="e"></param>
         private void InitTB_Click(object sender, RoutedEventArgs e)
         {
-            _Value = "merde";
+            _Value = "quelque chose";
             //tBExt.Text = Value;
             //tBExt.SetText(ref _Value);
             //   PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
@@ -241,7 +241,7 @@ namespace DxTBoxCore
 
         private void tbAC2_AskToAdd(object sender, RoutedEventArgs e)
         {
-            Caca2.Add("Glabou");
+            FirstCollection.Add("Green");
         }
     }
 }

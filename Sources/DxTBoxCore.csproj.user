@@ -2,8 +2,12 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ShowAllFiles>false</ShowAllFiles>
+    <_LastSelectedProfileId>E:\Programmation\Git-Hub\DxTBoxCore\Sources\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Box Collec\BCElements.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Box Decisions\MBDecision.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,10 +29,22 @@
     <Compile Update="Box Password\PasswordExt.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Update="Box Progress 2\DxAsDoubleProgress.xaml.cs">
+      <SubType>Code</SubType>
+    </None>
+    <Compile Update="Box Progress 2\DxASProgress.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Update="Box Progress 2\DxAsStateProgress.xaml.cs">
+      <SubType>Code</SubType>
+    </None>
     <Compile Update="BoxChoose\TreeChoose.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="BoxChoose\TreeSave.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\RegleComp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\TextBoxAutoC.xaml.cs">
@@ -36,6 +52,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Box Collec\BCElements.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Box Decisions\MBSimpleD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Box Decisions\MBDecision.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -63,10 +85,22 @@
     <Page Update="Box Password\PasswordExt.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <None Update="Box Progress 2\DxAsDoubleProgress.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Update="Box Progress 2\DxASProgress.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <None Update="Box Progress 2\DxAsStateProgress.xaml">
+      <SubType>Designer</SubType>
+    </None>
     <Page Update="BoxChoose\TreeChoose.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="BoxChoose\TreeSave.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RegleComp.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\TextBoxAutoC.xaml">

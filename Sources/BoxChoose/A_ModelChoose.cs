@@ -23,7 +23,7 @@ namespace DxTBoxCore.BoxChoose
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -48,9 +48,19 @@ namespace DxTBoxCore.BoxChoose
         public bool ShowFiles { get; set; } = true;
 
         /// <summary>
+        /// Show only files with this extension
+        /// </summary>
+        /// <remarks>
+        /// No dot needed
+        /// </remarks>
+        public string[] FilesExtension { get; set; }
+
+
+
+        /// <summary>
         /// Define the mode to block selection of folder/file or none
         /// </summary>
-        public ChooseMode Mode { get; }
+        public virtual ChooseMode Mode { get; set; }
 
         #endregion
 
@@ -64,11 +74,11 @@ namespace DxTBoxCore.BoxChoose
         /// </example>
         public string Info { get; set; }
 
-        private string _LinkResult;
+        protected string _LinkResult;
         /// <summary>
         /// Résultat
         /// </summary>
-        public string LinkResult
+        public virtual string LinkResult
         {
             get => _LinkResult;
             set
@@ -284,19 +294,27 @@ namespace DxTBoxCore.BoxChoose
         /// <returns></returns>
         private FolderElem Build_Drive(DriveInfo driv, E_IconFType type)
         {
+
             string lDrive = driv.Name.TrimEnd('\\');
 
-            return new FolderElem(type)
-            {
-                Name = $"({lDrive}) {driv.VolumeLabel}",
-                Path = driv.Name,
-                Children = Check_IfChildren(driv.Name) ?
-                                new ObservableCollection<I_ContChoose>()
-                                {
+            if (driv.IsReady)
+                return new FolderElem(type)
+                {
+                    Name = $"({lDrive}) {driv.VolumeLabel}",
+                    Path = driv.Name,
+                    Children = Check_IfChildren(driv.Name) ?
+                                    new ObservableCollection<I_ContChoose>()
+                                    {
                                     new FolderElem(E_IconFType.Dummy)
-                                }
-                                : null,
-            };
+                                    }
+                                    : null,
+                };
+            else
+                return new FolderElem(type)
+                {
+                    Name = $"({lDrive})",
+                    Path = driv.Name
+                };
         }
 
 
@@ -374,8 +392,8 @@ namespace DxTBoxCore.BoxChoose
         /// </remarks>        
         public virtual void Populate_Folder(I_ContChoose parent)
         {
-              if (_UnactivePopulate)
-                     return;
+            if (_UnactivePopulate)
+                return;
 
             Debug.WriteLine($"- Populate Folder: '{parent.Name}'");
             /*
@@ -412,7 +430,22 @@ namespace DxTBoxCore.BoxChoose
             /*if (parent.Children[0].Type == E_IconFType.Dummy)
                 parent.Children.RemoveAt(0);            */
 
-            string[] files = Directory.GetFiles(parent.Path, "*.*", SearchOption.TopDirectoryOnly);
+            /*
+            //17/03/2021
+            string[] files;
+            // Filtre les fichiers
+            if (FilesExtension != null)
+            {
+
+                foreach (string ext)
+
+            }
+            else
+            {
+                files = Directory.EnumerateFiles(parent.Path, "*.*", SearchOption.TopDirectoryOnly);
+            }*/
+            //17/03/2021
+
 
             // On revérifie en cas de modifications
             //if (directories.Length == 0 && files.Length == 0)
@@ -424,8 +457,14 @@ namespace DxTBoxCore.BoxChoose
             // Ajoute les fichiers si le switch est activé
             Debug.WriteLine($"-\t Populate with Files");
             if (ShowFiles)
-                foreach (string f in files)
+                foreach (string f in Directory.EnumerateFiles(parent.Path, "*.*", SearchOption.TopDirectoryOnly))
                 {
+                    //17/03/2021 semble fonctionner
+                    if (FilesExtension != null &&
+                        !FilesExtension.Contains(Path.GetExtension(f).TrimStart('.').ToLowerInvariant()))
+                        continue;
+
+                    //17/03/2021
                     parent.Children.Add(Build_File(f));
                 }
 
@@ -605,7 +644,7 @@ namespace DxTBoxCore.BoxChoose
                     // Pas la peine car c'est peuplé directement quand c'est expandé 
                     Populate_Folder(data);
 
-                    
+
                     // Bloque populate
                     //_UnactivePopulate = true;
                     data.IsSelected = true;

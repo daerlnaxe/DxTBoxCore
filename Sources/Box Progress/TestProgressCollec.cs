@@ -1,4 +1,7 @@
-﻿using DxTBoxCore.Languages;
+﻿using DxLocalTransf;
+using DxLocalTransf.Progress;
+using DxLocalTransf.Progress.ToImp;
+using DxTBoxCore.Languages;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,15 +10,15 @@ using System.Threading;
 
 namespace DxTBoxCore.Box_Progress
 {
-    public class TestProgressCollec : I_ASBaseC
+    public class TestProgressCollec : I_AsyncSigD
     {
-        public event DoubleDel UpdateProgress;
-        public event StringDel UpdateStatus;
-        public event DoubleDel MaximumProgress;
+        public event DoubleHandler UpdateProgress;
+        public event MessageHandler UpdateStatus;
+        public event DoubleHandler MaximumProgress;
 
-        public event DoubleDel UpdateProgressT;
-        public event StringDel UpdateStatusT;
-        public event DoubleDel MaximumProgressT;
+        public event DoubleHandler UpdateProgressT;
+        public event MessageHandler UpdateStatusT;
+        public event DoubleHandler MaximumProgressT;
 
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
 
@@ -43,8 +46,8 @@ namespace DxTBoxCore.Box_Progress
                 // Boucle Totale
                 for (int i = 0; i < 10; i++)
                 {
-                    UpdateStatusT?.Invoke("New Task");
-                    UpdateProgressT?.Invoke(i * 10);
+                    UpdateStatusT?.Invoke(this, "New Task");
+                    UpdateProgressT?.Invoke(this, i * 10);
 
                     for (int j = 0; j < 50; j++)
                     {
@@ -54,18 +57,18 @@ namespace DxTBoxCore.Box_Progress
                         if (CancelToken.IsCancellationRequested)
                             return null;
 
-                        UpdateProgress?.Invoke(j * 2);
-                        UpdateStatus?.Invoke($"{DxTBLang.File} {i}.{j}");
+                        UpdateProgress?.Invoke(this, j * 2);
+                        UpdateStatus?.Invoke(this, $"{DxTBLang.File} {i}.{j}");
                         // db2.CurrentOP = $"{DxTBLang.File} {i}";
 
 
                         Thread.Sleep(timeSleep);
                     }
 
-                    UpdateProgress?.Invoke(100);
+                    UpdateProgress?.Invoke(this, 100);
                 }
 
-                UpdateProgressT?.Invoke(100);
+                UpdateProgressT?.Invoke(this, 100);
                 Thread.Sleep(100);
             }
             catch (Exception exc)

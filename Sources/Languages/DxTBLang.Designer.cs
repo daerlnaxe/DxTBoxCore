@@ -61,6 +61,24 @@ namespace DxTBoxCore.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à All.
+        /// </summary>
+        public static string All {
+            get {
+                return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Browse.
+        /// </summary>
+        public static string Browse {
+            get {
+                return ResourceManager.GetString("Browse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Cancel.
         /// </summary>
         public static string Cancel {
@@ -75,6 +93,15 @@ namespace DxTBoxCore.Languages {
         public static string Check_All {
             get {
                 return ResourceManager.GetString("Check_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Collision.
+        /// </summary>
+        public static string Collision {
+            get {
+                return ResourceManager.GetString("Collision", resourceCulture);
             }
         }
         
@@ -111,6 +138,15 @@ namespace DxTBoxCore.Languages {
         public static string Desktop {
             get {
                 return ResourceManager.GetString("Desktop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Destination.
+        /// </summary>
+        public static string Destination {
+            get {
+                return ResourceManager.GetString("Destination", resourceCulture);
             }
         }
         
@@ -241,6 +277,24 @@ namespace DxTBoxCore.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à No longer ask the question.
+        /// </summary>
+        public static string NoLongerAsk {
+            get {
+                return ResourceManager.GetString("NoLongerAsk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à None.
+        /// </summary>
+        public static string None {
+            get {
+                return ResourceManager.GetString("None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à OK.
         /// </summary>
         public static string OK {
@@ -282,6 +336,15 @@ namespace DxTBoxCore.Languages {
         public static string Pass_Different {
             get {
                 return ResourceManager.GetString("Pass_Different", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Pivot.
+        /// </summary>
+        public static string Pivot {
+            get {
+                return ResourceManager.GetString("Pivot", resourceCulture);
             }
         }
         
@@ -358,6 +421,15 @@ namespace DxTBoxCore.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Selected.
+        /// </summary>
+        public static string Selected {
+            get {
+                return ResourceManager.GetString("Selected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Show Password.
         /// </summary>
         public static string ShowPassword {
@@ -372,6 +444,15 @@ namespace DxTBoxCore.Languages {
         public static string SizeShort {
             get {
                 return ResourceManager.GetString("SizeShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Source.
+        /// </summary>
+        public static string Source {
+            get {
+                return ResourceManager.GetString("Source", resourceCulture);
             }
         }
         
@@ -435,6 +516,24 @@ namespace DxTBoxCore.Languages {
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Unwanted.
+        /// </summary>
+        public static string Unwanted {
+            get {
+                return ResourceManager.GetString("Unwanted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Validate.
+        /// </summary>
+        public static string Validate {
+            get {
+                return ResourceManager.GetString("Validate", resourceCulture);
             }
         }
         

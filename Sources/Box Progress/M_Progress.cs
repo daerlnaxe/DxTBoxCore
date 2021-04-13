@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DxTBoxCore.Box_Progress.Basix;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 #if DEBUG
@@ -15,7 +16,7 @@ namespace DxTBoxCore.Box_Progress
     /// <summary>
     /// Modele utilisé pour les box progress simple
     /// </summary>
-    public abstract class M_Progress : I_Progress, I_AsyncProgress
+    public abstract class M_Progress : I_RProgress, I_AsyncProgress
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -56,7 +57,6 @@ namespace DxTBoxCore.Box_Progress
         }
 
 
-
         public Task TaskRunning { get; protected set; }
 
 
@@ -91,6 +91,9 @@ namespace DxTBoxCore.Box_Progress
 
         #endregion
         // ---
+
+
+        public string NameCOPType { get; set; }
 
         private string _currentOp;
         public string CurrentOP
@@ -138,6 +141,9 @@ namespace DxTBoxCore.Box_Progress
         /// <summary>
         /// Launch task
         /// </summary>
+        /// <param name="Ending">
+        /// Method to run at the end
+        /// </param>
         public async virtual void Launch_Task(Func<object> Ending, int delay = 50)
         {
 
@@ -151,25 +157,28 @@ namespace DxTBoxCore.Box_Progress
                     TaskToRun.Run();
                 }
                             , TaskToRun.CancelToken);
-            var kwa = TaskRunning.ContinueWith((ant) => Ending());
+
+            if (Ending != null)
+            {
+                var kwa = TaskRunning.ContinueWith((ant) => Ending());
+            }
 
             //await TaskRunning;
 
             //TaskRunning.ContinueWith((ant) => TaskToRun.Run(), TaskToRun.CancelToken);
         }
 
-
-        public virtual void UpdateProgress(double value)
+        public virtual void UpdateProgress(object sender, double value)
         {
             CurrentProgress = value;
         }
-
-        public virtual void UpdateStatus(string value)
+        
+        public virtual void UpdateStatus(object sender, string value)
         {
             CurrentOP = value;
         }
 
-        public virtual void MaximumProgress(double value)
+        public virtual void MaximumProgress(object sender, double value)
         {
             MaxProgress = value;
         }

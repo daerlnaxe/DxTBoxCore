@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:la="clr-namespace:DxTBoxCore.Languages"
         xmlns:local="clr-namespace:DxTBoxCore.MBox"
         mc:Ignorable="d"
-        Title="{Binding Title}" Width="400" Height="180"
+        Title="DxMBox" Width="400" Height="180"
         Loaded="Window_Loaded" Cursor="Arrow" WindowStartupLocation="CenterScreen" 
         >
     <Grid>
@@ -18,6 +19,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="100*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -54,10 +56,18 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
+        <!-- Check -->
+        <!-- Bind vers static framework 4.5 -->
+        <CheckBox Grid.Row="2" Grid.Column="1"
+                  IsChecked="{Binding Path=(local:DxMBox.All)}"
+                  Visibility="{Binding All_Visibility, FallbackValue=Visible}"
+                  Content="{x:Static la:DxTBLang.NoLongerAsk}"/>
         <!-- Bouton du bas -->
-        <StackPanel Grid.Row="3" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom" >
             <Button x:Name="btAnnul" Content="Cancel" Width="75" IsCancel="True"/>
-            <Button x:Name="btValid" Content="OK" Width="75" IsDefault="True" Click="btOk_Click" AutomationProperties.HelpText="btdroite"/>
+            <Button x:Name="btValid" Content="OK" Width="75" IsDefault="True"
+                    Click="btOk_Click" AutomationProperties.HelpText="btdroite"/>
         </StackPanel>
 
     </Grid>

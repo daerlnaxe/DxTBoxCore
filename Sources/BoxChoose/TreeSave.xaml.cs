@@ -70,23 +70,12 @@ namespace DxTBoxCore.BoxChoose
             if (item == null)
                 return;
 
-            if (Model.Mode == ChooseMode.All)
-            {
-                Model.LinkResult = item.Path;
-                Debug.WriteLine("All choisi");
-            }
-            else if (item.Type == E_IconFType.File && Model.Mode == ChooseMode.File)
-            {
-                Debug.WriteLine("Fichier choisi");
-            }
+            Model.AssignValues(item.Path, item.Type);
 
-            else if (item.Type != E_IconFType.File && Model.Mode == ChooseMode.Folder)
-            {
-                Debug.WriteLine("Dossier choisi");
-                Model.LinkResult = item.Path;
 
-            }
         }
+
+
 
 
         /// <summary>
@@ -117,7 +106,7 @@ namespace DxTBoxCore.BoxChoose
 
         private void btOk_Click(object sender, RoutedEventArgs e)
         {
-            Model.LinkResult += $@"\{Model.FileValue}";
+         //   Model.LinkResult += $@"\{Model.FileValue}";
             DialogResult = true;
 
         }

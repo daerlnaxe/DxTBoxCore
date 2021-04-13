@@ -36,7 +36,7 @@ namespace DxTBoxCore.Controls
         #region Text
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register(nameof(Text), typeof(string), typeof(TextBoxAutoC),
-                new FrameworkPropertyMetadata("Hello Dolly", FrameworkPropertyMetadataOptions.BindsTwoWayByDefault ));
+                new FrameworkPropertyMetadata("Hello Dolly", FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         public string Text
         {
@@ -51,7 +51,7 @@ namespace DxTBoxCore.Controls
         #region Selected Item
         public static readonly DependencyProperty SelectedItemProperty = DependencyProperty.Register
             (nameof(SelectedItem), typeof(object), typeof(TextBoxAutoC), new FrameworkPropertyMetadata(null,
-                
+
                 FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace DxTBoxCore.Controls
 
         private void OnAvailableItemsChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue == null )
+            if (e.NewValue == null)
                 return;
 
             FilteredItems.Clear();
@@ -201,7 +201,40 @@ namespace DxTBoxCore.Controls
         }
 
         #endregion
-        
+
+        // ---
+
+        #region Button visibility
+        public static readonly DependencyProperty ShowAddButtonProperty = DependencyProperty.Register(
+            nameof(ShowAddButton), typeof(bool), typeof(TextBoxAutoC)/*, new PropertyMetadata(
+                true, new PropertyChangedCallback(OnShowAddButtonChanged))*/);
+
+        public bool ShowAddButton
+        {
+            get => (bool)GetValue(ShowAddButtonProperty);
+            set => SetValue(ShowAddButtonProperty, value);
+        }
+
+        /*
+        public static void OnShowAddButtonChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((TextBoxAutoC)d).OnShowAddButtonChanged(e);
+        }
+
+        private void OnShowAddButtonChanged(DependencyPropertyChangedEventArgs e)
+        {
+            switch ((bool)e.NewValue)
+            {
+                case true:
+                    AddButton.Visibility = Visibility.Visible;
+                    break;
+                case false:
+                    AddButton.Visibility = Visibility.Collapsed;
+                    break;
+            }
+        }*/
+        #endregion Button visibility
+
         //--- Graphismes
 
         #region Graphismes
@@ -331,7 +364,7 @@ namespace DxTBoxCore.Controls
                             FilteredItems.Add(site);
                         }
                 }
-                else if(site.ToString().StartsWith(text))
+                else if (site.ToString().StartsWith(text))
                 {
                     FilteredItems.Add(site.ToString());
                 }
@@ -375,7 +408,10 @@ namespace DxTBoxCore.Controls
         /// </summary>
         private void Complete_TextBox()
         {
-            if (SelectedItem != null)
+            if (SelectedItem is int)
+                return;
+
+            if (SelectedItem != null )
             {
                 tBox.Text = _Type.GetProperty(DisplayMemberPath).GetValue(SelectedItem).ToString();
                 pUP.IsOpen = false;

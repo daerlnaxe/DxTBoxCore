@@ -30,11 +30,14 @@ namespace DxTBoxCore.MBox
             set;
         } = "/DxTBoxCore;component/Resources/question.png";
 
-        public string Titre { get; set; }
 
         public string MainMessage { get; set; }
 
         public string OptionnalMessage { get; set; }
+
+        public static bool All { get; set; } = false;
+
+        public Visibility All_Visibility { get; set; } = Visibility.Collapsed;
 
         /*
         public Visibility AnnulVisible 
@@ -85,7 +88,22 @@ namespace DxTBoxCore.MBox
             daBox.buttons = buttons;
 
             return daBox.ShowDialog();
+        }       
+
+        public static bool? ShowDialExt(string message, string title = "Information", E_DxButtons buttons = E_DxButtons.Ok, string optMessage = null)
+        {
+            DxMBox daBox = new DxMBox()
+            {
+                Title = title,                
+                All_Visibility = Visibility.Visible,
+                MainMessage = message,
+                OptionnalMessage = optMessage,
+            };
+            daBox.buttons = buttons;
+
+            return daBox.ShowDialog();
         }
+
 
         private void btOk_Click(object sender, RoutedEventArgs e)
         {

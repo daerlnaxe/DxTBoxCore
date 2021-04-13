@@ -9,7 +9,7 @@ namespace DxTBoxCore.BoxChoose
     /// </summary>
     public class M_ChooseRaw : A_ModelChoose
     {
-        public new ChooseMode Mode { get; set; }
+        public override ChooseMode Mode { get; set; }
 
         //public override ChooseMode Mode => Mode;
     }

@@ -82,6 +82,7 @@ namespace DxTBoxCore.BoxChoose
             }
             else if (item.Type == E_IconFType.File && Model.Mode == ChooseMode.File)
             {
+                Model.LinkResult = item.Path;                
                 Debug.WriteLine("Fichier choisi");
             }           
             

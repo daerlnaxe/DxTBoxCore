@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="Check_All" xml:space="preserve">
     <value>Handle all future cases like this one. </value>
+  </data>
+  <data name="Collision" xml:space="preserve">
+    <value>Collision</value>
   </data>
   <data name="Current" xml:space="preserve">
     <value>Current</value>
@@ -134,6 +143,9 @@
   </data>
   <data name="Desktop" xml:space="preserve">
     <value>Desktop</value>
+  </data>
+  <data name="Destination" xml:space="preserve">
+    <value>Destination</value>
   </data>
   <data name="Documents" xml:space="preserve">
     <value>Documents</value>
@@ -177,6 +189,12 @@
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="NoLongerAsk" xml:space="preserve">
+    <value>No longer ask the question</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
@@ -191,6 +209,9 @@
   </data>
   <data name="Pass_Different" xml:space="preserve">
     <value>Passwords are different !</value>
+  </data>
+  <data name="Pivot" xml:space="preserve">
+    <value>Pivot</value>
   </data>
   <data name="Question" xml:space="preserve">
     <value>Question</value>
@@ -216,11 +237,17 @@
   <data name="Select" xml:space="preserve">
     <value>Select</value>
   </data>
+  <data name="Selected" xml:space="preserve">
+    <value>Selected</value>
+  </data>
   <data name="ShowPassword" xml:space="preserve">
     <value>Show Password</value>
   </data>
   <data name="SizeShort" xml:space="preserve">
     <value>Size it too short &lt; </value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Source</value>
   </data>
   <data name="Stop" xml:space="preserve">
     <value>Stop</value>
@@ -242,6 +269,12 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="Unwanted" xml:space="preserve">
+    <value>Unwanted</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Validate</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Videos</value>

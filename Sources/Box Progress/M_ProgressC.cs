@@ -6,13 +6,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using DxLocalTransf.Progress;
 #if DEBUG
 using System.Diagnostics;
 #endif
 
 namespace DxTBoxCore.Box_Progress
 {
-    public abstract class M_ProgressC: M_Progress, I_ProgressC
+    public abstract class M_ProgressC : M_Progress
     {
         /*
         public event PropertyChangedEventHandler PropertyChanged;
@@ -121,6 +122,7 @@ namespace DxTBoxCore.Box_Progress
         {
             I_ASBaseC task2Run = (I_ASBaseC)taskToRun;
             base.TaskToRun = taskToRun;
+
             base.TaskToRun.UpdateProgress += UpdateProgress;
             base.TaskToRun.UpdateStatus += UpdateStatus;
             base.TaskToRun.MaximumProgress += MaximumProgress;
@@ -132,16 +134,16 @@ namespace DxTBoxCore.Box_Progress
 
 
 
-        protected virtual void UpdateTotalProgress(double value)
+        protected virtual void UpdateTotalProgress(object sender, double value)
         {
             CurrentTotal = value;
         }
-        protected virtual void UpdateTotalStatus(string value)
+        protected virtual void UpdateTotalStatus(object sender, string value)
         {
             TotalStatus = value;
         }
 
-        private void MaximumProgressT(double value)
+        private void MaximumProgressT(object sender, double value)
         {
             MaxProgressT = value;
         }
