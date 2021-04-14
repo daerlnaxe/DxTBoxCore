@@ -40,6 +40,7 @@ namespace DxTBoxCore.Box_Progress
                     return null;
 
                 UpdateProgress?.Invoke(this, i);
+                Debug.WriteLine(i);
                 UpdateStatusNL?.Invoke(this, $"{DxTBLang.File} {i}");
                 // db2.CurrentOP = $"{DxTBLang.File} {i}";
 
@@ -50,6 +51,7 @@ namespace DxTBoxCore.Box_Progress
             UpdateProgress?.Invoke(this, 100);
             //db2.AsyncClose();
 
+            
             return null;
         }
 

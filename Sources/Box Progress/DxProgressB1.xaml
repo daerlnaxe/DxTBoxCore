@@ -9,9 +9,9 @@
     <Grid>
         <StackPanel Height="25" Margin="10,22,10,0" VerticalAlignment="Top" Orientation="Horizontal">
             <TextBlock TextWrapping="NoWrap" Text="File:"/>
-            <TextBlock x:Name="FullPath" TextWrapping="NoWrap" Text="{Binding CurrentOP}" Margin="5,0,0,0"/>
+            <TextBlock x:Name="FullPath" TextWrapping="NoWrap" Text="{Binding Status}" Margin="5,0,0,0"/>
         </StackPanel>
-        <ProgressBar x:Name="progressBar" Value="{Binding CurrentProgress}" Maximum="{Binding MaxProgress}"  Height="25" Margin="10,75,10,0" VerticalAlignment="Top"/>
+        <ProgressBar x:Name="progressBar" Value="{Binding Progress}" Maximum="{Binding MaxValue}"  Height="25" Margin="10,75,10,0" VerticalAlignment="Top"/>
         <Label x:Name="lbPercent" Content="Label" HorizontalAlignment="Left" Margin="215,75,0,0" VerticalAlignment="Top" Height="26"/>
         <WrapPanel FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="362,54,0,0" VerticalAlignment="Top" Width="100">
             <TextBlock x:Name="lbDetails" Text="{Binding ElementName=progressBar, Path=Maximum}" HorizontalAlignment="Left" VerticalAlignment="Center" TextAlignment="Right" />

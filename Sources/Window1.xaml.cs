@@ -78,8 +78,6 @@ namespace DxTBoxCore
 
         }
 
-
-
         public Window1()
         {
             FirstList.Add(one);
@@ -90,6 +88,8 @@ namespace DxTBoxCore
             DataContext = this;
             //tbAC1.AvailableItems2 = Caca2;
         }
+
+
         private void Open_ChooseFile(object sender, RoutedEventArgs e)
         {
             ChooseFile cf = new ChooseFile()
@@ -125,6 +125,53 @@ namespace DxTBoxCore
             cfe.ShowDialog();
         }
 
+        private void Simule_Another(object sender, RoutedEventArgs e)
+        {
+            TestProgressSimple tps = new TestProgressSimple();
+            TasksLauncher al = new TasksLauncher()
+            {
+                ProgressIHM = new DxProgressB1()
+                {
+                    Model = new EphemProgress(tps)
+                },
+                Objet = tps,
+                MethodsToRun = TasksLauncher.CreateTasks(()=>tps.Run(), ()=> tps.Run())
+            };
+            al.Launch();
+
+        }
+
+        private void Simule_Another_Double(object sender, RoutedEventArgs e)
+        {
+            TestProgressCollec tpc = new TestProgressCollec();
+            TaskLauncher al = new TaskLauncher()
+            {
+                ProgressIHM = new DxStateProgress()
+                {
+                    Model = new EphemProgressD(tpc)
+                },
+                Objet = tpc,
+                MethodToRun = ()=>tpc.Run(50),
+            };
+            al.Launch();
+        }
+
+        private void Simule_AnotherMaou(object sender, RoutedEventArgs e)
+        {
+            Maw maw = new Maw();
+
+            TaskLauncher al = new TaskLauncher()
+            {
+                ProgressIHM = new DxProgressB1()
+                {
+                },
+                Objet = maw,
+                MethodToRun = () => Foo(maw),
+            };
+
+            al.Launch();
+
+        }
 
         private void Simule_SimpleProgress(object sender, RoutedEventArgs e)
         {
@@ -136,6 +183,7 @@ namespace DxTBoxCore
             DxAsProgress window = new DxAsProgress()
             {
                 Model = maw,
+
                 Launcher = BasicLauncher<Maw>.Create(maw, () => tps.Run()),
             };
             window.ShowDialog();
@@ -145,8 +193,7 @@ namespace DxTBoxCore
         {
             TestProgressCollec tps = new TestProgressCollec();
 
-            MawEvo maw = new MawEvo();
-            maw.RerouteSignal(tps);
+            MawEvo maw = new MawEvo(tps);
 
             DxAsDoubleProgress window = new DxAsDoubleProgress()
             {
@@ -195,7 +242,7 @@ namespace DxTBoxCore
 
         private object Foo(I_ASBase arg)
         {
-            return Foo(arg , null);
+            return Foo(arg, null);
         }
 
         /// <summary>

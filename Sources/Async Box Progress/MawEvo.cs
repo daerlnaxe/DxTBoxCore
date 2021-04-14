@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace DxTBoxCore.Box_Progress
 {
-    class MawEvo: A_ProgressEphD, I_ASBase
+    public class MawEvo: A_ProgressEphD, I_ASBase
     {
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
 
@@ -16,7 +16,13 @@ namespace DxTBoxCore.Box_Progress
 
         public bool IsPaused { get; set; }
 
+        public MawEvo() { }
 
+        public MawEvo(I_AsyncSigD objet)
+        {
+            RerouteSignal(objet);
+
+        }
 
         public void RerouteSignal<U>(U objet) where U : I_AsyncSigD
         {
@@ -30,8 +36,6 @@ namespace DxTBoxCore.Box_Progress
             objet.UpdateStatusTNL += SetTotalStatusNL;
             objet.MaximumProgressT += SetTotalMaximum;
         }
-
-
 
 
         public void StopTask()

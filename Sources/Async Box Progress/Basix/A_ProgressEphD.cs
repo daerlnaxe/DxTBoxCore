@@ -20,7 +20,7 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
             set
             {
 #if DEBUG
-                Debug.WriteLine($"[M_ProgressC] {nameof(ProgressTotal)}: {value}");
+                Debug.WriteLine($"[{nameof(ProgressTotal)}]: {value}");
 #endif
                 _currentTotal = value;
                 OnPropertyChanged();
@@ -64,7 +64,7 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
             {
                 _maxProgressT = value;
 #if DEBUG
-                Debug.WriteLine($"[M_ProgressC] {nameof(MaximumTotal)}: {value}");
+                Debug.WriteLine($"[{nameof(MaximumTotal)}]: {value}");
 #endif
                 OnPropertyChanged();
             }

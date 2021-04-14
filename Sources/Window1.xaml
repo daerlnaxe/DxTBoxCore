@@ -25,6 +25,9 @@
         <Button Content="Choose Folder" Click="Open_ChooseFolder"/>
         <Button Content="PasswordBox" Click="Open_PasswordBox"/>
         <Button Content="PasswordDBox" Click="Open_PasswordDBox"/>
+        <Button Content="Simul Another" Click="Simule_Another"/>
+        <Button Content="Simul Another Double" Click="Simule_Another_Double"/>
+        <Button Content="Simul Another+Maou" Click="Simule_AnotherMaou"/>
         <Button Content="Simul Simple Progress" Click="Simule_SimpleProgress"/>
         <Button Content="Simul Double Progress" Click="Simule_DoubleProgress"/>
         <Button Content="Simul Simpl+Maou" Click="Simule_SimpleProgressMaou"/>

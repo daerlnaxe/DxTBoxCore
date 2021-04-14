@@ -31,7 +31,6 @@ Free to use, share, distribution</Description>
     <Compile Remove="Async Box Progress\M_ProgressDL.cs" />
     <Compile Remove="Box Progress\DxAsCollecProgress.xaml.cs" />
     <Compile Remove="Box Progress\DxCollecProgress.xaml.cs" />
-    <Compile Remove="Box Progress\DxProgressB1.xaml.cs" />
     <Compile Remove="Box Progress\M_ProgressCC.cs" />
     <Compile Remove="BoxChoose\ChooseFolder.xaml.cs" />
     <Compile Remove="BoxChoose\ChooseMother.xaml.cs" />
@@ -64,7 +63,6 @@ Free to use, share, distribution</Description>
   <ItemGroup>
     <Page Remove="Box Progress\DxAsCollecProgress.xaml" />
     <Page Remove="Box Progress\DxCollecProgress.xaml" />
-    <Page Remove="Box Progress\DxProgressB1.xaml" />
     <Page Remove="BoxChoose\ChooseMother.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -78,8 +76,6 @@ Free to use, share, distribution</Description>
     <None Include="Async Box Progress\M_ProgressD.cs" />
     <None Include="Async Box Progress\M_ProgressDL.cs" />
     <None Include="Box Progress\DxCollecProgress.xaml" />
-    <None Include="Box Progress\DxProgressB1.xaml" />
-    <None Include="Box Progress\DxProgressB1.xaml.cs" />
     <None Include="Async Box Progress\MaouEvo.cs" />
     <None Include="Async Box Progress\M_Progress.cs" />
     <None Include="Async Box Progress\Basix\A_ProgressLD.cs" />
@@ -168,6 +164,9 @@ Free to use, share, distribution</Description>
     <Compile Update="Async Box Progress\Basix\A_ProgressPersist.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
+    <Compile Update="Box Progress\DxStateProgress.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Languages\DxTBLang.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -186,6 +185,10 @@ Free to use, share, distribution</Description>
   <ItemGroup>
     <Page Update="Box Decisions\MBSimpleD.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Box Progress\DxStateProgress.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
 </Project>

@@ -16,6 +16,9 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
 
         public abstract void SetStatusNL(object sender, string value);
 
+ 
+
+
         // ---
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -55,13 +58,14 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
             set
             {
 
-                Debug.WriteLine($"[MaxProgress]: {value}");
+                Debug.WriteLine($"[{nameof(MaxValue)}]: {value}");
 
                 _Maximum = value;
                 OnPropertyChanged();
 
             }
         }
+
 
         // ---
 
