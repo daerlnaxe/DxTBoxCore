@@ -13,13 +13,14 @@ using System.Windows.Controls;
 
 namespace DxTBoxCore.Box_Progress
 {
-    class TasksLauncher : ALauncher
+    public class TasksLauncher : ALauncher
     {
         /*public virtual CancellationTokenSource TokenSource { get; set; } = new CancellationTokenSource();
 
         public virtual CancellationToken CancelToken => TokenSource.Token;*/
         public override IGraphAs ProgressIHM { get; set; }
 
+        public override I_ASBase Objet { get; protected set; }
 
         /// <summary>
         /// Tâche à lancer
@@ -30,6 +31,9 @@ namespace DxTBoxCore.Box_Progress
 
         public override Task TaskRunning => _Tasks.Find((x) => x.Status == TaskStatus.Running);
 
+        public override bool IHMLaunched { get; protected set; }
+
+
 
 
         // ---
@@ -39,42 +43,13 @@ namespace DxTBoxCore.Box_Progress
         /// </summary>
         /// <param name="Ending"></param>
         /// <param name="delay"></param>
-        public override void Launch()
+        public override bool? Launch(I_ASBase objet)
         {
+            Objet = objet;
+
             ProgressIHM.Loaded += Blee_Loaded;
             ProgressIHM.Closing += Blee_Closing;
             ProgressIHM.Closed += Blee_Closed;
-
-            if (ProgressIHM is Window)
-                ((Window)ProgressIHM).ShowDialog();
-
-            // job
-            //base.TaskRunning = Task.Run(() => base.TaskToRun(base.CancelToken, test), base.TaskToRun.CancelToken);
-
-            //await TaskRunning;
-            Debug.WriteLine("Task Stopped");
-            //TaskRunning.ContinueWith((ant) => TaskToRun.Run(), TaskToRun.CancelToken);
-
-
-        }
-
-
-        private void Blee_Loaded(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("Blee_Loaded, launch task");
-
-            /*TaskRunning = Task.Run(
-               async () =>
-               {
-                   await Task.Delay(Delay);
-                   TasksToRun();
-               }
-                    , Objet.CancelToken);
-
-            /*if (Ending != null)
-            {
-                var kwa = TaskRunning.ContinueWith((ant) => Ending());
-            }*/
 
             Task prevTask = null;
             foreach (var t in MethodsToRun)
@@ -82,10 +57,16 @@ namespace DxTBoxCore.Box_Progress
                 if (!_Tasks.Any())
                     prevTask = Task.Run
                     (
-                        () =>
+                        async () =>
+                        {
+                            Debug.WriteLine("taskLauncher2 avant timer");
+                            while (!IHMLaunched)
                             {
-                                t();
-                            },
+                                await Task.Delay(LoopDelay);
+                            }
+                            Debug.WriteLine("taskLauncher2 après timer");
+                            t();
+                        },
                         Objet.CancelToken
                      );
                 else
@@ -100,13 +81,47 @@ namespace DxTBoxCore.Box_Progress
                 var kwa = TaskRunning.ContinueWith((ant) => Ending());
             }*/
             var last = _Tasks.Last();
-            if (AutoClose)
+            if (AutoCloseWindow)
             {
 
                 last.ContinueWith((ant) => this.CloseBlee());
             }
 
             last.ContinueWith((ant) => ProgressIHM.TaskFinished = true);
+
+
+            if (ProgressIHM is Window)
+                return ((Window)ProgressIHM).ShowDialog();
+
+            // job
+            //base.TaskRunning = Task.Run(() => base.TaskToRun(base.CancelToken, test), base.TaskToRun.CancelToken);
+
+            //await TaskRunning;
+            Debug.WriteLine("Task Stopped");
+            //TaskRunning.ContinueWith((ant) => TaskToRun.Run(), TaskToRun.CancelToken);
+
+            return false;
+        }
+
+
+        private void Blee_Loaded(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Blee_Loaded, launch task");
+            IHMLaunched = true;
+            /*TaskRunning = Task.Run(
+               async () =>
+               {
+                   await Task.Delay(Delay);
+                   TasksToRun();
+               }
+                    , Objet.CancelToken);
+
+            /*if (Ending != null)
+            {
+                var kwa = TaskRunning.ContinueWith((ant) => Ending());
+            }*/
+
+
 
         }
 

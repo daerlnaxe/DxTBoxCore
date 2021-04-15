@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DxTBoxCore.Box_Progress"
         mc:Ignorable="d"
-        Title="ProgressBar1" Height="151" Width="480" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="ProgressBar1" Height="151" Width="480" 
+        Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Height="25" Margin="10,22,10,0" VerticalAlignment="Top" Orientation="Horizontal">
             <TextBlock TextWrapping="NoWrap" Text="File:"/>

@@ -12,14 +12,16 @@ using System.Windows.Controls;
 
 namespace DxTBoxCore.Box_Progress
 {
-    class TaskLauncher : ALauncher
+    public class TaskLauncher : ALauncher
     {
         /*public virtual CancellationTokenSource TokenSource { get; set; } = new CancellationTokenSource();
 
         public virtual CancellationToken CancelToken => TokenSource.Token;*/
 
+        public override bool IHMLaunched { get; protected set; }
 
         public override IGraphAs ProgressIHM { get; set; }
+        public override I_ASBase Objet { get; protected set; }
 
         /// <summary>
         /// Tâche à lancer
@@ -38,14 +40,44 @@ namespace DxTBoxCore.Box_Progress
         /// </summary>
         /// <param name="Ending"></param>
         /// <param name="delay"></param>
-        public override void Launch()
+        public override bool? Launch(I_ASBase objet)
         {
+            Objet = objet;
+
             ProgressIHM.Loaded += Blee_Loaded;
             ProgressIHM.Closing += Blee_Closing;
             ProgressIHM.Closed += Blee_Closed;
 
+            TaskRunning = Task.Run
+           (
+               async () =>
+               {
+                   Debug.WriteLine("taskLauncher2 avant timer");
+                   while (!IHMLaunched)
+                   {
+                       await Task.Delay(LoopDelay);
+                   }
+                   Debug.WriteLine("taskLauncher2 après timer");
+                   MethodToRun();
+               },
+               Objet.CancelToken
+            );
+
+
+            if (AutoCloseWindow)
+                TaskRunning.ContinueWith((ant) => this.CloseBlee());
+
+            TaskRunning.ContinueWith((ant) => ProgressIHM.TaskFinished = true);
+
+
+
+            bool? res = false;
+
+
             if (ProgressIHM is Window)
-                ((Window)ProgressIHM).ShowDialog();
+            {
+                return res = ((Window)ProgressIHM).ShowDialog();
+            }
 
             // job
             //base.TaskRunning = Task.Run(() => base.TaskToRun(base.CancelToken, test), base.TaskToRun.CancelToken);
@@ -53,12 +85,15 @@ namespace DxTBoxCore.Box_Progress
             //await TaskRunning;
             Debug.WriteLine("Task Stopped");
             //TaskRunning.ContinueWith((ant) => TaskToRun.Run(), TaskToRun.CancelToken);
-        }
 
+            return res;
+        }
 
         private void Blee_Loaded(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Blee_Loaded, launch task");
+
+            IHMLaunched = true;
 
             /*TaskRunning = Task.Run(
                async () =>
@@ -74,20 +109,7 @@ namespace DxTBoxCore.Box_Progress
             }*/
 
 
-            TaskRunning = Task.Run
-                (
-                    () =>
-                    {
-                        MethodToRun();
-                    },
-                    Objet.CancelToken
-                );
 
-
-            if (AutoClose)
-                TaskRunning.ContinueWith((ant) => this.CloseBlee());
-
-            TaskRunning.ContinueWith((ant) => ProgressIHM.TaskFinished = true);
         }
 
         /// <summary>
@@ -135,14 +157,11 @@ namespace DxTBoxCore.Box_Progress
             //throw new NotImplementedException();
         }
 
-
-
         public override void Pause(int timeSleep = 100)
         {
             while (IsPaused)
                 Thread.Sleep(100);
         }
-
 
         public override void StopTask()
         {

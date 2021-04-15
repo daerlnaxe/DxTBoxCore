@@ -7,21 +7,24 @@ using System.Windows;
 
 namespace DxTBoxCore.Box_Progress.Basix
 {
-    abstract class ALauncher: ILauncher
+    public abstract class ALauncher: ILauncher
     {
-        public virtual int Delay { get; set; }
+        public virtual int LoopDelay { get; set; } = 500;
         public virtual bool IsPaused { get; set; }
-        public virtual bool AutoClose { get; set; }
+        public virtual bool AutoCloseWindow { get; set; }
+
 
         public virtual bool WindowClosing { get; protected set; }
 
-        public virtual I_ASBase Objet { get; set; }
 
         public virtual Task TaskRunning { get; }
 
+
+        public abstract bool IHMLaunched { get; protected set; }
+        public abstract I_ASBase Objet { get; protected set; }
         public abstract IGraphAs ProgressIHM { get; set; }
 
-        public abstract void Launch();
+        public abstract bool? Launch(I_ASBase objet);
         public abstract void Pause(int timeSleep);
         public abstract void StopTask();
     }

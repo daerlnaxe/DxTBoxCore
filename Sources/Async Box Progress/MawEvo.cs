@@ -16,7 +16,10 @@ namespace DxTBoxCore.Box_Progress
 
         public bool IsPaused { get; set; }
 
-        public MawEvo() { }
+        public MawEvo()
+        {
+            Debug.WriteLine("Using Maw without retouting");
+        }
 
         public MawEvo(I_AsyncSigD objet)
         {

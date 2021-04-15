@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DxLocalTransf.Progress;
+using DxTBoxCore.Async_Box_Progress.Basix;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
@@ -25,23 +27,31 @@ namespace DxTBoxCore.Box_Progress.Basix
         /// </summary>
         public IGraphAs ProgressIHM { get; set; }
 
+        public I_ASBase Objet { get;  }
+
 
         /// <summary>
         /// Define if you want to autoclose the window at the end
         /// </summary>
-        bool AutoClose { get; set; }
+        bool AutoCloseWindow { get; set; }
+
+        /// <summary>
+        /// Show if ihm is loaded
+        /// </summary>
+        public bool IHMLaunched { get; }
 
         /// <summary>
         /// Delay before to launch
         /// </summary>
-        public int Delay { get; set; }
+        public int LoopDelay { get; set; }
+
 
         /// <summary>
         /// Task runnig in background
         /// </summary>
         public Task TaskRunning { get;  }
 
-        public void Launch();
+        public bool? Launch(I_ASBase objet);
 
         public void Pause(int timeSleep);
 

@@ -128,16 +128,16 @@ namespace DxTBoxCore
         private void Simule_Another(object sender, RoutedEventArgs e)
         {
             TestProgressSimple tps = new TestProgressSimple();
-            TasksLauncher al = new TasksLauncher()
+            TaskLauncher al = new TaskLauncher()
             {
                 ProgressIHM = new DxProgressB1()
                 {
                     Model = new EphemProgress(tps)
                 },
-                Objet = tps,
-                MethodsToRun = TasksLauncher.CreateTasks(()=>tps.Run(), ()=> tps.Run())
+                //Objet = tps,
+                MethodToRun = ()=>tps.Run()
             };
-            al.Launch();
+            al.Launch(tps);
 
         }
 
@@ -150,10 +150,10 @@ namespace DxTBoxCore
                 {
                     Model = new EphemProgressD(tpc)
                 },
-                Objet = tpc,
+                //Objet = tpc,
                 MethodToRun = ()=>tpc.Run(50),
             };
-            al.Launch();
+            al.Launch(tpc);
         }
 
         private void Simule_AnotherMaou(object sender, RoutedEventArgs e)
@@ -165,11 +165,11 @@ namespace DxTBoxCore
                 ProgressIHM = new DxProgressB1()
                 {
                 },
-                Objet = maw,
+                //Objet = maw,
                 MethodToRun = () => Foo(maw),
             };
 
-            al.Launch();
+            al.Launch(maw);
 
         }
 

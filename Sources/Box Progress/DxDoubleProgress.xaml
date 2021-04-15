@@ -1,10 +1,10 @@
 ﻿<Window
-        x:Class="DxTBoxCore.Async_Box_Progress.DxAsDoubleProgress"
+        x:Class="DxTBoxCore.Box_Progress.DxDoubleProgress"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DxTBoxCore.Async_Box_Progress"
+        xmlns:local="clr-namespace:DxTBoxCore.Box_Progress"
         xmlns:Languages="clr-namespace:DxTBoxCore.Languages"
         xmlns:conv="clr-namespace:DxTBoxCore.Converters"
         mc:Ignorable="d"
@@ -99,7 +99,7 @@
             </Grid>
 
             <!-- Total -->
-            <TextBlock Grid.Row="3" Grid.Column="2">
+            <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right">
                 <TextBlock.Text>
                     <MultiBinding Converter="{StaticResource FormatTxt}">
                         <Binding ElementName="pBarTotal" Path="Value" Converter="{StaticResource intConv}"  />

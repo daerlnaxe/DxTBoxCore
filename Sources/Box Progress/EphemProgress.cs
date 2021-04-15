@@ -12,6 +12,9 @@ namespace DxTBoxCore.Box_Progress
     /// </summary>
     public class EphemProgress : A_ProgressEph
     {
+        public EphemProgress()
+        {
+        }
 
         public EphemProgress(I_SigProgress objet)
         {

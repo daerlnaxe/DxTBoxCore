@@ -1,4 +1,4 @@
-﻿<Window x:Class="DxTBoxCore.Box_Progress.DxCollecProgress"
+﻿<Window x:Class="DxTBoxCore.Box_Progress.DxCollecProgressB1"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,8 +6,10 @@
         xmlns:p="clr-namespace:DxTBoxCore.Languages"
         xmlns:local="clr-namespace:DxTBoxCore.Box_Progress"
         mc:Ignorable="d"
-        Title="DxCollecProgress" Height="222" Width="404" MinWidth="500" MinHeight="347" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
+        Title="DxCollecProgress" Height="222" Width="404" MinWidth="500" MinHeight="347"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>        
         <!-- Compteurs -->
         <Style x:Key="Compteurs" TargetType="WrapPanel">
             <Style.Setters>
@@ -103,7 +105,8 @@
                 <TextBlock TextWrapping="NoWrap" Text="{Binding Value, ElementName=ProgressTotal}"/>
             </WrapPanel>
         </Grid>
-        <Button x:Name="StopAll" Content="{x:Static p:DxTBLang.Stop_All}" HorizontalAlignment="Left" Margin="407,0,0,5" VerticalAlignment="Bottom" Width="75" Click="StopAll_Click"/>
+        <Button x:Name="StopAll" Content="{x:Static p:DxTBLang.Stop}"
+                HorizontalAlignment="Left" Margin="407,0,0,5" VerticalAlignment="Bottom" Width="75" Click="StopAll_Click"/>
 
     </Grid>
 </Window>

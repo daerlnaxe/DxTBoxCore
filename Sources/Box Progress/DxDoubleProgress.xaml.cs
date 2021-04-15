@@ -1,9 +1,12 @@
 ﻿using DxLocalTransf.Progress;
+using DxTBoxCore.Async_Box_Progress.Basix;
 using DxTBoxCore.Box_Progress.Basix;
+using DxTBoxCore.Common;
+using DxTBoxCore.Languages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,14 @@ using System.Windows.Shapes;
 namespace DxTBoxCore.Box_Progress
 {
     /// <summary>
-    /// Logique d'interaction pour ProgressBar1.xaml
+    /// 
     /// </summary>
-    public partial class DxProgressB1 : Window, IGraphAs
+    /// <remarks>
+    /// </remarks>
+    /// <date>
+    /// 29/03/2021
+    /// </date>
+    public partial class DxDoubleProgress : Window, IGraphAs
     {
         #region Hide Close button
         private const int GWL_STYLE = -16;
@@ -34,63 +42,34 @@ namespace DxTBoxCore.Box_Progress
         private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
         public bool HideCloseButton { get; set; }
-
         #endregion
-        public I_RProgress Model { get; internal set; }
+
+
+        public I_RProgressD Model { get; set; }
 
         public bool TaskFinished { get; set; }
 
-
-        public DxProgressB1()
+        public DxDoubleProgress()
         {
             InitializeComponent();
         }
 
-        public DxProgressB1(I_RProgress model)
+        public DxDoubleProgress(I_RProgressD model)
         {
             Model = model;
             InitializeComponent();
-
         }
-
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = Model;
-            // Remove close button
             if (HideCloseButton)
             {
+                // Remove close button
                 var hwnd = new WindowInteropHelper(this).Handle;
                 SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
-
             }
+
+            DataContext = Model;
         }
-
-
-
-
-        #region statique version
-        private static DxProgressB1 _StatWindow;
-
-        public static void ModalShow(string name, double max)
-        {
-            //_StatWindow = new DxProgressB1(max);
-            //_StatWindow.Title = name;
-            //_StatWindow.ShowDialog();
-        }
-
-        public static void CloseIt()
-        {
-            _StatWindow.Close();
-        }
-
-        public static void AsyncCloseIt()
-        {
-            _StatWindow.Dispatcher.BeginInvoke((Action)(() => _StatWindow.Close()));
-        }
-
-        #endregion
-
-
     }
 }
