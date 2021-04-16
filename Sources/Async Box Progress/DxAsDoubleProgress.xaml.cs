@@ -1,4 +1,4 @@
-﻿using DxLocalTransf.Progress;
+﻿using AsyncProgress;
 using DxTBoxCore.Async_Box_Progress.Basix;
 using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
@@ -29,6 +29,8 @@ namespace DxTBoxCore.Async_Box_Progress
     /// <date>
     /// 29/03/2021
     /// </date>
+    [Obsolete]
+
     public partial class DxAsDoubleProgress : Window, I_ASGraph
     {
         #region Hide Close button

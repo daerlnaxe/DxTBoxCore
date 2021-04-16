@@ -1,16 +1,5 @@
-﻿using DxLocalTransf.Progress;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Data;
-using System.Windows.Threading;
+﻿using AsyncProgress;
+using AsyncProgress.Cont;
 
 namespace DxTBoxCore.Async_Box_Progress.Basix
 {
@@ -27,18 +16,9 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
     /// 
     public abstract class A_ProgressPersist : A_Progress, I_TProgress
     {
-        protected string _Status;
-        public override string Status
-        {
-            get { return _Status; }
-            set
-            {
-                _Status += value;
-                OnPropertyChanged();
-            }
-        }
 
 
+        /*
         public override void SetStatus(object sender, string value)
         {
             Status = $"{value} ";
@@ -47,6 +27,17 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
         public override void SetStatusNL(object sender, string value)
         {
             Status = $"{value}\r\n";
+        }*/
+
+        public override void SetStatus(object sender, StateArg arg)
+        {
+            string tmp = Status;
+            if (arg.EndOfLine)
+                tmp += $"{arg.Message}\r\n";
+            else
+                tmp += $"{arg.Message} ";
+
+            Status = tmp;
         }
 
 

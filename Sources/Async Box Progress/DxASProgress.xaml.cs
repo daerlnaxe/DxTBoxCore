@@ -1,6 +1,5 @@
-﻿using DxLocalTransf.Progress;
+﻿using AsyncProgress;
 using DxTBoxCore.Async_Box_Progress.Basix;
-using DxTBoxCore.Box_Progress;
 using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
 using System;
@@ -25,6 +24,8 @@ namespace DxTBoxCore.Async_Box_Progress
     /// <summary>
     /// Logique d'interaction pour W_ASProgress.xaml
     /// </summary>
+    [Obsolete]
+
     public partial class DxAsProgress : Window, I_ASGraph
     {
         #region Hide Close button

@@ -1,4 +1,4 @@
-﻿using DxLocalTransf.Progress;
+﻿using AsyncProgress;
 using DxTBoxCore.Async_Box_Progress.Basix;
 using System;
 using System.Collections.Generic;
@@ -48,6 +48,11 @@ namespace DxTBoxCore.Async_Box_Progress
         public override void StopTask()
         {
             Objet.StopTask();
+        }
+
+        public override void Pause(int timeSleep)
+        {
+            throw new NotImplementedException();
         }
     }
 }

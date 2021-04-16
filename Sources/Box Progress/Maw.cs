@@ -1,30 +1,18 @@
-﻿using DxLocalTransf;
-using DxLocalTransf.Progress;
-using DxLocalTransf.Progress.ToImp;
+﻿using AsyncProgress;
 using DxTBoxCore.Async_Box_Progress.Basix;
 using System.Diagnostics;
 using System.Threading;
 
-namespace DxTBoxCore.Async_Box_Progress
+namespace DxTBoxCore.Box_Progress
 {
     /*
      * Maw is the answer because Maw is Maw, get a Maw or become a Maw.
     */
     public class Maw : A_ProgressEph, I_ASBase, I_RProgress/*, I_TProgressD*/
     {
-        public override string Status { get ; set; }
+        //public override string Status { get ; set; }
 
-        public override void SetStatus(object sender, string value)
-        {
-            //throw new System.NotImplementedException();
-        }
-
-        public override void SetStatusNL(object sender, string value)
-        {
-            //throw new System.NotImplementedException();
-        }
-
-
+ 
 
 
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
@@ -32,6 +20,10 @@ namespace DxTBoxCore.Async_Box_Progress
         public CancellationToken CancelToken => TokenSource.Token;
 
         public bool IsPaused { get; set; }
+
+        public bool IsInterrupted { get; set; }
+
+        public bool CancelFlag { get; protected set; }
 
         public Maw()
 
@@ -51,8 +43,6 @@ namespace DxTBoxCore.Async_Box_Progress
         {
             objet.UpdateProgress += SetProgress;
             objet.UpdateStatus += SetStatus;
-            objet.UpdateStatusNL += SetStatusNL;
-            objet.MaximumProgress += SetMaximum;
         }
 
         public void StopTask()
@@ -61,6 +51,11 @@ namespace DxTBoxCore.Async_Box_Progress
             Debug.WriteLine("Maw, stop task asked");
 
             // throw new System.NotImplementedException();
+        }
+
+        public void Pause(int timeSleep)
+        {
+            throw new System.NotImplementedException();
         }
 
         /*

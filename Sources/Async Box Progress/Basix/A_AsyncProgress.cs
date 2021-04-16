@@ -14,12 +14,15 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
         public virtual CancellationToken CancelToken => TokenSource.Token;
 
         public virtual bool IsPaused { get; set; }
+        public virtual bool IsInterrupted { get; set; }
+        public virtual bool CancelFlag { get; protected set; }
 
         public virtual Func<object> TaskToRun { get; protected set; }
 
         public virtual int Delay { get; set; } = 10;
 
         public virtual Task TaskRunning { get; protected set; }
+
 
 
         // <summary>
@@ -51,6 +54,8 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
 
             //TaskRunning.ContinueWith((ant) => TaskToRun.Run(), TaskToRun.CancelToken);
         }
+
+        public abstract void Pause(int timeSleep);
 
         public virtual void StopTask()
         {

@@ -1,14 +1,10 @@
-﻿using DxLocalTransf.Progress;
-using DxTBoxCore.Async_Box_Progress.Basix;
+﻿using AsyncProgress;
 using DxTBoxCore.Box_Progress.Basix;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace DxTBoxCore.Box_Progress
 {
@@ -49,7 +45,7 @@ namespace DxTBoxCore.Box_Progress
             ProgressIHM.Closed += Blee_Closed;
 
             TaskRunning = Task.Run
-           (
+            (
                async () =>
                {
                    Debug.WriteLine("taskLauncher2 avant timer");
@@ -68,8 +64,6 @@ namespace DxTBoxCore.Box_Progress
                 TaskRunning.ContinueWith((ant) => this.CloseBlee());
 
             TaskRunning.ContinueWith((ant) => ProgressIHM.TaskFinished = true);
-
-
 
             bool? res = false;
 
@@ -117,22 +111,24 @@ namespace DxTBoxCore.Box_Progress
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public virtual void Blee_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        public async virtual void Blee_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             WindowClosing = true;
-
             switch (TaskRunning.Status)
             {
                 case TaskStatus.RanToCompletion:
-                    // nothing                    
                     break;
                 case TaskStatus.Canceled:
                     break;
                 case TaskStatus.Running:
                 case TaskStatus.WaitingForActivation:
-                    // interruption
+                    // interruption - On bloque la fermeture de la fenêtre, on s'en chargera plus tard
+              //      e.Cancel = true;
                     StopTask();
-
+                    while (!Objet.IsInterrupted)
+                    {
+                        await Task.Delay(100);
+                    }
                     break;
                 default:
                     Debug.WriteLine($"Not Managed {TaskRunning.Status}");
@@ -165,7 +161,10 @@ namespace DxTBoxCore.Box_Progress
 
         public override void StopTask()
         {
-            Objet.TokenSource.Cancel();
+            Objet.StopTask();
+
+            if (ProgressIHM is Window)
+                ((Window)ProgressIHM).Title += " - Closing";
 
             if (!WindowClosing)
                 ProgressIHM.Close();

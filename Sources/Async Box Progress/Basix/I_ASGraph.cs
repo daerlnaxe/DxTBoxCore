@@ -1,10 +1,4 @@
-﻿using DxLocalTransf.Progress;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.ComponentModel;
 
 namespace DxTBoxCore.Async_Box_Progress.Basix
 {

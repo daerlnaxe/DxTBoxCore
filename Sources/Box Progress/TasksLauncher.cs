@@ -1,4 +1,4 @@
-﻿using DxLocalTransf.Progress;
+﻿using AsyncProgress;
 using DxTBoxCore.Async_Box_Progress.Basix;
 using DxTBoxCore.Box_Progress.Basix;
 using System;
@@ -25,7 +25,7 @@ namespace DxTBoxCore.Box_Progress
         /// <summary>
         /// Tâche à lancer
         /// </summary>
-        public Func<object>[] MethodsToRun { get; set; }
+        public Func<object, object>[] MethodsToRun { get; set; }
 
         private List<Task> _Tasks { get; set; } = new List<Task>();
 
@@ -33,10 +33,12 @@ namespace DxTBoxCore.Box_Progress
 
         public override bool IHMLaunched { get; protected set; }
 
-
-
-
         // ---
+
+        public static Func<object, object>[] CreateTasks(params Func<object, object>[] p)
+        {
+            return p;
+        }
 
         /// <summary>
         /// 
@@ -51,6 +53,7 @@ namespace DxTBoxCore.Box_Progress
             ProgressIHM.Closing += Blee_Closing;
             ProgressIHM.Closed += Blee_Closed;
 
+            bool res= false;
             Task prevTask = null;
             foreach (var t in MethodsToRun)
             {
@@ -59,19 +62,19 @@ namespace DxTBoxCore.Box_Progress
                     (
                         async () =>
                         {
-                            Debug.WriteLine("taskLauncher2 avant timer");
+                            Debug.WriteLine("taskLauncher avant timer");
                             while (!IHMLaunched)
                             {
                                 await Task.Delay(LoopDelay);
                             }
-                            Debug.WriteLine("taskLauncher2 après timer");
-                            t();
+                            Debug.WriteLine("taskLauncher après timer");
+                            t(res);
                         },
                         Objet.CancelToken
                      );
                 else
                 {
-                    prevTask = prevTask.ContinueWith((ant) => t());
+                    prevTask = prevTask.ContinueWith((ant) => t(res), TaskContinuationOptions.OnlyOnRanToCompletion);
                 }
 
                 _Tasks.Add(prevTask);
@@ -88,7 +91,6 @@ namespace DxTBoxCore.Box_Progress
             }
 
             last.ContinueWith((ant) => ProgressIHM.TaskFinished = true);
-
 
             if (ProgressIHM is Window)
                 return ((Window)ProgressIHM).ShowDialog();
@@ -120,9 +122,6 @@ namespace DxTBoxCore.Box_Progress
             {
                 var kwa = TaskRunning.ContinueWith((ant) => Ending());
             }*/
-
-
-
         }
 
         /// <summary>
@@ -130,7 +129,7 @@ namespace DxTBoxCore.Box_Progress
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public virtual void Blee_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        public async virtual void Blee_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             WindowClosing = true;
 
@@ -149,7 +148,10 @@ namespace DxTBoxCore.Box_Progress
                 case TaskStatus.WaitingForActivation:
                     // interruption
                     StopTask();
-
+                    while (!Objet.IsInterrupted)
+                    {
+                        await Task.Delay(100);
+                    }
                     break;
                 default:
                     Debug.WriteLine($"Not Managed {TaskRunning.Status}");
@@ -168,11 +170,6 @@ namespace DxTBoxCore.Box_Progress
                 );*/
         }
 
-        internal static Func<object>[] CreateTasks(params Func<object>[] p)
-        {
-            return p;
-
-        }
 
         private void Blee_Closed(object sender, EventArgs e)
         {
@@ -190,12 +187,17 @@ namespace DxTBoxCore.Box_Progress
 
         public override void StopTask()
         {
-            Objet.TokenSource.Cancel();
+            Objet.StopTask();
+
+            if (ProgressIHM is Window)
+                ((Window)ProgressIHM).Title += " - Closing";
 
             if (!WindowClosing)
                 ProgressIHM.Close();
 
 
         }
+
+  
     }
 }

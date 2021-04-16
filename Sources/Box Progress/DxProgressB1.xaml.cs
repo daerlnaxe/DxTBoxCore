@@ -1,4 +1,4 @@
-﻿using DxLocalTransf.Progress;
+﻿using AsyncProgress;
 using DxTBoxCore.Box_Progress.Basix;
 using System;
 using System.Collections.Generic;

@@ -1,23 +1,10 @@
-﻿using DxLocalTransf.Progress;
-using DxLocalTransf.Progress.ToImp;
+﻿using AsyncProgress;
 using DxTBoxCore.Async_Box_Progress.Basix;
 using DxTBoxCore.Box_Progress.Basix;
-using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DxTBoxCore.Box_Progress
 {
@@ -44,6 +31,11 @@ namespace DxTBoxCore.Box_Progress
             InitializeComponent();
         }
 
+        public DxStateProgress(A_ProgressPersistD model)
+        {
+            Model = model;
+            InitializeComponent();
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

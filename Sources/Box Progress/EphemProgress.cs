@@ -1,9 +1,5 @@
-﻿using DxLocalTransf.Progress;
+﻿using AsyncProgress;
 using DxTBoxCore.Async_Box_Progress.Basix;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 
 namespace DxTBoxCore.Box_Progress
 {
@@ -20,8 +16,8 @@ namespace DxTBoxCore.Box_Progress
         {
             objet.UpdateProgress += this.SetProgress;
             objet.UpdateStatus += this.SetStatus;
-            objet.UpdateStatusNL += this.SetStatusNL;
-            objet.MaximumProgress += this.SetMaximum;
         }
+
+
     }
 }

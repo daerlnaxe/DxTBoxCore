@@ -1,4 +1,5 @@
-﻿using DxLocalTransf.Progress;
+﻿using AsyncProgress;
+using AsyncProgress.Cont;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -68,26 +69,18 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
 
 
 
-        public virtual void SetTotalProgress(object sender, double value)
+        public virtual void SetTotalProgress(object sender, ProgressArg arg)
         {
-            ProgressTotal = value;
+            MaximumTotal = arg.Total;
+            ProgressTotal = arg.Progress;
         }
 
-        public virtual void SetTotalStatus(object sender, string value)
+        public virtual void SetTotalStatus(object sender, StateArg arg)
         {
-            TotalStatus = value;
-            _WriteToEndT = false;
+            TotalStatus = arg.Message;
+            _WriteToEndT = arg.EndOfLine;
         }
 
-        public void SetTotalStatusNL(object sender, string value)
-        {
-            TotalStatus = value;
-            _WriteToEndT = true;
-        }
 
-        public void SetTotalMaximum(object sender, double value)
-        {
-            MaximumTotal = value;
-        }
     }
 }

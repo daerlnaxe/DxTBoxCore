@@ -1,5 +1,4 @@
-﻿using DxLocalTransf.Progress;
-using DxLocalTransf.Progress.ToImp;
+﻿using AsyncProgress;
 using DxTBoxCore.Async_Box_Progress.Basix;
 using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
@@ -23,6 +22,7 @@ namespace DxTBoxCore.Async_Box_Progress
     /// <summary>
     /// Logique d'interaction pour DxAsStateP.xaml
     /// </summary>
+    [Obsolete]
     public partial class DxAsStateProgress : Window, I_ASGraph
     {
 

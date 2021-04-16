@@ -1,24 +1,15 @@
-﻿using DxLocalTransf.Progress;
-using System;
-using System.Collections.Generic;
+﻿using AsyncProgress;
+using AsyncProgress.Cont;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace DxTBoxCore.Async_Box_Progress.Basix
 {
     public abstract class A_Progress : I_RProgress, I_TProgress
     {
-        public abstract string Status { get; set; }
-
-        public abstract void SetStatus(object sender, string value);
-
-        public abstract void SetStatusNL(object sender, string value);
-
- 
-
-
+        public abstract void SetStatus(object sender, StateArg value);
+        
         // ---
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -51,6 +42,19 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
 
         // ---
 
+        protected string _Status;
+        public virtual string Status
+        {
+            get { return _Status; }
+            set
+            {
+                _Status = value;
+                OnPropertyChanged();
+            }
+        }
+
+        // ---
+
         private double _Maximum;
         public virtual double MaxValue
         {
@@ -69,15 +73,13 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
 
         // ---
 
-        public virtual void SetProgress(object sender, double value)
+        public void SetProgress(object sender, ProgressArg m)
         {
-            Progress = value;
+            MaxValue = m.Total;
+            Progress = m.Progress;
         }
 
-        public virtual void SetMaximum(object sender, double value)
-        {
-            MaxValue = value;
-        }
+        
 
 
     }

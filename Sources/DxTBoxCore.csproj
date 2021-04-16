@@ -25,6 +25,8 @@ Free to use, share, distribution</Description>
     <Compile Remove="Async Box Progress\Basix\I_Initialize.cs" />
     <Compile Remove="Async Box Progress\Maou.cs" />
     <Compile Remove="Async Box Progress\MaouEvo.cs" />
+    <Compile Remove="Async Box Progress\Maw.cs" />
+    <Compile Remove="Async Box Progress\MawEvo.cs" />
     <Compile Remove="Async Box Progress\Merde.cs" />
     <Compile Remove="Async Box Progress\M_Progress.cs" />
     <Compile Remove="Async Box Progress\M_ProgressD.cs" />
@@ -73,6 +75,8 @@ Free to use, share, distribution</Description>
     <None Include="Async Box Progress\Basix\I_Initialize.cs" />
     <None Include="Async Box Progress\DxAsCollecProgress.xaml.cs" />
     <None Include="Async Box Progress\Maou.cs" />
+    <None Include="Async Box Progress\Maw.cs" />
+    <None Include="Async Box Progress\MawEvo.cs" />
     <None Include="Async Box Progress\M_ProgressD.cs" />
     <None Include="Async Box Progress\M_ProgressDL.cs" />
     <None Include="Async Box Progress\MaouEvo.cs" />
@@ -95,6 +99,7 @@ Free to use, share, distribution</Description>
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\AsyncProgress\AsyncProgress.csproj" />
     <ProjectReference Include="..\..\DxCoreControls\Source\DxCCtrl.csproj" />
     <ProjectReference Include="..\..\DxLocalTrans\DxLocalTrans\DxLocalTransf.csproj" />
   </ItemGroup>

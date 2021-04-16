@@ -1,20 +1,22 @@
-﻿using DxLocalTransf.Progress;
+﻿using AsyncProgress;
 using DxTBoxCore.Async_Box_Progress.Basix;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading;
 
-namespace DxTBoxCore.Async_Box_Progress
+namespace DxTBoxCore.Box_Progress
 {
-    public class MawEvo: A_ProgressEphD, I_ASBase
+    public class MawEvo : A_ProgressEphD, I_ASBase
     {
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
 
         public CancellationToken CancelToken => TokenSource.Token;
 
         public bool IsPaused { get; set; }
+
+        public bool IsInterrupted { get; set; }
+
+        public bool CancelFlag => throw new NotImplementedException();
 
         public MawEvo()
         {
@@ -31,13 +33,9 @@ namespace DxTBoxCore.Async_Box_Progress
         {
             objet.UpdateProgress += SetProgress;
             objet.UpdateStatus += SetStatus;
-            objet.UpdateStatusNL += SetStatusNL;
-            objet.MaximumProgress += SetMaximum;
 
             objet.UpdateProgressT += SetTotalProgress;
             objet.UpdateStatusT += SetTotalStatus;
-            objet.UpdateStatusTNL += SetTotalStatusNL;
-            objet.MaximumProgressT += SetTotalMaximum;
         }
 
 
@@ -49,5 +47,9 @@ namespace DxTBoxCore.Async_Box_Progress
             // throw new System.NotImplementedException();
         }
 
+        public void Pause(int timeSleep)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

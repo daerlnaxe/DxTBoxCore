@@ -1,15 +1,8 @@
-﻿using DxLocalTransf.Progress;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using AsyncProgress;
+using AsyncProgress.Cont;
 #if DEBUG
 using System.Diagnostics;
 #endif
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace DxTBoxCore.Async_Box_Progress.Basix
 {
@@ -23,7 +16,6 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
     {
         private bool _WriteToEnd = false;
 
-        protected string _Status;
         /// <summary>
         /// 
         /// </summary>
@@ -64,17 +56,12 @@ namespace DxTBoxCore.Async_Box_Progress.Basix
 
 
 
-        public override void SetStatus(object sender, string value)
+        public override void SetStatus(object sender, StateArg arg)
         {
-            Status = value;
-            _WriteToEnd = false;
+            Status = arg.Message;
+            _WriteToEnd = arg.EndOfLine;
         }
 
-        public override void SetStatusNL(object sender, string value)
-        {
-            Status = value;
-            _WriteToEnd = true;
-        }
 
 
         #endregion

@@ -1,13 +1,9 @@
-﻿using DxLocalTransf.Progress;
+﻿using AsyncProgress;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace DxTBoxCore.Async_Box_Progress.Basix
-{        
+{
 
     /// <summary>
     /// Classe utilisé par les modèles

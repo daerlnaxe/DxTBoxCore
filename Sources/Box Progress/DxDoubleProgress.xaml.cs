@@ -1,24 +1,9 @@
-﻿using DxLocalTransf.Progress;
-using DxTBoxCore.Async_Box_Progress.Basix;
+﻿using AsyncProgress;
 using DxTBoxCore.Box_Progress.Basix;
-using DxTBoxCore.Common;
-using DxTBoxCore.Languages;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DxTBoxCore.Box_Progress
 {

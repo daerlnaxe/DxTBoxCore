@@ -1,5 +1,4 @@
-﻿using DxLocalTransf.Progress;
-using DxLocalTransf.Progress.ToImp;
+﻿using AsyncProgress;
 using DxTBoxCore.Async_Box_Progress;
 using DxTBoxCore.Box_Password;
 using DxTBoxCore.Box_Progress;
@@ -12,6 +11,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows;
+using Maw = DxTBoxCore.Box_Progress.Maw;
 
 namespace DxTBoxCore
 {
@@ -166,7 +166,7 @@ namespace DxTBoxCore
                 {
                 },
                 //Objet = maw,
-                MethodToRun = () => Foo(maw),
+            //    MethodToRun = () => Foo(maw),
             };
 
             al.Launch(maw);
