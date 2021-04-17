@@ -28,11 +28,12 @@
         <TextBlock Margin="5" DockPanel.Dock="Top">
             <TextBlock.Text>
                 <MultiBinding Converter="{StaticResource FormatTxt}">
-                    <Binding Path="TaskName" RelativeSource="{RelativeSource AncestorType={x:Type Window}}" />
+                    <Binding Path="TaskName" FallbackValue="TaskName" />
                     <Binding Source=": "/>
                 </MultiBinding>
             </TextBlock.Text>
         </TextBlock>
+        <!-- Progress Bars -->
         <!-- Progress Bars -->
         <Grid DockPanel.Dock="Bottom" Grid.Row="2" Margin="0,10,0,10">
             <Grid.Resources>
@@ -124,9 +125,10 @@
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" >
             <!-- Running task -->
-            <Label Grid.Row="2" Content="{Binding NameCOPType, FallbackValue=CurrentOP}" Style="{StaticResource genLabel}"/>
+          <!--  <Label Grid.Row="2" Content="{Binding TaskName, FallbackValue=CurrentOP}" Style="{StaticResource genLabel}"/>
+            -->
             <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource genTBlock}"
-                       Text="{Binding Status, FallbackValue=Status}"/>
+                       Text="{Binding Status, FallbackValue=Status}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Status}"/>
         </StackPanel>
     </DockPanel>
 </Window>

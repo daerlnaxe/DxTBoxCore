@@ -1,4 +1,4 @@
-﻿using AsyncProgress.Models;
+﻿using AsyncProgress.Basix;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

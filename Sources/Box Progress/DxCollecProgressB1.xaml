@@ -41,7 +41,7 @@
     <Grid >
         <TextBox x:Name="tboxMessage"  HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap"
                  Text="{Binding CurrentOP}" VerticalAlignment="Top" Width="472"/>
-        <ListView x:Name="lvElements" Padding="5" ItemsSource="{Binding Elements}" Height="132" 
+        <ListView x:Name="lvElements" Padding="5" ItemsSource="{Binding Status}" Height="132" 
                   Margin="10,35,10,0" VerticalAlignment="Top">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DxTBoxCore.Box_Progress"
         xmlns:l="clr-namespace:DxTBoxCore.Languages"
         mc:Ignorable="d"
-        Title="DxAsStateP" Height="450" Width="800" Loaded="Window_Loaded"   
+        Title="{Binding TaskName, TargetNullValue=DxStateProgress}" Height="450" Width="800" Loaded="Window_Loaded"   
         WindowStartupLocation="CenterScreen"
         >
     <Window.CommandBindings>
