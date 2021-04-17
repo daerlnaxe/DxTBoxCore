@@ -1,4 +1,5 @@
-﻿using DxTBoxCore.Async_Box_Progress.Basix;
+﻿using AsyncProgress.Basix;
+using DxTBoxCore.Async_Box_Progress.Basix;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

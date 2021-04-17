@@ -1,4 +1,6 @@
 ﻿using AsyncProgress;
+using AsyncProgress.Tests;
+using AsyncProgress.Tools;
 using DxTBoxCore.Async_Box_Progress;
 using DxTBoxCore.Box_Password;
 using DxTBoxCore.Box_Progress;
@@ -11,7 +13,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows;
-using Maw = DxTBoxCore.Box_Progress.Maw;
 
 namespace DxTBoxCore
 {
