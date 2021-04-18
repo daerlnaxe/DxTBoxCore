@@ -44,6 +44,7 @@ namespace DxTBoxCore.Box_Progress
             ProgressIHM.Closing += Blee_Closing;
             ProgressIHM.Closed += Blee_Closed;
 
+            bool res = false;
             TaskRunning = Task.Run
             (
                async () =>
@@ -65,14 +66,13 @@ namespace DxTBoxCore.Box_Progress
 
             TaskRunning.ContinueWith((ant) => ProgressIHM.TaskFinished = true);
 
-            bool? res = false;
 
 
             if (ProgressIHM is Window)
             {
-                return res = ((Window)ProgressIHM).ShowDialog();
+                ((Window)ProgressIHM).ShowDialog();
             }
-
+            res = true;
             // job
             //base.TaskRunning = Task.Run(() => base.TaskToRun(base.CancelToken, test), base.TaskToRun.CancelToken);
 

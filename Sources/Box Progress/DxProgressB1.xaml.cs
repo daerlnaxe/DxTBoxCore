@@ -22,8 +22,11 @@ namespace DxTBoxCore.Box_Progress
     /// <summary>
     /// Logique d'interaction pour ProgressBar1.xaml
     /// </summary>
-    public partial class DxProgressB1 : Window, IGraphAs
+    public partial class DxProgressB1 : Window, IGraphAs, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
         #region Hide Close button
         private const int GWL_STYLE = -16;
         private const int WS_SYSMENU = 0x80000;
@@ -36,9 +39,21 @@ namespace DxTBoxCore.Box_Progress
         public bool HideCloseButton { get; set; }
 
         #endregion
+
+        public static readonly RoutedUICommand CloseCmd = new RoutedUICommand("Close", "CloseCmd", typeof(DxProgressB1));
+
         public I_RProgress Model { get; internal set; }
 
-        public bool TaskFinished { get; set; }
+        bool _TaskFinished;
+        public bool TaskFinished 
+        {
+            get => _TaskFinished;
+            set
+            {
+                _TaskFinished = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TaskFinished)));
+            }
+        }
 
 
         public DxProgressB1()
@@ -72,6 +87,7 @@ namespace DxTBoxCore.Box_Progress
         #region statique version
         private static DxProgressB1 _StatWindow;
 
+
         public static void ModalShow(string name, double max)
         {
             //_StatWindow = new DxProgressB1(max);
@@ -88,9 +104,12 @@ namespace DxTBoxCore.Box_Progress
         {
             _StatWindow.Dispatcher.BeginInvoke((Action)(() => _StatWindow.Close()));
         }
-
         #endregion
 
-
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+            this.Close();
+        }
     }
 }
