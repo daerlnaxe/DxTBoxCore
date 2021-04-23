@@ -1,0 +1,72 @@
+﻿<Window x:Class="DxTBoxCore.Box_Status.ColumnStatus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DxTBoxCore.Box_Status"
+        xmlns:conv ="clr-namespace:DxTBoxCore.Converters"
+        xmlns:l="clr-namespace:DxTBoxCore.Languages"
+        mc:Ignorable="d"
+        d:Height="450" d:Width="800"
+        SizeToContent="WidthAndHeight"
+        MinWidth="300"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        Title="GameStatus" >
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary  Source="/DxTBoxCore;component/Themes/Basic.xaml"/>
+                <ResourceDictionary>
+                    <Style TargetType="Label" x:Key="lbLocal" BasedOn="{StaticResource {x:Type Label}}" >
+                    </Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="locBtn">
+                    </Style>
+                    <conv:BoolColorConverter x:Key="boolconv"/>
+                </ResourceDictionary>
+                <!--
+                -->
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        <!--
+        -->
+    </Window.Resources>
+    <DockPanel Margin="10">
+        <!-- Message -->
+        <TextBlock DockPanel.Dock="Top" Text="{Binding Message, FallbackValue=message}" Margin="0,10" />
+        <!-- Buttons -->
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+            <Button x:Name="CancelButton" Style="{DynamicResource locBtn}" Visibility="Hidden" Content="no" IsCancel="True" />
+            <Button x:Name="DefaultButton" Style="{DynamicResource locBtn}" Content="yes" IsDefault="True" Click="DefaultButton_Click"/>
+        </StackPanel>
+        <!-- Center -->
+        <ItemsControl ItemsSource="{Binding States}" DockPanel.Dock="Top">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{Binding Key}" />
+                        <Rectangle Width="20"/>
+                        <Ellipse Grid.Column="1" Stroke="WhiteSmoke"                                 
+                                 Width="10" Height="10" HorizontalAlignment="Right">
+                            <Ellipse.Fill>
+                                <MultiBinding Converter="{StaticResource boolconv}">
+                                    <Binding Path="Value"></Binding>
+                                    <Binding Path="TrueColor" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=local:ColumnStatus}"/>
+                                    <Binding Path="FalseColor" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=local:ColumnStatus}"/>
+                                    <Binding Path="NullColor" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=local:ColumnStatus}"/>
+                                </MultiBinding>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+
+    </DockPanel>
+</Window>

@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+
+                    >
+    <Color x:Key="ButtonColor" >lightgray</Color>
+    <SolidColorBrush x:Key="ButtonBGBrush" Color="{StaticResource ButtonColor}"/>
+    <SolidColorBrush x:Key="ButtonForeBrush" Color="Black"/>
+    <sys:Int32 x:Key="buttonwidth" >125</sys:Int32>
+
+    <!-- Label -->
+    <Style TargetType="Label" >
+        <Setter Property="ContentStringFormat" Value="{}{0}:"/>
+    </Style>
+    <!-- Buttons -->
+    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Margin" Value="3,5"/>
+        <Setter Property="Padding" Value="5,3"/>
+        <Setter Property="Background" Value="{DynamicResource ButtonBGBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ButtonForeBrush}"/>
+    </Style>
+</ResourceDictionary>

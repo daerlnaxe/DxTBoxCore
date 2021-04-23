@@ -4,6 +4,7 @@ using AsyncProgress.Tools;
 using DxTBoxCore.Async_Box_Progress;
 using DxTBoxCore.Box_Password;
 using DxTBoxCore.Box_Progress;
+using DxTBoxCore.Box_Status;
 using DxTBoxCore.BoxChoose;
 using DxTBoxCore.Languages;
 using System;
@@ -90,6 +91,29 @@ namespace DxTBoxCore
             //tbAC1.AvailableItems2 = Caca2;
         }
 
+        private void Test_GameStatus(object sender, RoutedEventArgs e)
+        {
+            ColumnStatus win = new ColumnStatus();
+            win.States = new Dictionary<string, bool?>()
+            {
+                { "game", false },
+                { "musique", true } ,
+                { "Pays", null }
+            };
+            win.TrueColor = System.Windows.Media.Colors.GreenYellow;
+            win.FalseColor = System.Windows.Media.Colors.Red;
+            win.NullColor = System.Windows.Media.Colors.DarkGray;
+            win.Buttons = Common.E_DxButtons.Ok | Common.E_DxButtons.Cancel;
+            //fonctionne
+            /*var uri = new Uri("/DxTBoxCore;component/Themes/Basic.xaml", UriKind.Relative) ;
+            win.Resources.MergedDictionaries.Add(Application.LoadComponent(uri) as ResourceDictionary);*/
+            //var uri = new Uri("/DxTBoxCore;component/Themes/DarkStyle.xaml", UriKind.Relative) ;
+            //var dic = Application.LoadComponent(uri) as ResourceDictionary;
+            //win.Resources.MergedDictionaries.Clear();
+            //win.Resources.MergedDictionaries.Add(dic);
+            win.ShowDialog();
+        }
+
 
         private void Open_ChooseFile(object sender, RoutedEventArgs e)
         {
@@ -136,7 +160,7 @@ namespace DxTBoxCore
                     Model = new EphemProgress(tps)
                 },
                 //Objet = tps,
-                MethodToRun = ()=>tps.Run()
+                MethodToRun = () => tps.Run()
             };
             al.Launch(tps);
 
@@ -152,7 +176,7 @@ namespace DxTBoxCore
                     Model = new EphemProgressD(tpc)
                 },
                 //Objet = tpc,
-                MethodToRun = ()=>tpc.Run(50),
+                MethodToRun = () => tpc.Run(50),
             };
             al.Launch(tpc);
         }
@@ -167,7 +191,7 @@ namespace DxTBoxCore
                 {
                 },
                 //Objet = maw,
-            //    MethodToRun = () => Foo(maw),
+                //    MethodToRun = () => Foo(maw),
             };
 
             al.Launch(maw);

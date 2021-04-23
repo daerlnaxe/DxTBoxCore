@@ -8,8 +8,15 @@
         Title="{Binding TaskName, TargetNullValue=DxProgressB1}" Height="151" Width="480" 
         Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <Style TargetType="Label" BasedOn="{StaticResource lblStyle}"/>
-        <Style TargetType="Button" BasedOn="{StaticResource btStyle}"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/Basic.xaml" />
+                <ResourceDictionary>
+                    <Style TargetType="Label" />
+                    <Style TargetType="Button" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <DockPanel Margin="10">
         <!-- Buttons -->
@@ -17,31 +24,31 @@
             <Button Content="Close" IsEnabled="{Binding TaskFinished, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:DxProgressB1}}"
                     IsDefault="True" Click="Close_Click" />
         </StackPanel>
-        
-    <Grid Margin="0,10">
+
+        <Grid Margin="0,10">
             <Grid.RowDefinitions>
-                <RowDefinition /> 
-                <RowDefinition Height="Auto"/> 
-                <RowDefinition Height="Auto"/> 
+                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-        <!-- Texte -->
-        <StackPanel Orientation="Horizontal">
-            <Label Content="File"/>
-            <TextBlock x:Name="FullPath" TextWrapping="NoWrap" Margin="5"
+            <!-- Texte -->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="File"/>
+                <TextBlock x:Name="FullPath" TextWrapping="NoWrap" Margin="5"
                        Text="{Binding Status, FallbackValue=Status}"/>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <TextBlock Text="{Binding ElementName=progressBar, Path=Maximum, FallbackValue=0}" />
-            <TextBlock TextWrapping="NoWrap" Text=" / "/>
-            <TextBlock TextWrapping="NoWrap" Text="{Binding ElementName=progressBar, Path=Value}"/>
-        </StackPanel>
-        <!-- ProgressBar -->
-        <ProgressBar Grid.Row="2" x:Name="progressBar" Height="25"
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
+                <TextBlock Text="{Binding ElementName=progressBar, Path=Maximum, FallbackValue=0}" />
+                <TextBlock TextWrapping="NoWrap" Text=" / "/>
+                <TextBlock TextWrapping="NoWrap" Text="{Binding ElementName=progressBar, Path=Value}"/>
+            </StackPanel>
+            <!-- ProgressBar -->
+            <ProgressBar Grid.Row="2" x:Name="progressBar" Height="25"
                      Value="{Binding Progress}" Maximum="{Binding MaxValue}"/>
-        <Label Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <Label Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
                Content="50%" ContentStringFormat="{}{0}" 
                />
 
-    </Grid>
+        </Grid>
     </DockPanel>
 </Window>

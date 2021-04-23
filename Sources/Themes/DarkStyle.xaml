@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local ="clr-namespace:DxTBoxCore.Box_Status"
+                    >
+    <Color x:Key="ButtonColor" >WhiteSmoke</Color>
+    <SolidColorBrush x:Key="ButtonBGBrush" Color="#FF2E2E42"/>
+    <SolidColorBrush x:Key="ButtonForeBrush" Color="{StaticResource ButtonColor}"/>
+</ResourceDictionary>

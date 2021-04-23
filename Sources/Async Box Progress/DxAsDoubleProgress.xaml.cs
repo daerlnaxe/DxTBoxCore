@@ -94,7 +94,7 @@ namespace DxTBoxCore.Async_Box_Progress
         {
             if (Launcher.TaskRunning.Status == TaskStatus.Faulted)
             {
-                MBox.DxMBox.ShowDial(Launcher.TaskRunning.Exception.Message, DxTBLang.Error);
+                Box_MBox.DxMBox.ShowDial(Launcher.TaskRunning.Exception.Message, DxTBLang.Error);
                 DialogResult = false;
                 return;
             }
@@ -111,7 +111,7 @@ namespace DxTBoxCore.Async_Box_Progress
             Launcher.IsPaused = true;
             e.Cancel = true;
 
-            if (MBox.DxMBox.ShowDial(DxTBLang.Q_Want_Close, DxTBLang.Question, E_DxButtons.Yes | E_DxButtons.No) == true)
+            if (Box_MBox.DxMBox.ShowDial(DxTBLang.Q_Want_Close, DxTBLang.Question, E_DxButtons.Yes | E_DxButtons.No) == true)
             {
                 Launcher.StopTask();
                 Launcher.TaskRunning.ContinueWith(antecedant => Dispatcher.Invoke(() => this.Close()));

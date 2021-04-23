@@ -21,6 +21,7 @@
             </Style>
 
         </WrapPanel.Resources>
+        <Button Content="Test Game Status" Click="Test_GameStatus"/>
         <Button Content="Choose File" Click="Open_ChooseFile"/>
         <Button Content="Choose Folder" Click="Open_ChooseFolder"/>
         <Button Content="PasswordBox" Click="Open_PasswordBox"/>

@@ -5,7 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
     <Company>Daerlnaxe Software</Company>
-    <AssemblyVersion>2.0.4.2</AssemblyVersion>
+    <AssemblyVersion>2.0.4.3</AssemblyVersion>
     <FileVersion>2.0.0.2</FileVersion>
     <Description>IHM Collection
 Free to use, share, distribution</Description>
@@ -164,6 +164,9 @@ Free to use, share, distribution</Description>
     <Compile Update="Box Progress\DxStateProgress.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Box Status\ColumnStatus.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Languages\DxTBLang.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -188,6 +191,10 @@ Free to use, share, distribution</Description>
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Box Progress\DxStateProgress.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Box Status\ColumnStatus.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

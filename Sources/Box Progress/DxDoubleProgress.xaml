@@ -7,21 +7,26 @@
         xmlns:local="clr-namespace:DxTBoxCore.Box_Progress"
         xmlns:Languages="clr-namespace:DxTBoxCore.Languages"
         xmlns:conv="clr-namespace:DxTBoxCore.Converters"
-        mc:Ignorable="d"
+        mc:Ignorable="d"    
         Title="DxAsDoubleProgress" Height="250" Width="500" WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
     >
     <Window.Resources>
-        <conv:IntToString x:Key="intConv"/>
-        <conv:FormatAB x:Key="FormatTxt"/>
-        <!-- Label -->
-        <Style TargetType="Label" x:Key="genLabel">
-            <Setter Property="ContentStringFormat" Value="{}{0}:"/>
-        </Style>
-        <!-- TextBlock -->
-        <Style x:Key="genTBlock" TargetType="{x:Type TextBlock}">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/DxTBoxCore;component/Themes/Basic.xaml"/>
+                <ResourceDictionary>
+                    <!-- Label -->
+                    <!-- TextBlock -->
+                    <Style x:Key="genTBlock" TargetType="{x:Type TextBlock}">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                    <conv:IntToString x:Key="intConv"/>
+                    <conv:FormatAB x:Key="FormatTxt"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
     </Window.Resources>
     <DockPanel Margin="10">
         <!-- Titre -->
@@ -52,7 +57,7 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
-                <Style TargetType="{x:Type Label}" BasedOn="{StaticResource genLabel}">
+                <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
                     <Setter Property="Width" Value="75"/>
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
                     <Setter Property="BorderThickness" Value="1"/>
@@ -125,7 +130,7 @@
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" >
             <!-- Running task -->
-          <!--  <Label Grid.Row="2" Content="{Binding TaskName, FallbackValue=CurrentOP}" Style="{StaticResource genLabel}"/>
+            <!--  <Label Grid.Row="2" Content="{Binding TaskName, FallbackValue=CurrentOP}" Style="{StaticResource genLabel}"/>
             -->
             <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource genTBlock}"
                        Text="{Binding Status, FallbackValue=Status}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Status}"/>

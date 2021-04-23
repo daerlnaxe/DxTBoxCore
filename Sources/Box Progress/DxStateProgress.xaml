@@ -4,22 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DxTBoxCore.Box_Progress"
+        xmlns:comn="clr-namespace:DxTBoxCore.Common"
         xmlns:l="clr-namespace:DxTBoxCore.Languages"
         mc:Ignorable="d"
         Title="{Binding TaskName, TargetNullValue=DxStateProgress}" Height="450" Width="800" Loaded="Window_Loaded"   
         WindowStartupLocation="CenterScreen"
         >
     <Window.CommandBindings>
-        <CommandBinding Command="local:DxStateProgress.OkCommand" CanExecute="CanEx_Ok" Executed="Exec_Ok"/>
+        <CommandBinding Command="comn:Commands.Ok" CanExecute="CanEx_Ok" Executed="Exec_Ok"/>
     </Window.CommandBindings>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary  Source="/DxTBoxCore;component/Themes/Basic.xaml"/>
+                <ResourceDictionary>
+                    <Style TargetType="Button" x:Key="btn" BasedOn="{StaticResource {x:Type Button}}"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <DockPanel Margin="10">
         <!-- Fichiers 
         <ListBox DockPanel.Dock="Left"/>
         -->
         <!-- Buttons -->
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="{x:Static l:DxTBLang.Stop}"  Click="Stop_Click"/>
-            <Button Content="{x:Static l:DxTBLang.OK}"  Command="local:DxStateProgress.OkCommand"/>
+            <Button Content="{x:Static l:DxTBLang.Stop}" Style="{DynamicResource btn}"  Click="Stop_Click"/>
+            <Button Content="{x:Static l:DxTBLang.OK}" Style="{DynamicResource btn}" Command="comn:Commands.Ok"/>
         </StackPanel>
         <!-- Progression -->
         <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
@@ -34,7 +45,7 @@
         </StackPanel>
         <!-- Log -->
         <ScrollViewer>
-           <TextBox Text="{Binding Status}" IsEnabled="true" AcceptsReturn="True" IsReadOnly="True" />
+            <TextBox Text="{Binding Status}" IsEnabled="true" AcceptsReturn="True" IsReadOnly="True" />
         </ScrollViewer>
     </DockPanel>
 </Window>

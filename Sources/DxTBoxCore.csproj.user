@@ -100,6 +100,9 @@
     <Page Update="Box Progress\DxStateProgress.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Box Status\ColumnStatus.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="BoxChoose\TreeChoose.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -110,6 +113,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\TextBoxAutoC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Basic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\DarkStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\Generic.xaml">

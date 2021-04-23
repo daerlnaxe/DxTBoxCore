@@ -15,7 +15,6 @@ namespace DxTBoxCore.Box_Progress
     public partial class DxStateProgress : Window, IGraphAs
     {
 
-        public static readonly RoutedUICommand OkCommand = new RoutedUICommand(DxTBLang.OK, "OK", typeof(DxStateProgress));
 
         public bool TaskFinished { get; set; }
         /*

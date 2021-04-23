@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace DxTBoxCore.MBox
+namespace DxTBoxCore.Box_MBox
 {
     /// <summary>
     /// Logique d'interaction pour MessageBox.xaml
