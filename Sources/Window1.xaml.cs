@@ -183,7 +183,7 @@ namespace DxTBoxCore
 
         private void Simule_AnotherMaou(object sender, RoutedEventArgs e)
         {
-            Maw maw = new Maw();
+            Maw<EphemProgress> maw = new Maw<EphemProgress>();
 
             TaskLauncher al = new TaskLauncher()
             {
@@ -202,14 +202,14 @@ namespace DxTBoxCore
         {
             TestProgressSimple tps = new TestProgressSimple();
 
-            Maw maw = new Maw();
+            Maw<EphemProgress> maw = new Maw<EphemProgress>();
             maw.RerouteSignal(tps);
 
             DxAsProgress window = new DxAsProgress()
             {
-                Model = maw,
+                Model = maw.Parler,
 
-                Launcher = BasicLauncher<Maw>.Create(maw, () => tps.Run()),
+                Launcher = BasicLauncher<Maw<EphemProgress>>.Create(maw, () => tps.Run()),
             };
             window.ShowDialog();
         }
@@ -218,24 +218,24 @@ namespace DxTBoxCore
         {
             TestProgressCollec tps = new TestProgressCollec();
 
-            MawEvo maw = new MawEvo(tps);
+            MawEvo<EphemProgressD> maw = new MawEvo<EphemProgressD>(tps);
 
             DxAsDoubleProgress window = new DxAsDoubleProgress()
             {
-                Model = maw,
-                Launcher = BasicLauncher<MawEvo>.Create(maw, () => tps.Run(10)),
+                Model = maw.Parler,
+                Launcher = BasicLauncher<MawEvo<EphemProgressD>>.Create(maw, () => tps.Run(10)),
             };
             window.ShowDialog();
         }
 
         private void Simule_SimpleProgressMaou(object sender, RoutedEventArgs e)
         {
-            MawEvo maou = new MawEvo();
+            var maou = new MawEvo<EphemProgressD>();
 
             DxAsCollecProgress db2 = new DxAsCollecProgress(DxTBLang.File)
             {
-                Model = maou,
-                Launcher = BasicLauncher<MawEvo>.Create(maou, () => Foo(maou, "Il est passé par ici")),
+                Model = maou.Parler,
+                Launcher = BasicLauncher<MawEvo<EphemProgressD>>.Create(maou, () => Foo(maou, "Il est passé par ici")),
                 /*
                 new Maou<string, object>()
                 {
@@ -248,11 +248,11 @@ namespace DxTBoxCore
 
         private void Simule_DoubleProgressMaou(object sender, System.Windows.RoutedEventArgs e)
         {
-            MawEvo maw = new MawEvo();
+            var maw = new MawEvo<EphemProgressD>();
             var db2 = new DxAsCollecProgress(DxTBLang.File)
             {
-                Model = maw,
-                Launcher = BasicLauncher<MawEvo>.Create(maw, () => Foo(maw)),
+                Model = maw.Parler,
+                Launcher = BasicLauncher<MawEvo<EphemProgressD>>.Create(maw, () => Foo(maw)),
 
             };
             /*           TaskToRun = ,

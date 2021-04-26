@@ -1,4 +1,5 @@
-﻿using DxTBoxCore.Async_Box_Progress.Basix;
+﻿using AsyncProgress.Basix;
+using DxTBoxCore.Async_Box_Progress.Basix;
 using DxTBoxCore.Box_Progress.Basix;
 using DxTBoxCore.Collec;
 using DxTBoxCore.Container;
@@ -32,14 +33,11 @@ namespace DxTBoxCore.Box_Progress
 
         public A_ProgressEphD Model { get; set; }
 
-        public DxCollecProgressB1()
+        public DxCollecProgressB1(A_ProgressEphD model)
         {
+            Model = model;
             InitializeComponent();
         }
-        /*
-        void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-        }*/
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

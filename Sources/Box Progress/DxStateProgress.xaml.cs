@@ -14,8 +14,6 @@ namespace DxTBoxCore.Box_Progress
     /// </summary>
     public partial class DxStateProgress : Window, IGraphAs
     {
-
-
         public bool TaskFinished { get; set; }
         /*
         public I_ASBase TaskToRun
