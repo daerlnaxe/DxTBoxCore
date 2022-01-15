@@ -117,7 +117,7 @@ namespace DxTBoxCore
 
         private void Open_ChooseFile(object sender, RoutedEventArgs e)
         {
-            ChooseFile cf = new ChooseFile()
+            TreeChoose cf = new TreeChoose()
             {
 
             };

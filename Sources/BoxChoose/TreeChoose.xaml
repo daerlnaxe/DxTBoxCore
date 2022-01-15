@@ -63,18 +63,26 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
+        <!--
         <TreeView Visibility="Hidden">
+            
            
         </TreeView>
+        -->
         <!--Loaded="FileTree_Loaded"-->
-        <TreeView Grid.Row="2"  ItemsSource="{Binding Root}" SelectedItemChanged="SelectedItem">
+        <TreeView x:Name="ExplorerView" Grid.Row="2"  
+                  ItemsSource="{Binding Root}" SelectedItemChanged="SelectedItem">
+            <TreeView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel/>
+                </ItemsPanelTemplate>
+            </TreeView.ItemsPanel>
             <TreeView.Resources>
+                <!-- Obligation de passer par un style sous peine d'erreur -->
                 <Style TargetType="TreeViewItem">
                     <Setter Property="HeaderTemplate" >
                         <Setter.Value>
                             <DataTemplate >
-                                <!--
-                                -->
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="{Binding Path=Type, Converter={StaticResource img}}"
                                            RenderOptions.BitmapScalingMode="HighQuality"  
@@ -88,9 +96,6 @@
                         </Setter.Value>
                     </Setter>
                     <Setter Property="ItemsSource" Value="{Binding Children}"/>
-                    <!--
-                    
-                    -->
                     <Setter Property="IsExpanded" Value="{Binding IsExpanded}"/>
                     <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
                     <Setter Property="Focusable" Value="{Binding IsFocusable}"/>

@@ -65,7 +65,7 @@
         <!-- Bouton du bas -->
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Right"
                     VerticalAlignment="Bottom" >
-            <Button x:Name="btAnnul" Content="Cancel" Width="75" IsCancel="True"/>
+            <Button x:Name="btAnnul" Content="Cancel" Width="75" Visibility="Collapsed" IsCancel="True"/>
             <Button x:Name="btValid" Content="OK" Width="75" IsDefault="True"
                     Click="btOk_Click" AutomationProperties.HelpText="btdroite"/>
         </StackPanel>

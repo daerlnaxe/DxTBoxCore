@@ -65,6 +65,7 @@ namespace DxTBoxCore.BoxChoose
             DataContext = Model;
             Model.Recherche();
             Mouse.OverrideCursor = null;
+
         }
 
         private void SelectedItem(object sender, RoutedPropertyChangedEventArgs<object> e)

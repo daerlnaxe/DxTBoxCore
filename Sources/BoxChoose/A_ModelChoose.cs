@@ -595,7 +595,6 @@ namespace DxTBoxCore.BoxChoose
         /// </remarks>
         internal void Recherche()
         {
-
             if (string.IsNullOrEmpty(StartingFolder))
                 return;
 
@@ -631,8 +630,7 @@ namespace DxTBoxCore.BoxChoose
 
                 // Particular case for drives
                 string toAnalyse = data.Path.TrimEnd('\\');
-
-
+                  
                 // Rempile ce qui est avant
                 if (data.IsExpanded)
                     data.IsExpanded = false;

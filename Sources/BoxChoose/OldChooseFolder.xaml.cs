@@ -98,11 +98,11 @@ namespace DxTBoxCore.BoxChoose
             string maMus;
             string mesVids;
 
-            Settings.Default.Bureau = bureau = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            Settings.Default.DocumentsPerso = mesDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            Settings.Default.ImagesPerso = mesImgs = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            Settings.Default.MusiquePerso = maMus = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
-            Settings.Default.VideosPerso = mesVids = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
+            UserFolders.Bureau = bureau = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            UserFolders.Documents = mesDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            UserFolders.Images = mesImgs = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            UserFolders.Musiques = maMus = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
+            UserFolders.Videos = mesVids = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
 
             /*
             #region Concerne les répértoires spéciaux

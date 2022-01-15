@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DxTBoxCore.Box_Progress"
         mc:Ignorable="d"
-        Title="{Binding TaskName, TargetNullValue=DxProgressB1}" Height="151" Width="480" 
+        Title="{Binding TaskName, TargetNullValue=DxProgressB1}" Height="auto" Width="480" MaxHeight="200"
         Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Themes/Basic.xaml" />
+                <ResourceDictionary Source="/DxTBoxCore;component/Themes/Basic.xaml" />
                 <ResourceDictionary>
                     <Style TargetType="Label" />
                     <Style TargetType="Button" />
@@ -34,8 +34,8 @@
             <!-- Texte -->
             <StackPanel Orientation="Horizontal">
                 <Label Content="File"/>
-                <TextBlock x:Name="FullPath" TextWrapping="NoWrap" Margin="5"
-                       Text="{Binding Status, FallbackValue=Status}"/>
+                <TextBlock TextWrapping="NoWrap" Margin="5" TextTrimming="CharacterEllipsis"
+                       Text="{Binding Status, FallbackValue=Status}" ToolTip="{Binding Status}"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
                 <TextBlock Text="{Binding ElementName=progressBar, Path=Maximum, FallbackValue=0}" />

@@ -30,15 +30,15 @@ namespace DxTBoxCore.BoxChoose
             //if (tag == Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)) return null;
 
             // Bureau
-            if (tag.Equals(Settings.Default.Bureau))
+            if (tag.Equals(UserFolders.Bureau))
                 return "../Resources/Bureaux40.png";
-            if (tag.Equals(Settings.Default.DocumentsPerso))
+            if (tag.Equals(UserFolders.Documents))
                 return "../Resources/Documentsx40.png";
-            if (tag.Equals(Settings.Default.ImagesPerso))
+            if (tag.Equals(UserFolders.Images))
                 return "../Resources/MesImagesx40.png";
-            if (tag.Equals(Settings.Default.MusiquePerso))
+            if (tag.Equals(UserFolders.Musiques))
                 return "../Resources/Mediax40.png";
-            if (tag.Equals(Settings.Default.VideosPerso))
+            if (tag.Equals(UserFolders.Videos))
                 return "../Resources/MesVideosx40.png";
 
             // Dossiers System

@@ -8,7 +8,7 @@
     <Compile Update="Box Collec\BCElements.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Box Decisions\MBDecision.xaml.cs">
+    <Compile Update="Box Decisions\MBDecisionD.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Box MBox\DxCaution.xaml.cs">
@@ -38,6 +38,9 @@
     <Compile Update="Async Box Progress\DxAsStateProgress.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Box Progress\Splash.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="BoxChoose\TreeChoose.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,10 +58,13 @@
     <Page Update="Box Collec\BCElements.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Box Decisions\MBDecision.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Box Decisions\MBSimpleD.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Box Decisions\MBDecision.xaml">
+    <Page Update="Box Decisions\MBDecisionD.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Box MBox\DxCaution.xaml">
@@ -98,6 +104,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Box Progress\DxStateProgress.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Box Progress\Splash.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Box Status\ColumnStatus.xaml">

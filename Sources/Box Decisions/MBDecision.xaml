@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         d:Width="600"
         d:Height="250"
-        Title="{x:Static t:DxTBLang.Collision}" Height="450" Width="600"
+        SizeToContent="WidthAndHeight" MinHeight="250" MaxWidth="640"
+        Title="{x:Static t:DxTBLang.Collision}"
         Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         >
     <Window.Resources>
@@ -60,7 +61,6 @@
         <Grid DockPanel.Dock="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -69,22 +69,14 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
          
-            <!-- Fichier 1 -->
-            <Label Grid.Row="0" Content="{x:Static t:DxTBLang.Source}"/>
-            <TextBlock Grid.Row="0" Grid.Column="1" 
-                       TextTrimming="CharacterEllipsis"
-                       Text="{Binding Source, FallbackValue=source}"
-                       ToolTip="{Binding Source}"
-                       />
-            <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding SourceInfo, FallbackValue=srcInfo}"/>
-            <!-- Fichier 2 -->
-            <Label Grid.Row="1" Content="{x:Static t:DxTBLang.Destination}" />
-            <TextBlock Grid.Row="1" Grid.Column="1"
+            <!-- Fichier dest -->
+            <Label Grid.Row="0" Content="{x:Static t:DxTBLang.Destination}" />
+            <TextBlock Grid.Row="0" Grid.Column="1"
                        TextTrimming="CharacterEllipsis"
                        Text="{Binding Destination, FallbackValue=destination}"
                        ToolTip="{Binding Destination}"
                        />
-            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding DestInfo, FallbackValue=dstInfo}"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding DestInfo, FallbackValue=dstInfo}"/>
         </Grid>
 
     </DockPanel>

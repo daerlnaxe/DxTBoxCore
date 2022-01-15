@@ -66,8 +66,6 @@ namespace DxTBoxCore.Box_Progress
 
             TaskRunning.ContinueWith((ant) => ProgressIHM.TaskFinished = true);
 
-
-
             if (ProgressIHM is Window)
             {
                 ((Window)ProgressIHM).ShowDialog();
@@ -101,8 +99,6 @@ namespace DxTBoxCore.Box_Progress
             {
                 var kwa = TaskRunning.ContinueWith((ant) => Ending());
             }*/
-
-
 
         }
 
