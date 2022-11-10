@@ -9,12 +9,14 @@
         Title="DxDoublePass" Height="200" Width="400" ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
+        <!--
         <Style TargetType="Label">
             <Setter Property="Margin" Value="10,5,3,5"/>
         </Style>
+        -->
         <!-- Boites password -->
         <Style TargetType="local:PasswordExt" >
-            <Setter Property="Margin" Value="10,5,3,5"/>
+            <Setter Property="Margin" Value="0,5,3,5"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Width" Value="200"/>
             <Setter Property="Validation.ErrorTemplate">
@@ -51,7 +53,7 @@
             <Setter Property="Padding" Value="5"/>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -60,10 +62,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!-- Invite -->
-        <Label Content="{Binding Invite, 
-                            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, 
-                             FallbackValue='Enter the Password'}"
-                        ContentStringFormat="{}{0}:" HorizontalAlignment="Left" />
+        <TextBlock Text="{Binding Invite, 
+                            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window},
+                             FallbackValue='Enter the Password', StringFormat='{}{0}:'}" TextWrapping="Wrap"
+                             HorizontalAlignment="Left" />
         <!-- Password Box -->
         <!-- Le 1 vérifie l'aspect du mot de passe -->
         <local:PasswordExt x:Name="passwordBoxH" Grid.Row="1"

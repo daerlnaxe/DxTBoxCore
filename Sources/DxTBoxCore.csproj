@@ -1,16 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <UseWPF>true</UseWPF>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
     <Company>Daerlnaxe Software</Company>
-    <AssemblyVersion>2.0.6.0</AssemblyVersion>
-    <FileVersion>2.0.0.2</FileVersion>
+    <AssemblyVersion>2.0.7.0</AssemblyVersion>
+    <FileVersion>2.0.0.3</FileVersion>
     <Description>IHM Collection
 Free to use, share, distribution</Description>
     <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <PackageReleaseNotes>- DxCollecProgress</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Platforms>AnyCPU;x86;x64</Platforms>
@@ -104,11 +104,8 @@ Free to use, share, distribution</Description>
     <None Include="Box Password\old_TextBoxExt.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\AsyncProgress\Sources\AsyncProgress.csproj" />
-    <ProjectReference Include="..\..\DxCoreControls\Source\DxCCtrl.csproj" />
+    <ProjectReference Include="..\..\DxCCtrl\Source\DxCCtrl.csproj" />
     <ProjectReference Include="..\..\DxLocalTrans\DxLocalTrans\DxLocalTransf.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +169,9 @@ Free to use, share, distribution</Description>
   </ItemGroup>
   <ItemGroup>
     <None Include="Async Box Progress\Merde.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Box Decisions\MBDecision.xaml.cs">
